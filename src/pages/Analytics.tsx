@@ -419,6 +419,7 @@ const Analytics = () => {
             <p className="text-gray-600">Selecione uma categoria de idade e um tipo de ocorrência para visualizar o gráfico.</p>
           )}
         </div>
+        {selectedRecurrenceType && (
           <RecurrenceAthleteModal
             recurrenceType={selectedRecurrenceType}
             athletes={(() => {
