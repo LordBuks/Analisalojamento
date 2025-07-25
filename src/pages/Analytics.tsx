@@ -6,6 +6,10 @@ import { RecurrenceAthleteModal } from '../components/dashboard/RecurrenceAthlet
 import { CategoryDetailModal } from '../components/dashboard/CategoryDetailModal';
 
 const Analytics = () => {
+  const ageCategories = ['Sub-14', 'Sub-15', 'Sub-16', 'Sub-17', 'Sub-20'];
+  const [selectedAgeCategory, setSelectedAgeCategory] = useState<string | null>(null);
+  const [selectedOccurrenceType, setSelectedOccurrenceType] = useState<string | null>(null);
+
   const categories = [
     { name: 'Falta Escolar', color: '#FFC0CB' },
     { name: 'Alimentação Irregular', color: '#36A2EB' },
@@ -90,25 +94,22 @@ const Analytics = () => {
     ];
   }, [athleteOccurrences]);
 
-  // Análise por categoria de ocorrência ao longo dos meses (Gráfico de Barras Empilhadas)
-  const categoryTrendData = useMemo(() => {
-    return monthlyData.map(monthData => {
-      const categoryCounts = {};
-      categories.forEach(cat => categoryCounts[cat.name] = 0);
-      
-      monthData.data.forEach(occ => {
-        const category = occ.TIPO;
-        categoryCounts[category] = (categoryCounts[category] || 0) + 1;
-      });
 
+
+  // Dados para o novo gráfico de comparação por categoria de idade e tipo de ocorrência
+  const ageCategoryOccurrenceData = useMemo(() => {
+    if (!selectedAgeCategory || !selectedOccurrenceType) return [];
+
+    return monthlyData.map(monthData => {
+      const occurrencesInMonth = monthData.data.filter(occ => 
+        occ.IDADE === selectedAgeCategory && occ.TIPO === selectedOccurrenceType
+      );
       return {
         month: monthData.month,
-        ...categoryCounts
+        count: occurrencesInMonth.length
       };
     });
-  }, [monthlyData]);
-
-  // Top atletas reincidentes
+  }, [monthlyData, selectedAgeCategory, selectedOccurrenceType]);
   const topRecurrentAthletes = useMemo(() => {
     const athleteStats = new Map();
     
@@ -374,32 +375,50 @@ const Analytics = () => {
           </div>
         </div>
 
-        {/* Tendência por Categoria - Gráfico de Barras Empilhadas */}
-        <div className="bg-white rounded-lg shadow p-6">
-          <h2 className="text-xl font-semibold mb-4">Tendência por Categoria de Ocorrência</h2>
-          <div className="h-96">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={categoryTrendData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="month" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                {categories.map((cat, index) => (
-                  <Bar
-                    key={cat.name}
-                    dataKey={cat.name}
-                    stackId="a"
-                    fill={cat.color}
-                    onClick={(data) => setCategoryDetailModal({ isOpen: true, category: data.dataKey, month: data.month, count: data.value, color: cat.color })}
-                  />
-                ))}
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
 
-        {selectedRecurrenceType && (
+
+        {/* Análise por Categoria de Idade e Tipo de Ocorrência */}
+        <div className="bg-white rounded-lg shadow p-6 mb-8">
+          <h2 className="text-xl font-semibold mb-4">Análise por Categoria de Idade e Tipo de Ocorrência</h2>
+          <div className="flex space-x-4 mb-4">
+            <select
+              className="p-2 border rounded-md"
+              value={selectedAgeCategory || ''}
+              onChange={(e) => setSelectedAgeCategory(e.target.value)}
+            >
+              <option value="">Selecione a Categoria de Idade</option>
+              {ageCategories.map(cat => (
+                <option key={cat} value={cat}>{cat}</option>
+              ))}
+            </select>
+            <select
+              className="p-2 border rounded-md"
+              value={selectedOccurrenceType || ''}
+              onChange={(e) => setSelectedOccurrenceType(e.target.value)}
+            >
+              <option value="">Selecione o Tipo de Ocorrência</option>
+              {categories.map(cat => (
+                <option key={cat.name} value={cat.name}>{cat.name}</option>
+              ))}
+            </select>
+          </div>
+          {selectedAgeCategory && selectedOccurrenceType && ageCategoryOccurrenceData.length > 0 ? (
+            <div className="h-96">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={ageCategoryOccurrenceData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="month" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="count" fill="#8884d8" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          ) : (
+            <p className="text-gray-600">Selecione uma categoria de idade e um tipo de ocorrência para visualizar o gráfico.</p>
+          )}
+        </div>
           <RecurrenceAthleteModal
             recurrenceType={selectedRecurrenceType}
             athletes={(() => {
