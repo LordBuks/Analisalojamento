@@ -29,14 +29,14 @@ const MonthSelector: React.FC<MonthSelectorProps> = ({
 
   return (
     <div className="mb-6">
-      <label htmlFor="month-selector" className="block text-sm font-medium text-gray-700 mb-2">
+      <label htmlFor="month-selector" className="block text-sm font-medium text-red-700 mb-2">
         Selecionar Período:
       </label>
       <select
         id="month-selector"
         value={currentValue}
         onChange={handleChange}
-        className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        className="block w-full px-3 py-2 border border-red-400 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
       >
         {showAllOption && (
           <option value="all">Todos os Meses</option>
