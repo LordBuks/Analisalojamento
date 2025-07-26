@@ -163,7 +163,7 @@ const Analytics = () => {
 
   }, [monthlyData, selectedAthlete, selectedBehavioralTrendOccurrenceType]);
 
-  const topRecurrentAthletes = useMemo(() => {
+  const allAthleteStats = useMemo(() => {
     const athleteStats = new Map();
     
     monthlyData.forEach(monthData => {
@@ -185,11 +185,15 @@ const Analytics = () => {
       });
     });
 
-    return Array.from(athleteStats.values())
+    return Array.from(athleteStats.values());
+  }, [monthlyData]);
+
+  const topRecurrentAthletes = useMemo(() => {
+    return allAthleteStats
       .filter((athlete: any) => athlete.months.size > 1)
       .sort((a: any, b: any) => b.months.size - a.months.size || b.totalOccurrences - a.totalOccurrences)
       .slice(0, 10);
-  }, [monthlyData]);
+  }, [allAthleteStats]);
 
   // Estatísticas comparativas
   const comparativeStats = useMemo(() => {
@@ -216,6 +220,23 @@ const Analytics = () => {
       }
     };
   }, [timelineData]);
+
+  // *** CORREÇÃO APLICADA AQUI ***
+  // A constante foi movida para dentro do componente, antes do return.
+  const filteredRecurrenceAthletes = useMemo(() => {
+    if (!selectedRecurrenceType) return [];
+
+    return allAthleteStats.filter((athlete: any) => {
+      if (selectedRecurrenceType === '1 Mês') {
+        return athlete.months.size === 1;
+      } else if (selectedRecurrenceType === '2 Meses') {
+        return athlete.months.size === 2;
+      } else if (selectedRecurrenceType === '3+ Meses') {
+        return athlete.months.size >= 3;
+      }
+      return false;
+    });
+  }, [allAthleteStats, selectedRecurrenceType]);
 
   const handlePieClick = (data: any) => {
     setSelectedRecurrenceType(data.name);
@@ -512,7 +533,7 @@ const Analytics = () => {
             isOpen={!!selectedRecurrenceType}
             onClose={handleCloseRecurrenceModal}
             recurrenceType={selectedRecurrenceType}
-            athletes={[]}
+            athletes={filteredRecurrenceAthletes}
           />
         )}
       </div>
