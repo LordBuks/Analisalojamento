@@ -48,7 +48,7 @@ export function StatCard({
     }}
     >
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3">
-        <CardTitle className="text-sm font-semibold text-gray-800 group-hover:text-gray-900 transition-colors">
+        <CardTitle className="text-sm font-semibold text-red-600 group-hover:text-red-600 transition-colors">
           {title}
         </CardTitle>
         <div className="p-2 bg-red-50 rounded-lg group-hover:bg-red-100 transition-colors">

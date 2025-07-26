@@ -166,8 +166,8 @@ const Index = () => {
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Dashboard - Ocorrências Disciplinares</h1>
-          <p className="text-gray-600">Acompanhamento das ocorrências dos atletas alojados</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Análise Disciplinar do Alojamento</h1>
+          <p className="text-red-600 text-l font-bold">Monitoramento dos atletas alojados</p>
         </div>
 
         {/* Seletor de Mês */}
@@ -181,25 +181,25 @@ const Index = () => {
         {/* Cards de Estatísticas */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <StatCard
-            title="Total de Atletas"
+            title={<span className="text-bold text-red-600">Total de Atletas</span>}
             value={totalAthletes.toString()}
             icon={Users}
             color="blue"
           />
           <StatCard
-            title="Total de Ocorrências"
+            title={<span className="text-bold text-red-600">Total de Ocorrências</span>}
             value={totalOccurrences.toString()}
             icon={AlertTriangle}
             color="red"
           />
           <StatCard
-            title="Valor Total"
+            title={<span className="text-bold text-red-600">Valor Total</span>}
             value={`R$ ${totalValue.toLocaleString()}`}
             icon={DollarSign}
             color="green"
           />
           <StatCard
-            title="Média por Atleta"
+            title={<span className="text-bold text-red-600">Média por Atleta</span>}
             value={`R$ ${averagePerAthlete}`}
             icon={TrendingUp}
             color="purple"
