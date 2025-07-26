@@ -167,7 +167,7 @@ const Index = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
           <h1 className="text-3xl text-red-600 font-bold text-gray-900 mb-2">Análise Disciplinar do Alojamento</h1>
-          <p className="text-red-600 text-l font-bold">Monitoramento dos atletas alojados</p>
+          <p className="text-gray-600 text-l font-bold">Monitoramento dos atletas alojados</p>
         </div>
 
         {/* Seletor de Mês */}

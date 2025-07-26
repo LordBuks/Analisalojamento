@@ -237,11 +237,11 @@ const Index = () => {
                   placeholder="Buscar atleta..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 border-red-100 focus:border-red-300 focus:ring-red-200"
+                  className="pl-10 border-gray-200 focus:border-gray-200 focus:ring-gray-200"
                 />
               </div>
               <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                <SelectTrigger className="w-full sm:w-48 border-red-100 focus:border-red-300 focus:ring-red-200">
+                <SelectTrigger className="w-full sm:w-48 border-gray-200 focus:border-gray-200 focus:ring-gray-200">
                   <Filter className="h-4 w-4 mr-2 inter-text-secondary" />
                   <SelectValue placeholder="Filtrar por categoria" />
                 </SelectTrigger>
