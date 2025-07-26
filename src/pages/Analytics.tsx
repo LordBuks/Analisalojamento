@@ -22,6 +22,17 @@ const Analytics = () => {
 
   const [selectedAgeCategory, setSelectedAgeCategory] = useState<string | null>(null);
   const [selectedOccurrenceType, setSelectedOccurrenceType] = useState<string | null>(null);
+  const [selectedAthlete, setSelectedAthlete] = useState<string | null>(null);
+
+  const allAthletes = useMemo(() => {
+    const athletes = new Set<string>();
+    monthlyData.forEach(monthData => {
+      monthData.data.forEach(occ => {
+        athletes.add(occ.NOME);
+      });
+    });
+    return Array.from(athletes).sort();
+  }, [monthlyData]);
 
   const categories = [
     { name: 'Falta Escolar', color: '#FFC0CB' },
@@ -133,6 +144,31 @@ const Analytics = () => {
     return filteredData;
   }, [monthlyData, selectedAgeCategory, selectedOccurrenceType]);
 
+  const filteredBehavioralTrendData = useMemo(() => {
+    if (!selectedAthlete || !selectedOccurrenceType) {
+      return [];
+    }
+
+    const athleteOccurrences = monthlyData.flatMap(monthData => 
+      monthData.data.filter(occ => 
+        occ.NOME === selectedAthlete && occ.TIPO === selectedOccurrenceType
+      ).map(occ => ({ ...occ, month: monthData.month }))
+    );
+
+    const monthlyCounts = athleteOccurrences.reduce((acc, occ) => {
+      acc[occ.month] = (acc[occ.month] || 0) + 1;
+      return acc;
+    }, {} as Record<string, number>);
+
+    const monthOrder = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+
+    return Object.keys(monthlyCounts).map(month => ({
+      month,
+      count: monthlyCounts[month]
+    })).sort((a, b) => monthOrder.indexOf(a.month) - monthOrder.indexOf(b.month));
+
+  }, [monthlyData, selectedAthlete, selectedOccurrenceType]);
+
   const topRecurrentAthletes = useMemo(() => {
     const athleteStats = new Map();
     
@@ -195,7 +231,7 @@ const Analytics = () => {
     setSelectedRecurrenceType(null);
   };
 
-  const colors = ['#FFC0CB', '#36A2EB', '#FFCE56', '#4BC0C0', '#FF0000', '#FF9F40', '#8B5CF6'];
+  const colors = ['#FFC0CB', '#FF6384', '#FFCE56', '#4BC0C0', '#FF0000', '#FF9F40', '#8B5CF6'];
 
   if (loading) {
     return (
@@ -306,7 +342,6 @@ const Analytics = () => {
                   stroke="#10B981" 
                   strokeWidth={3}
                   dot={{ fill: '#10B981', strokeWidth: 2, r: 6 }}
-                />
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -314,10 +349,6 @@ const Analytics = () => {
 
         {/* Gráficos lado a lado */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-          {/* Nova seção para Análise por Categoria de Idade e Tipo de Ocorrência */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl text-red-600 font-semibold mb-4">Análise por Categoria de Idade e Tipo de Ocorrência</h2>
-            <div className="flex space-x-4 mb-4">
               <Select onValueChange={setSelectedAgeCategory}>
                 <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="Selecione a Categoria de Idade" />
@@ -350,7 +381,7 @@ const Analytics = () => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="count" fill="#8884d8" name="Quantidade de Ocorrências" />
+                    <Bar dataKey="count" fill="#EF4444" name="Quantidade de Ocorrências" />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
@@ -382,23 +413,90 @@ const Analytics = () => {
                     ))}
                   </Pie>
                   <Tooltip />
+                  <Legend />
                 </PieChart>
               </ResponsiveContainer>
             </div>
-            <div className="mt-3 text-sm text-gray-600">
-              <p>• <span className="font-bold text-green-800">1 Mês:</span> Atletas com ocorrências em apenas um mês</p>
-              <p>• <span className="font-bold text-orange-600">2 Meses:</span> Atletas com ocorrências em dois meses</p>
-              <p>• <span className="font-bold text-red-600">3+ Meses:</span> Atletas reincidentes (maior atenção)</p>
-            </div>
+            <ul className="text-sm text-gray-600 mt-4">
+              <li><span className="inline-block w-3 h-3 rounded-full bg-green-600 mr-2"></span>1 Mês: Atletas com ocorrências em apenas um mês</li>
+              <li><span className="inline-block w-3 h-3 rounded-full bg-orange-500 mr-2"></span>2 Meses: Atletas com ocorrências em dois meses</li>
+              <li><span className="inline-block w-3 h-3 rounded-full bg-red-600 mr-2"></span>3+ Meses: Atletas reincidentes (maior atenção)</li>
+            </ul>
           </div>
+        </div>
 
+        {/* Nova seção para Top Atletas Reincidentes e Análise de Tendências Comportamentais */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {/* Top Atletas Reincidentes */}
           <div className="bg-white rounded-lg shadow p-6">
             <h2 className="text-xl text-red-600 font-semibold mb-4">Top Atletas Reincidentes</h2>
             <div className="space-y-3 max-h-80 overflow-y-auto">
-              {topRecurrentAthletes.map((athlete, index) => {
-                const athleteOccurrence = monthlyData
-                  .flatMap(monthData => monthData.data)
+              {topRecurrentAthletes.map((athlete, index) => (
+                <div key={athlete.name} className="flex items-center justify-between p-2 bg-gray-50 rounded-md">
+                  <div className="flex items-center">
+                    <span className="text-lg font-bold text-red-600 mr-2">{index + 1}º</span>
+                    <div className="w-8 h-8 bg-red-200 rounded-full flex items-center justify-center text-red-800 font-bold text-sm mr-2">
+                      {athlete.name.split(" ").map(n => n[0]).join("").toUpperCase().slice(0, 2)}
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-800">{athlete.name}</p>
+                      <p className="text-xs text-gray-500">{athlete.months.size} meses • {athlete.totalOccurrences} ocorrências</p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="font-bold text-gray-800">R$ {athlete.totalValue.toLocaleString()}</p>
+                    <p className="text-xs text-gray-500">R$ {(athlete.totalValue / athlete.totalOccurrences).toFixed(2)}/ocorrência</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Novo Card: Análise de Tendências Comportamentais por Atleta e Tipo de Ocorrência */}
+          <div className="bg-white rounded-lg shadow p-6">
+            <h2 className="text-xl text-red-600 font-semibold mb-4">Análise de Tendências Comportamentais</h2>
+            <div className="flex space-x-4 mb-4">
+              <Select onValueChange={setSelectedAthlete}>
+                <SelectTrigger className="w-[200px]">
+                  <SelectValue placeholder="Selecione o Atleta" />
+                </SelectTrigger>
+                <SelectContent>
+                  {allAthletes.map(athlete => (
+                    <SelectItem key={athlete} value={athlete}>{athlete}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <Select onValueChange={setSelectedOccurrenceType}>
+                <SelectTrigger className="w-[200px]">
+                  <SelectValue placeholder="Selecione o Tipo de Ocorrência" />
+                </SelectTrigger>
+                <SelectContent>
+                  {occurrenceTypes.map(type => (
+                    <SelectItem key={type} value={type}>{type}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            {selectedAthlete && selectedOccurrenceType ? (
+              <div className="h-80">
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart data={filteredBehavioralTrendData}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="month" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Line type="monotone" dataKey="count" stroke="#FF0000" /> {/* Usando vermelho ao invés de azul */}
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+            ) : (
+              <div className="text-center text-gray-500 py-10">
+                Selecione um Atleta e um Tipo de Ocorrência para visualizar o gráfico.
+              </div>
+            )}
+          </div>
+        </div>              .flatMap(monthData => monthData.data)
                   .find(occ => occ.NOME === athlete.name);
                 const fotoUrl = athleteOccurrence?.fotoUrl;
                 const initials = athlete.name.split(' ').map(n => n[0]).join('').slice(0, 2);
@@ -471,4 +569,46 @@ const Analytics = () => {
 
 export default Analytics;
 
+
+
+
+          {/* Novo Card: Análise de Tendências Comportamentais por Atleta e Tipo de Ocorrência */}
+          <div className="bg-white rounded-lg shadow p-6">
+            <h2 className="text-xl text-red-600 font-semibold mb-4">Análise de Tendências Comportamentais</h2>
+            <div className="flex space-x-4 mb-4">
+              <Select>
+                <SelectTrigger className="w-[200px]">
+                  <SelectValue placeholder="Selecione o Atleta" />
+                </SelectTrigger>
+                <SelectContent>
+                  {allAthletes.map(athlete => (
+                    <SelectItem key={athlete} value={athlete}>{athlete}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <Select>
+                <SelectTrigger className="w-[200px]">
+                  <SelectValue placeholder="Selecione o Tipo de Ocorrência" />
+                </SelectTrigger>
+                <SelectContent>
+                  {occurrenceTypes.map(type => (
+                    <SelectItem key={type} value={type}>{type}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="h-80">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={[]}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="month" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Line type="monotone" dataKey="count" stroke="#FF0000" /> {/* Usando vermelho ao invés de azul */}
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        </div>
 
