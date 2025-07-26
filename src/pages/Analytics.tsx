@@ -342,11 +342,12 @@ const Analytics = () => {
                   stroke="#10B981" 
                   strokeWidth={3}
                   dot={{ fill: '#10B981', strokeWidth: 2, r: 6 }}
+                />
               </LineChart>
             </ResponsiveContainer>
           </div>
         </div>
-
+      
         {/* Gráficos lado a lado */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               <Select onValueChange={setSelectedAgeCategory}>
@@ -568,47 +569,4 @@ const Analytics = () => {
 };
 
 export default Analytics;
-
-
-
-
-          {/* Novo Card: Análise de Tendências Comportamentais por Atleta e Tipo de Ocorrência */}
-          <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl text-red-600 font-semibold mb-4">Análise de Tendências Comportamentais</h2>
-            <div className="flex space-x-4 mb-4">
-              <Select>
-                <SelectTrigger className="w-[200px]">
-                  <SelectValue placeholder="Selecione o Atleta" />
-                </SelectTrigger>
-                <SelectContent>
-                  {allAthletes.map(athlete => (
-                    <SelectItem key={athlete} value={athlete}>{athlete}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <Select>
-                <SelectTrigger className="w-[200px]">
-                  <SelectValue placeholder="Selecione o Tipo de Ocorrência" />
-                </SelectTrigger>
-                <SelectContent>
-                  {occurrenceTypes.map(type => (
-                    <SelectItem key={type} value={type}>{type}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            <div className="h-80">
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={[]}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="month" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Line type="monotone" dataKey="count" stroke="#FF0000" /> {/* Usando vermelho ao invés de azul */}
-                </LineChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
-        </div>
 
