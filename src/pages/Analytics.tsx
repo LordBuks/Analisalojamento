@@ -6,9 +6,20 @@ import { analyzeByAgeCategoryAndOccurrenceType } from '../utils/analysisUtils';
 import { testOccurrences } from '../data/testData';
 import { RecurrenceAthleteModal } from '../components/dashboard/RecurrenceAthleteModal';
 import { CategoryDetailModal } from '../components/dashboard/CategoryDetailModal';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 
 const Analytics = () => {
   const ageCategories = ['Sub-14', 'Sub-15', 'Sub-16', 'Sub-17', 'Sub-20'];
+  const occurrenceTypes = [
+    'Falta Escolar',
+    'Alimentação Irregular',
+    'Uniforme',
+    'Desorganização',
+    'Comportamento',
+    'Atrasos/Sair sem autorização',
+    'Outras'
+  ];
+
   const [selectedAgeCategory, setSelectedAgeCategory] = useState<string | null>(null);
   const [selectedOccurrenceType, setSelectedOccurrenceType] = useState<string | null>(null);
 
@@ -96,13 +107,29 @@ const Analytics = () => {
     ];
   }, [athleteOccurrences]);
 
-
-
   // Dados para o novo gráfico de comparação por categoria de idade e tipo de ocorrência
   const ageCategoryOccurrenceData = useMemo(() => {
     // Usando os dados de teste para simular a análise
     return analyzeByAgeCategoryAndOccurrenceType(testOccurrences);
   }, []);
+
+  const filteredAgeCategoryOccurrenceData = useMemo(() => {
+    if (!selectedAgeCategory || !selectedOccurrenceType) {
+      return [];
+    }
+
+    const filteredData = monthlyData.map(monthData => {
+      const occurrencesInMonth = monthData.data.filter(occ => 
+        occ.CAT === selectedAgeCategory && occ.TIPO === selectedOccurrenceType
+      );
+      return {
+        month: monthData.month,
+        count: occurrencesInMonth.length
+      };
+    });
+    return filteredData;
+  }, [monthlyData, selectedAgeCategory, selectedOccurrenceType]);
+
   const topRecurrentAthletes = useMemo(() => {
     const athleteStats = new Map();
     
@@ -282,6 +309,53 @@ const Analytics = () => {
           </div>
         </div>
 
+        {/* Nova seção para Análise por Categoria de Idade e Tipo de Ocorrência */}
+        <div className="bg-white rounded-lg shadow p-6 mb-8">
+          <h2 className="text-xl text-red-600 font-semibold mb-4">Análise por Categoria de Idade e Tipo de Ocorrência</h2>
+          <div className="flex space-x-4 mb-4">
+            <Select onValueChange={setSelectedAgeCategory}>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Selecione a Categoria de Idade" />
+              </SelectTrigger>
+              <SelectContent>
+                {ageCategories.map(category => (
+                  <SelectItem key={category} value={category}>{category}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
+            <Select onValueChange={setSelectedOccurrenceType}>
+              <SelectTrigger className="w-[220px]">
+                <SelectValue placeholder="Selecione o Tipo de Ocorrência" />
+              </SelectTrigger>
+              <SelectContent>
+                {occurrenceTypes.map(type => (
+                  <SelectItem key={type} value={type}>{type}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          {selectedAgeCategory && selectedOccurrenceType && filteredAgeCategoryOccurrenceData.length > 0 ? (
+            <div className="h-80">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={filteredAgeCategoryOccurrenceData}>
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="month" />
+                  <YAxis />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="count" fill="#8884d8" name="Quantidade de Ocorrências" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          ) : (
+            <div className="text-center text-gray-500 py-10">
+              Selecione uma Categoria de Idade e um Tipo de Ocorrência para visualizar o gráfico.
+            </div>
+          )}
+        </div>
+
         {/* Gráficos lado a lado */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {/* Análise de Reincidência */}
@@ -359,7 +433,7 @@ const Analytics = () => {
                     </div>
                     <div className="text-right">
                       <div className="font-medium text-sm">R$ {athlete.totalValue.toLocaleString()}</div>
-                      <div className="text-xs text-gray-500">Total de Ocorrências: {athlete.totalOccurrences}</div>
+                      <div className="text-xs text-gray-500">{athlete.totalValue > 0 ? `R$ ${(athlete.totalValue / athlete.totalOccurrences).toFixed(2)}/ocorrência` : ''}</div>
                     </div>
                   </div>
                 );
@@ -368,97 +442,12 @@ const Analytics = () => {
           </div>
         </div>
 
-        {/* Gráfico de Análise por Categoria de Idade e Tipo de Ocorrência */}
-        <div className="bg-white rounded-lg shadow p-6 mb-8">
-          <h2 className="text-xl text-red-600 font-semibold mb-4">Análise por Categoria de Idade e Tipo de Ocorrência</h2>
-          <div className="h-80">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart
-                data={ageCategoryOccurrenceData}
-                margin={{
-                  top: 20, right: 30, left: 20, bottom: 5,
-                }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="occurrenceType" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="count" fill="#8884d8" name="Contagem" />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-        <div className="bg-white rounded-lg shadow p-6 mb-8">
-          <h2 className="text-xl text-red-600 font-semibold mb-4">Análise por Categoria de Idade e Tipo de Ocorrência</h2>
-          <div className="flex space-x-4 mb-4">
-            <select
-              className="p-2 border rounded-md"
-              value={selectedAgeCategory || ''}
-              onChange={(e) => setSelectedAgeCategory(e.target.value)}
-            >
-              <option value="">Selecione a Categoria de Idade</option>
-              {ageCategories.map(cat => (
-                <option key={cat} value={cat}>{cat}</option>
-              ))}
-            </select>
-            <select
-              className="p-2 border rounded-md"
-              value={selectedOccurrenceType || ''}
-              onChange={(e) => setSelectedOccurrenceType(e.target.value)}
-            >
-              <option value="">Selecione o Tipo de Ocorrência</option>
-              {categories.map(cat => (
-                <option key={cat.name} value={cat.name}>{cat.name}</option>
-              ))}
-            </select>
-          </div>
-          {selectedAgeCategory && selectedOccurrenceType && ageCategoryOccurrenceData.length > 0 ? (
-            <div className="h-96">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={ageCategoryOccurrenceData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="month" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Bar dataKey="count" fill="#8884d8" />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          ) : (
-            <p className="text-gray-600">Selecione uma categoria de idade e um tipo de ocorrência para visualizar o gráfico.</p>
-          )}
-        </div>
         {selectedRecurrenceType && (
           <RecurrenceAthleteModal
-            recurrenceType={selectedRecurrenceType}
-            athletes={(() => {
-              const filteredAthletes = Array.from(athleteOccurrences.entries())
-                .map(([name, monthsSet]) => {
-                  const athleteData = monthlyData.flatMap(monthData => monthData.data).filter(occ => occ.NOME === name);
-                  return {
-                    name,
-                    category: athleteData[0]?.CAT || monthlyData.flatMap(monthData => monthData.data).find(occ => occ.NOME === name)?.CAT || 'N/A',
-                    totalOccurrences: athleteData.length,
-                    totalValue: athleteData.reduce((sum, occ) => sum + Number(occ.VALOR || 0), 0),
-                    months: monthsSet,
-                    occurrences: athleteData
-                  };
-                })
-                .filter(athlete => {
-                  if (selectedRecurrenceType === '1 Mês') return athlete.months.size === 1;
-                  if (selectedRecurrenceType === '2 Meses') return athlete.months.size === 2;
-                  if (selectedRecurrenceType === '3+ Meses') return athlete.months.size >= 3;
-                  return false;
-                });
-              return filteredAthletes;
-            })()}
+            isOpen={!!selectedRecurrenceType}
             onClose={handleCloseRecurrenceModal}
+            recurrenceType={selectedRecurrenceType}
+            athleteOccurrences={athleteOccurrences}
           />
         )}
 
@@ -471,3 +460,12 @@ const Analytics = () => {
             count={categoryDetailModal.count}
             color={categoryDetailModal.color}
           />
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Analytics;
+
+
