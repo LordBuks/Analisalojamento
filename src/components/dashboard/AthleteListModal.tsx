@@ -170,7 +170,7 @@ export function AthleteListModal({ athleteName, occurrences, onClose }: AthleteL
                               R$ {athlete.totalValue.toLocaleString()}
                             </div>
                             <div className="text-xs text-gray-500 font-medium">
-                              Valor Total
+                              Caixinha
                             </div>
                             
                             <div className="flex items-center justify-end space-x-1 text-xs text-gray-600">
