@@ -520,3 +520,7 @@ const Analytics = () => {
 
 export default Analytics;
 
+
+  const [selectedBehavioralTrendOccurrenceType, setSelectedBehavioralTrendOccurrenceType] = useState<string | null>(null);
+  const [selectedRecurrenceType, setSelectedRecurrenceType] = useState<string | null>(null);
+
