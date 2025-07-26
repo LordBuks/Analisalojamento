@@ -350,7 +350,7 @@ const Analytics = () => {
             <div className="flex space-x-4 mb-4">
               <Select onValueChange={setSelectedAgeCategory}>
                 <SelectTrigger className="w-[180px]">
-                  <SelectValue placeholder="Selecione a Categoria de Idade" />
+                  <SelectValue placeholder="Selecione a Categoria" />
                 </SelectTrigger>
                 <SelectContent>
                   {ageCategories.map(category => (
