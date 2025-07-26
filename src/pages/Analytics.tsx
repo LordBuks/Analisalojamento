@@ -126,6 +126,9 @@ const Analytics = () => {
         month: monthData.month,
         count: occurrencesInMonth.length
       };
+    }).sort((a, b) => {
+      const monthOrder = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+      return monthOrder.indexOf(a.month) - monthOrder.indexOf(b.month);
     });
     return filteredData;
   }, [monthlyData, selectedAgeCategory, selectedOccurrenceType]);
@@ -309,55 +312,55 @@ const Analytics = () => {
           </div>
         </div>
 
-        {/* Nova seção para Análise por Categoria de Idade e Tipo de Ocorrência */}
-        <div className="bg-white rounded-lg shadow p-6 mb-8">
-          <h2 className="text-xl text-red-600 font-semibold mb-4">Análise por Categoria de Idade e Tipo de Ocorrência</h2>
-          <div className="flex space-x-4 mb-4">
-            <Select onValueChange={setSelectedAgeCategory}>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder="Selecione a Categoria de Idade" />
-              </SelectTrigger>
-              <SelectContent>
-                {ageCategories.map(category => (
-                  <SelectItem key={category} value={category}>{category}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-
-            <Select onValueChange={setSelectedOccurrenceType}>
-              <SelectTrigger className="w-[220px]">
-                <SelectValue placeholder="Selecione o Tipo de Ocorrência" />
-              </SelectTrigger>
-              <SelectContent>
-                {occurrenceTypes.map(type => (
-                  <SelectItem key={type} value={type}>{type}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          {selectedAgeCategory && selectedOccurrenceType ? (
-            <div className="h-80">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={filteredAgeCategoryOccurrenceData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="month" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Bar dataKey="count" fill="#8884d8" name="Quantidade de Ocorrências" />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          ) : (
-            <div className="text-center text-gray-500 py-10">
-              Selecione uma Categoria de Idade e um Tipo de Ocorrência para visualizar o gráfico.
-            </div>
-          )}
-        </div>
-
         {/* Gráficos lado a lado */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          {/* Nova seção para Análise por Categoria de Idade e Tipo de Ocorrência */}
+          <div className="bg-white rounded-lg shadow p-6">
+            <h2 className="text-xl text-red-600 font-semibold mb-4">Análise por Categoria de Idade e Tipo de Ocorrência</h2>
+            <div className="flex space-x-4 mb-4">
+              <Select onValueChange={setSelectedAgeCategory}>
+                <SelectTrigger className="w-[180px]">
+                  <SelectValue placeholder="Selecione a Categoria de Idade" />
+                </SelectTrigger>
+                <SelectContent>
+                  {ageCategories.map(category => (
+                    <SelectItem key={category} value={category}>{category}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+
+              <Select onValueChange={setSelectedOccurrenceType}>
+                <SelectTrigger className="w-[220px]">
+                  <SelectValue placeholder="Selecione o Tipo de Ocorrência" />
+                </SelectTrigger>
+                <SelectContent>
+                  {occurrenceTypes.map(type => (
+                    <SelectItem key={type} value={type}>{type}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
+            {selectedAgeCategory && selectedOccurrenceType ? (
+              <div className="h-80">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart data={filteredAgeCategoryOccurrenceData}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="month" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="count" fill="#8884d8" name="Quantidade de Ocorrências" />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            ) : (
+              <div className="text-center text-gray-500 py-10">
+                Selecione uma Categoria de Idade e um Tipo de Ocorrência para visualizar o gráfico.
+              </div>
+            )}
+          </div>
+
           {/* Análise de Reincidência */}
           <div className="bg-white rounded-lg shadow p-6">
             <h2 className="text-xl text-red-600 font-semibold mb-4">Análise de Reincidência</h2>
