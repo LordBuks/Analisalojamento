@@ -189,8 +189,8 @@ const Analytics = () => {
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Análises Comparativas</h1>
-          <p className="text-gray-600">Insights e tendências ao longo dos meses</p>
+          <h1 className="text-3xl font-bold text-red-600 mb-2">Análises Comparativas</h1>
+          <p className="text-gray-600 font-bold">Insights e tendências ao longo dos meses</p>
         </div>
 
         {/* Cards de Comparação */}
@@ -199,21 +199,21 @@ const Analytics = () => {
             <div className="bg-white rounded-lg shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Ocorrências</p>
-                  <p className="text-2xl font-bold text-gray-900">{comparativeStats.occurrences.current}</p>
+                  <p className="text-sm font-medium text-red-600">Ocorrências</p>
+                  <p className="text-2xl font-bold text-gray-600">{comparativeStats.occurrences.current}</p>
                 </div>
                 <div className={`flex items-center ${parseFloat(comparativeStats.occurrences.change) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
                   {parseFloat(comparativeStats.occurrences.change) >= 0 ? <TrendingUp className="h-4 w-4 mr-1" /> : <TrendingDown className="h-4 w-4 mr-1" />}
                   <span className="text-sm font-medium">{Math.abs(parseFloat(comparativeStats.occurrences.change))}%</span>
                 </div>
               </div>
-              <p className="text-xs text-gray-500 mt-2">vs. mês anterior: {comparativeStats.occurrences.previous}</p>
+              <p className="text-xs text-gray-800 mt-2">vs. mês anterior: {comparativeStats.occurrences.previous}</p>
             </div>
 
             <div className="bg-white rounded-lg shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Atletas com Ocorrências</p>
+                  <p className="text-sm font-medium text-red-600">Atletas com Ocorrências</p>
                   <p className="text-2xl font-bold text-gray-900">{comparativeStats.athletes.current}</p>
                 </div>
                 <div className={`flex items-center ${parseFloat(comparativeStats.athletes.change) >= 0 ? 'text-red-600' : 'text-green-600'}`}>
@@ -227,7 +227,7 @@ const Analytics = () => {
             <div className="bg-white rounded-lg shadow p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Valor Total</p>
+                  <p className="text-sm font-medium text-red-600">Valor Total</p>
                   <p className="text-2xl font-bold text-gray-900">R$ {comparativeStats.value.current.toLocaleString()}</p>
                 </div>
                 <div className={`flex items-center ${parseFloat(comparativeStats.value.change) >= 0 ? 'text-red-600' : 'text-green-600'}`}>
@@ -243,7 +243,7 @@ const Analytics = () => {
         {/* Gráfico de Tendência Temporal */}
         <div className="bg-white rounded-lg shadow p-6 mb-8">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl font-semibold">Tendência Temporal</h2>
+            <h2 className="text-xl text-red-600 font-semibold">Tendência Temporal</h2>
             <div className="flex space-x-2">
               <button
                 onClick={() => setSelectedMetric("occurrences")}
@@ -293,7 +293,7 @@ const Analytics = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {/* Análise de Reincidência */}
           <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-semibold mb-4">Análise de Reincidência</h2>
+            <h2 className="text-xl text-red-600 font-semibold mb-4">Análise de Reincidência</h2>
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
@@ -315,16 +315,16 @@ const Analytics = () => {
                 </PieChart>
               </ResponsiveContainer>
             </div>
-            <div className="mt-4 text-sm text-gray-600">
-              <p>• <span className="text-green-600">1 Mês:</span> Atletas com ocorrências em apenas um mês</p>
-              <p>• <span className="text-yellow-600">2 Meses:</span> Atletas com ocorrências em dois meses</p>
-              <p>• <span className="text-red-600">3+ Meses:</span> Atletas reincidentes (maior atenção)</p>
+            <div className="mt-3 text-sm text-gray-600">
+              <p>• <span className="font-bold text-green-800">1 Mês:</span> Atletas com ocorrências em apenas um mês</p>
+              <p>• <span className="font-bold text-orange-600">2 Meses:</span> Atletas com ocorrências em dois meses</p>
+              <p>• <span className="font-bold text-red-600">3+ Meses:</span> Atletas reincidentes (maior atenção)</p>
             </div>
           </div>
 
           {/* Top Atletas Reincidentes */}
           <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl font-semibold mb-4">Top Atletas Reincidentes</h2>
+            <h2 className="text-xl text-red-600 font-semibold mb-4">Top Atletas Reincidentes</h2>
             <div className="space-y-3 max-h-80 overflow-y-auto">
               {topRecurrentAthletes.map((athlete, index) => {
                 const athleteOccurrence = monthlyData
@@ -379,7 +379,7 @@ const Analytics = () => {
 
         {/* Análise por Categoria de Idade e Tipo de Ocorrência */}
         <div className="bg-white rounded-lg shadow p-6 mb-8">
-          <h2 className="text-xl font-semibold mb-4">Análise por Categoria de Idade e Tipo de Ocorrência</h2>
+          <h2 className="text-xl text-red-600 font-semibold mb-4">Análise por Categoria de Idade e Tipo de Ocorrência</h2>
           <div className="flex space-x-4 mb-4">
             <select
               className="p-2 border rounded-md"

@@ -101,7 +101,7 @@ export function CategoryAthleteModal({ categoryName, occurrences, onClose }: Cat
               placeholder="Buscar atleta..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 border-red-100 focus:border-red-300 focus:ring-red-200"
+              className="pl-10 border-red-100 focus:border-gray-300 focus:ring-gray-200"
             />
           </div>
 

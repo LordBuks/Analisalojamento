@@ -36,7 +36,7 @@ const MonthSelector: React.FC<MonthSelectorProps> = ({
         id="month-selector"
         value={currentValue}
         onChange={handleChange}
-        className="block w-full px-3 py-2 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm"
+        className="block w-full px-3 py-2 border border-gray-400 rounded-md shadow-sm focus:outline-none focus:ring-red-600 focus:border-red-600 sm:text-sm"
       >
         {showAllOption && (
           <option value="all">Todos os Meses</option>
