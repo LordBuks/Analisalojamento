@@ -367,7 +367,7 @@ const Analytics = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {/* Comparação por Categoria de Idade e Tipo de Ocorrência */}
           <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl text-red-600 font-semibold mb-4">Comparação por Categoria e Tipo</h2>
+            <h2 className="text-xl text-red-600 font-semibold mb-4">Comparação por Categoria e Tipo de Ocorrência</h2>
             <div className="flex space-x-4 mb-4">
               <Select onValueChange={setSelectedAgeCategory}>
                 <SelectTrigger className="w-[180px]">
