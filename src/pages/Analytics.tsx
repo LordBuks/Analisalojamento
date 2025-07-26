@@ -13,8 +13,7 @@ const Analytics = () => {
   const [monthlyData, setMonthlyData] = useState<any[]>([]);
   const [selectedMetric, setSelectedMetric] = useState("occurrences");
   const [selectedAgeCategory, setSelectedAgeCategory] = useState<string>("");
-  const [selectedOccurrenceType, setSelectedOccurrenceType] = useState<string>("");
-  const [selectedRecurrenceType, setSelectedRecurrenceType] = useState<string | null>(null);
+  const [selectedAgeCategoryOccurrenceType, setSelectedAgeCategoryOccurrenceType] = useState<string>("");
   const [selectedAthlete, setSelectedAthlete] = useState<string>("");
 
   useEffect(() => {
@@ -118,13 +117,13 @@ const Analytics = () => {
   }, []);
 
   const filteredAgeCategoryOccurrenceData = useMemo(() => {
-    if (!selectedAgeCategory || !selectedOccurrenceType) {
+    if (!selectedAgeCategory || !selectedAgeCategoryOccurrenceType) {
       return [];
     }
 
     const filteredData = monthlyData.map(monthData => {
       const occurrencesInMonth = monthData.data.filter((occ: any) => 
-        occ.CAT === selectedAgeCategory && occ.TIPO === selectedOccurrenceType
+        occ.CAT === selectedAgeCategory && occ.TIPO === selectedAgeCategoryOccurrenceType
       );
       return {
         month: monthData.month,
@@ -135,16 +134,16 @@ const Analytics = () => {
       return monthOrder.indexOf(a.month) - monthOrder.indexOf(b.month);
     });
     return filteredData;
-  }, [monthlyData, selectedAgeCategory, selectedOccurrenceType]);
+  }, [monthlyData, selectedAgeCategory, selectedAgeCategoryOccurrenceType]);
 
   const filteredBehavioralTrendData = useMemo(() => {
-    if (!selectedAthlete || !selectedOccurrenceType) {
+    if (!selectedAthlete || !selectedBehavioralTrendOccurrenceType) {
       return [];
     }
 
     const athleteOccurrences = monthlyData.flatMap(monthData => 
       monthData.data.filter((occ: any) => 
-        occ.NOME === selectedAthlete && occ.TIPO === selectedOccurrenceType
+        occ.NOME === selectedAthlete && occ.TIPO === selectedBehavioralTrendOccurrenceType
       ).map((occ: any) => ({ ...occ, month: monthData.month }))
     );
 
@@ -160,7 +159,7 @@ const Analytics = () => {
       count: monthlyCounts[month]
     })).sort((a, b) => monthOrder.indexOf(a.month) - monthOrder.indexOf(b.month));
 
-  }, [monthlyData, selectedAthlete, selectedOccurrenceType]);
+  }, [monthlyData, selectedAthlete, selectedBehavioralTrendOccurrenceType]);
 
   const topRecurrentAthletes = useMemo(() => {
     const athleteStats = new Map();
@@ -358,7 +357,7 @@ const Analytics = () => {
                 </SelectContent>
               </Select>
 
-              <Select onValueChange={setSelectedOccurrenceType}>
+              <Select onValueChange={setSelectedAgeCategoryOccurrenceType}>
                 <SelectTrigger className="w-[220px]">
                   <SelectValue placeholder="Selecione o Tipo de Ocorrência" />
                 </SelectTrigger>
@@ -370,7 +369,7 @@ const Analytics = () => {
               </Select>
             </div>
 
-            {selectedAgeCategory && selectedOccurrenceType ? (
+            {selectedAgeCategory && selectedAgeCategoryOccurrenceType ? (
               <div className="h-80">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={filteredAgeCategoryOccurrenceData}>
@@ -455,7 +454,7 @@ const Analytics = () => {
             <h2 className="text-xl text-red-600 font-semibold mb-4">Tendências Comportamentais dos Top 10</h2>
             <div className="flex space-x-4 mb-4">
               <Select onValueChange={setSelectedAthlete}>
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className="w-[200px]">
                   <SelectValue placeholder="Selecione o Atleta" />
                 </SelectTrigger>
                 <SelectContent>
@@ -465,7 +464,7 @@ const Analytics = () => {
                 </SelectContent>
               </Select>
 
-              <Select onValueChange={setSelectedOccurrenceType}>
+              <Select onValueChange={setSelectedBehavioralTrendOccurrenceType}>
                 <SelectTrigger className="w-[220px]">
                   <SelectValue placeholder="Selecione o Tipo de Ocorrência" />
                 </SelectTrigger>
@@ -477,7 +476,7 @@ const Analytics = () => {
               </Select>
             </div>
 
-            {selectedAthlete && selectedOccurrenceType ? (
+            {selectedAthlete && selectedBehavioralTrendOccurrenceType ? (
               <div className="h-80">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={filteredBehavioralTrendData}>
