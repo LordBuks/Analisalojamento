@@ -427,7 +427,7 @@ const Analytics = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           {/* Top Atletas Reincidentes */}
           <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl text-red-600 font-semibold mb-4">Top Atletas Reincidentes</h2>
+            <h2 className="text-xl text-red-600 font-semibold mb-4">Top 10 Atletas Reincidentes</h2>
             <div className="space-y-3 max-h-80 overflow-y-auto">
               {topRecurrentAthletes.map((athlete: any, index) => (
                 <div key={athlete.name} className="flex items-center justify-between p-2 bg-gray-50 rounded-md">
@@ -452,7 +452,7 @@ const Analytics = () => {
 
           {/* Análise de Tendências Comportamentais */}
           <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl text-red-600 font-semibold mb-4">Tendências Comportamentais</h2>
+            <h2 className="text-xl text-red-600 font-semibold mb-4">Tendências Comportamentais dos Top 10</h2>
             <div className="flex space-x-4 mb-4">
               <Select onValueChange={setSelectedAthlete}>
                 <SelectTrigger className="w-[180px]">
