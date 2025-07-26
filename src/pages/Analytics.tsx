@@ -15,6 +15,8 @@ const Analytics = () => {
   const [selectedAgeCategory, setSelectedAgeCategory] = useState<string>("");
   const [selectedAgeCategoryOccurrenceType, setSelectedAgeCategoryOccurrenceType] = useState<string>("");
   const [selectedAthlete, setSelectedAthlete] = useState<string>("");
+  const [selectedBehavioralTrendOccurrenceType, setSelectedBehavioralTrendOccurrenceType] = useState<string>("");
+  const [selectedRecurrenceType, setSelectedRecurrenceType] = useState<string | null>(null);
 
   useEffect(() => {
     const loadData = async () => {
@@ -519,8 +521,3 @@ const Analytics = () => {
 };
 
 export default Analytics;
-
-
-  const [selectedBehavioralTrendOccurrenceType, setSelectedBehavioralTrendOccurrenceType] = useState<string | null>(null);
-  const [selectedRecurrenceType, setSelectedRecurrenceType] = useState<string | null>(null);
-
