@@ -358,7 +358,8 @@ const Analytics = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-medium text-sm">R$ {athlete.totalValue.toLocaleString()}</d                      <div className="text-xs text-gray-500">Total de Ocorrências: {athlete.totalOccurrences}</div>
+                      <div className="font-medium text-sm">R$ {athlete.totalValue.toLocaleString()}</div>
+                      <div className="text-xs text-gray-500">Total de Ocorrências: {athlete.totalOccurrences}</div>
                     </div>
                   </div>
                 );
@@ -469,3 +470,4 @@ const Analytics = () => {
             month={categoryDetailModal.month}
             count={categoryDetailModal.count}
             color={categoryDetailModal.color}
+          />
