@@ -25,6 +25,11 @@ export function RecurrenceAthleteModal({ recurrenceType, athletes, onClose }: Re
   const [selectedAthleteName, setSelectedAthleteName] = useState<string | null>(null);
 
   const sortedAthletes = useMemo(() => {
+    // Ensure athletes is an array before sorting
+    if (!Array.isArray(athletes)) {
+      console.error("Expected 'athletes' to be an array, but received:", athletes);
+      return [];
+    }
     return [...athletes].sort((a, b) => b.totalOccurrences - a.totalOccurrences);
   }, [athletes]);
 
@@ -63,9 +68,11 @@ export function RecurrenceAthleteModal({ recurrenceType, athletes, onClose }: Re
                   const initials = athlete.name.split(" ").map(n => n[0]).join("").slice(0, 2);
                   
                   // Encontrar a última ocorrência para exibir a data
-                  const lastOccurrence = athlete.occurrences.reduce((latest, current) => {
-                    return (current.DATA > latest.DATA) ? current : latest;
-                  }, athlete.occurrences[0]);
+                  const lastOccurrence = athlete.occurrences && athlete.occurrences.length > 0 
+                    ? athlete.occurrences.reduce((latest, current) => {
+                        return (current.DATA > latest.DATA) ? current : latest;
+                      }, athlete.occurrences[0])
+                    : null;
 
                   return (
                     <Card 
@@ -117,7 +124,7 @@ export function RecurrenceAthleteModal({ recurrenceType, athletes, onClose }: Re
                             
                             <div className="flex items-center justify-end space-x-1 text-xs text-gray-600">
                               <Calendar className="h-3 w-3" />
-                              <span>{formatDate(lastOccurrence.DATA)}</span>
+                              <span>{lastOccurrence ? formatDate(lastOccurrence.DATA) : 'N/A'}</span>
                             </div>
                             <div className="text-xs text-gray-500 font-medium">
                               Última Ocorrência
@@ -150,5 +157,4 @@ export function RecurrenceAthleteModal({ recurrenceType, athletes, onClose }: Re
     </>
   );
 }
-
 
