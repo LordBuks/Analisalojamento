@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { TrendingUp, TrendingDown, Users, AlertTriangle, Calendar, BarChart3, PieChart as PieChartIcon, Activity } from 'lucide-react';
-import { loadMonthlyData, getAvailableMonths } from '../data/dataLoader';
+import { loadMonthlyData, getAvailableMonths, getMonthData } from '../data/dataLoader';
 import { analyzeByAgeCategoryAndOccurrenceType } from '../utils/analysisUtils';
 import { testOccurrences } from '../data/testData';
 import { RecurrenceAthleteModal } from '../components/dashboard/RecurrenceAthleteModal';
@@ -9,52 +9,25 @@ import { CategoryDetailModal } from '../components/dashboard/CategoryDetailModal
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
 
 const Analytics = () => {
-  const ageCategories = ['Sub-14', 'Sub-15', 'Sub-16', 'Sub-17', 'Sub-20'];
-  const occurrenceTypes = [
-    'Falta Escolar',
-    'Alimentação Irregular',
-    'Uniforme',
-    'Desorganização',
-    'Comportamento',
-    'Atrasos/Sair sem autorização',
-    'Outras'
-  ];
-
-  const [selectedAgeCategory, setSelectedAgeCategory] = useState<string | null>(null);
-  const [selectedOccurrenceType, setSelectedOccurrenceType] = useState<string | null>(null);
-  const [selectedAthlete, setSelectedAthlete] = useState<string | null>(null);
-
-  const allAthletes = useMemo(() => {
-    const athletes = new Set<string>();
-    monthlyData.forEach(monthData => {
-      monthData.data.forEach(occ => {
-        athletes.add(occ.NOME);
-      });
-    });
-    return Array.from(athletes).sort();
-  }, [monthlyData]);
-
-  const categories = [
-    { name: 'Falta Escolar', color: '#FFC0CB' },
-    { name: 'Alimentação Irregular', color: '#36A2EB' },
-    { name: 'Uniforme', color: '#FFCE56' },
-    { name: 'Desorganização', color: '#4BC0C0' },
-    { name: 'Comportamento', color: '#FF0000' },
-    { name: 'Atrasos/Sair sem autorização', color: '#FF9F40' },
-    { name: 'Outras', color: '#8B5CF6' }
-  ];
-
-  const [monthlyData, setMonthlyData] = useState<MonthlyData[]>([]);
   const [loading, setLoading] = useState(true);
-  const [selectedMetric, setSelectedMetric] = useState<'occurrences' | 'athletes' | 'value'>('occurrences');
+  const [monthlyData, setMonthlyData] = useState<any[]>([]);
+  const [selectedMetric, setSelectedMetric] = useState("occurrences");
+  const [selectedAgeCategory, setSelectedAgeCategory] = useState<string>("");
+  const [selectedOccurrenceType, setSelectedOccurrenceType] = useState<string>("");
   const [selectedRecurrenceType, setSelectedRecurrenceType] = useState<string | null>(null);
-  const [categoryDetailModal, setCategoryDetailModal] = useState<{ isOpen: boolean; category: string; month: string; count: number; color: string } | null>(null);
+  const [selectedAthlete, setSelectedAthlete] = useState<string>("");
 
   useEffect(() => {
     const loadData = async () => {
-      setLoading(true);
       try {
-        const data = await loadMonthlyData();
+        setLoading(true);
+        const availableMonths = await getAvailableMonths();
+        const data = await Promise.all(
+          availableMonths.map(async (month: { month: string; year: number }) => {
+            const monthData = await getMonthData(month.month, month.year);
+            return { month: month.month, data: monthData };
+          })
+        );
         setMonthlyData(data);
       } catch (error) {
         console.error('Erro ao carregar dados:', error);
@@ -66,44 +39,64 @@ const Analytics = () => {
     loadData();
   }, []);
 
-  // Dados para gráfico de tendência temporal
+  // Dados para timeline
   const timelineData = useMemo(() => {
     return monthlyData.map(monthData => {
-      const uniqueAthletes = new Set(monthData.data.map(occ => occ.NOME)).size;
-      const totalOccurrences = monthData.data.length;
-      const totalValue = monthData.data.reduce((sum, occ) => sum + parseInt(occ.VALOR), 0);
-
+      const uniqueAthletes = new Set(monthData.data.map((occ: any) => occ.NOME));
+      const totalValue = monthData.data.reduce((sum: number, occ: any) => sum + parseInt(occ.VALOR), 0);
+      
       return {
         month: monthData.month,
-        athletes: uniqueAthletes,
-        occurrences: totalOccurrences,
-        value: totalValue,
-        averagePerAthlete: uniqueAthletes > 0 ? (totalValue / uniqueAthletes) : 0
+        occurrences: monthData.data.length,
+        athletes: uniqueAthletes.size,
+        value: totalValue
       };
-    }).reverse();
+    }).sort((a, b) => {
+      const monthOrder = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+      return monthOrder.indexOf(a.month) - monthOrder.indexOf(b.month);
+    });
+  }, [monthlyData]);
+
+  // Categorias de idade e tipos de ocorrência
+  const ageCategories = useMemo(() => {
+    const categories = new Set<string>();
+    monthlyData.forEach(monthData => {
+      monthData.data.forEach((occ: any) => {
+        if (occ.CAT) categories.add(occ.CAT);
+      });
+    });
+    return Array.from(categories).sort();
+  }, [monthlyData]);
+
+  const occurrenceTypes = useMemo(() => {
+    const types = new Set<string>();
+    monthlyData.forEach(monthData => {
+      monthData.data.forEach((occ: any) => {
+        if (occ.TIPO) types.add(occ.TIPO);
+      });
+    });
+    return Array.from(types).sort();
   }, [monthlyData]);
 
   // Análise de reincidência
   const athleteOccurrences = useMemo(() => {
-    const map = new Map();
+    const athleteMap = new Map();
+    
     monthlyData.forEach(monthData => {
-      monthData.data.forEach(occ => {
-        if (!map.has(occ.NOME)) {
-          map.set(occ.NOME, new Set());
+      monthData.data.forEach((occ: any) => {
+        if (!athleteMap.has(occ.NOME)) {
+          athleteMap.set(occ.NOME, new Set());
         }
-        map.get(occ.NOME).add(monthData.month);
+        athleteMap.get(occ.NOME).add(monthData.month);
       });
     });
-    return map;
+
+    return athleteMap;
   }, [monthlyData]);
 
   const recurrenceAnalysis = useMemo(() => {
-    const recurrenceStats = {
-      oneMonth: 0,
-      twoMonths: 0,
-      threeMonths: 0
-    };
-
+    const recurrenceStats = { oneMonth: 0, twoMonths: 0, threeMonths: 0 };
+    
     athleteOccurrences.forEach((months) => {
       const monthCount = months.size;
       if (monthCount === 1) recurrenceStats.oneMonth++;
@@ -130,7 +123,7 @@ const Analytics = () => {
     }
 
     const filteredData = monthlyData.map(monthData => {
-      const occurrencesInMonth = monthData.data.filter(occ => 
+      const occurrencesInMonth = monthData.data.filter((occ: any) => 
         occ.CAT === selectedAgeCategory && occ.TIPO === selectedOccurrenceType
       );
       return {
@@ -150,9 +143,9 @@ const Analytics = () => {
     }
 
     const athleteOccurrences = monthlyData.flatMap(monthData => 
-      monthData.data.filter(occ => 
+      monthData.data.filter((occ: any) => 
         occ.NOME === selectedAthlete && occ.TIPO === selectedOccurrenceType
-      ).map(occ => ({ ...occ, month: monthData.month }))
+      ).map((occ: any) => ({ ...occ, month: monthData.month }))
     );
 
     const monthlyCounts = athleteOccurrences.reduce((acc, occ) => {
@@ -173,7 +166,7 @@ const Analytics = () => {
     const athleteStats = new Map();
     
     monthlyData.forEach(monthData => {
-      monthData.data.forEach(occ => {
+      monthData.data.forEach((occ: any) => {
         if (!athleteStats.has(occ.NOME)) {
           athleteStats.set(occ.NOME, {
             name: occ.NOME,
@@ -192,8 +185,8 @@ const Analytics = () => {
     });
 
     return Array.from(athleteStats.values())
-      .filter(athlete => athlete.months.size > 1)
-      .sort((a, b) => b.months.size - a.months.size || b.totalOccurrences - a.totalOccurrences)
+      .filter((athlete: any) => athlete.months.size > 1)
+      .sort((a: any, b: any) => b.months.size - a.months.size || b.totalOccurrences - a.totalOccurrences)
       .slice(0, 10);
   }, [monthlyData]);
 
@@ -350,6 +343,10 @@ const Analytics = () => {
       
         {/* Gráficos lado a lado */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          {/* Comparação por Categoria de Idade e Tipo de Ocorrência */}
+          <div className="bg-white rounded-lg shadow p-6">
+            <h2 className="text-xl text-red-600 font-semibold mb-4">Comparação por Categoria e Tipo</h2>
+            <div className="flex space-x-4 mb-4">
               <Select onValueChange={setSelectedAgeCategory}>
                 <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="Selecione a Categoria de Idade" />
@@ -432,12 +429,12 @@ const Analytics = () => {
           <div className="bg-white rounded-lg shadow p-6">
             <h2 className="text-xl text-red-600 font-semibold mb-4">Top Atletas Reincidentes</h2>
             <div className="space-y-3 max-h-80 overflow-y-auto">
-              {topRecurrentAthletes.map((athlete, index) => (
+              {topRecurrentAthletes.map((athlete: any, index) => (
                 <div key={athlete.name} className="flex items-center justify-between p-2 bg-gray-50 rounded-md">
                   <div className="flex items-center">
                     <span className="text-lg font-bold text-red-600 mr-2">{index + 1}º</span>
                     <div className="w-8 h-8 bg-red-200 rounded-full flex items-center justify-center text-red-800 font-bold text-sm mr-2">
-                      {athlete.name.split(" ").map(n => n[0]).join("").toUpperCase().slice(0, 2)}
+                      {athlete.name.split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2)}
                     </div>
                     <div>
                       <p className="font-medium text-gray-800">{athlete.name}</p>
@@ -446,29 +443,30 @@ const Analytics = () => {
                   </div>
                   <div className="text-right">
                     <p className="font-bold text-gray-800">R$ {athlete.totalValue.toLocaleString()}</p>
-                    <p className="text-xs text-gray-500">R$ {(athlete.totalValue / athlete.totalOccurrences).toFixed(2)}/ocorrência</p>
+                    <p className="text-xs text-gray-500">{athlete.category}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Novo Card: Análise de Tendências Comportamentais por Atleta e Tipo de Ocorrência */}
+          {/* Análise de Tendências Comportamentais */}
           <div className="bg-white rounded-lg shadow p-6">
-            <h2 className="text-xl text-red-600 font-semibold mb-4">Análise de Tendências Comportamentais</h2>
+            <h2 className="text-xl text-red-600 font-semibold mb-4">Tendências Comportamentais</h2>
             <div className="flex space-x-4 mb-4">
               <Select onValueChange={setSelectedAthlete}>
-                <SelectTrigger className="w-[200px]">
+                <SelectTrigger className="w-[180px]">
                   <SelectValue placeholder="Selecione o Atleta" />
                 </SelectTrigger>
                 <SelectContent>
-                  {allAthletes.map(athlete => (
-                    <SelectItem key={athlete} value={athlete}>{athlete}</SelectItem>
+                  {topRecurrentAthletes.map((athlete: any) => (
+                    <SelectItem key={athlete.name} value={athlete.name}>{athlete.name}</SelectItem>
                   ))}
                 </SelectContent>
               </Select>
+
               <Select onValueChange={setSelectedOccurrenceType}>
-                <SelectTrigger className="w-[200px]">
+                <SelectTrigger className="w-[220px]">
                   <SelectValue placeholder="Selecione o Tipo de Ocorrência" />
                 </SelectTrigger>
                 <SelectContent>
@@ -478,6 +476,7 @@ const Analytics = () => {
                 </SelectContent>
               </Select>
             </div>
+
             {selectedAthlete && selectedOccurrenceType ? (
               <div className="h-80">
                 <ResponsiveContainer width="100%" height="100%">
@@ -487,80 +486,32 @@ const Analytics = () => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Line type="monotone" dataKey="count" stroke="#FF0000" /> {/* Usando vermelho ao invés de azul */}
+                    <Line 
+                      type="monotone" 
+                      dataKey="count" 
+                      stroke="#EF4444" 
+                      strokeWidth={3}
+                      dot={{ fill: '#EF4444', strokeWidth: 2, r: 6 }}
+                      name="Quantidade de Ocorrências"
+                    />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
             ) : (
               <div className="text-center text-gray-500 py-10">
-                Selecione um Atleta e um Tipo de Ocorrência para visualizar o gráfico.
+                Selecione um Atleta e um Tipo de Ocorrência para visualizar as tendências comportamentais.
               </div>
             )}
           </div>
-        </div>              .flatMap(monthData => monthData.data)
-                  .find(occ => occ.NOME === athlete.name);
-                const fotoUrl = athleteOccurrence?.fotoUrl;
-                const initials = athlete.name.split(' ').map(n => n[0]).join('').slice(0, 2);
-
-                return (
-                  <div key={athlete.name} className="flex items-center justify-between p-3 bg-gray-50 rounded hover:bg-gray-100 transition-colors">
-                    <div className="flex items-center space-x-3 flex-1">
-                      <div className="flex items-center space-x-2">
-                        <span className="font-bold text-lg text-gray-700 w-6">{index + 1}º</span>
-                        <div className="relative">
-                          {fotoUrl ? (
-                          <img 
-                              src={fotoUrl} 
-                              alt={`Foto de ${athlete.name}`}
-                              className="w-14 h-14 rounded-lg object-cover border-2 border-red-200"
-                            />
-                          ) : (
-                            <div className="w-14 h-14 rounded-lg bg-red-100 border-2 border-red-200 flex items-center justify-center">
-                              <span className="text-red-700 font-bold text-sm">{initials}</span>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center space-x-2">
-                          <span className="font-medium">{athlete.name}</span>
-                          <span className="text-sm text-gray-500 bg-gray-200 px-2 py-1 rounded">
-                            {athlete.category}
-                          </span>
-                        </div>
-                        <div className="text-sm text-gray-600 mt-1">
-                          {athlete.months.size} meses • {athlete.totalOccurrences} ocorrências
-                        </div>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="font-medium text-sm">R$ {athlete.totalValue.toLocaleString()}</div>
-                      <div className="text-xs text-gray-500">{athlete.totalValue > 0 ? `R$ ${(athlete.totalValue / athlete.totalOccurrences).toFixed(2)}/ocorrência` : ''}</div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
         </div>
 
+        {/* Modais */}
         {selectedRecurrenceType && (
           <RecurrenceAthleteModal
             isOpen={!!selectedRecurrenceType}
             onClose={handleCloseRecurrenceModal}
             recurrenceType={selectedRecurrenceType}
-            athleteOccurrences={athleteOccurrences}
-          />
-        )}
-
-        {categoryDetailModal && (
-          <CategoryDetailModal
-            isOpen={categoryDetailModal.isOpen}
-            onClose={() => setCategoryDetailModal(null)}
-            category={categoryDetailModal.category}
-            month={categoryDetailModal.month}
-            count={categoryDetailModal.count}
-            color={categoryDetailModal.color}
+            athletes={[]}
           />
         )}
       </div>

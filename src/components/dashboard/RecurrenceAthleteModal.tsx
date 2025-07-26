@@ -8,6 +8,7 @@ import { AthleteOccurrence } from "@/data/athleteData";
 import { AthleteOccurrencesModal } from "./AthleteOccurrencesModal";
 
 interface RecurrenceAthleteModalProps {
+  isOpen: boolean;
   recurrenceType: string;
   athletes: {
     name: string;
