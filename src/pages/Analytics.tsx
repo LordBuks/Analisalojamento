@@ -336,7 +336,7 @@ const Analytics = () => {
             </Select>
           </div>
 
-          {selectedAgeCategory && selectedOccurrenceType && filteredAgeCategoryOccurrenceData.length > 0 ? (
+          {selectedAgeCategory && selectedOccurrenceType ? (
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={filteredAgeCategoryOccurrenceData}>
