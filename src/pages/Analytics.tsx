@@ -2,6 +2,8 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import { TrendingUp, TrendingDown, Users, AlertTriangle, Calendar, BarChart3, PieChart as PieChartIcon, Activity } from 'lucide-react';
 import { loadMonthlyData, getAvailableMonths } from '../data/dataLoader';
+import { analyzeByAgeCategoryAndOccurrenceType } from '../utils/analysisUtils';
+import { testOccurrences } from '../data/testData';
 import { RecurrenceAthleteModal } from '../components/dashboard/RecurrenceAthleteModal';
 import { CategoryDetailModal } from '../components/dashboard/CategoryDetailModal';
 
@@ -98,18 +100,9 @@ const Analytics = () => {
 
   // Dados para o novo gráfico de comparação por categoria de idade e tipo de ocorrência
   const ageCategoryOccurrenceData = useMemo(() => {
-    if (!selectedAgeCategory || !selectedOccurrenceType) return [];
-
-    return monthlyData.map(monthData => {
-      const occurrencesInMonth = monthData.data.filter(occ => 
-        occ.IDADE === selectedAgeCategory && occ.TIPO === selectedOccurrenceType
-      );
-      return {
-        month: monthData.month,
-        count: occurrencesInMonth.length
-      };
-    });
-  }, [monthlyData, selectedAgeCategory, selectedOccurrenceType]);
+    // Usando os dados de teste para simular a análise
+    return analyzeByAgeCategoryAndOccurrenceType(testOccurrences);
+  }, []);
   const topRecurrentAthletes = useMemo(() => {
     const athleteStats = new Map();
     
@@ -365,8 +358,7 @@ const Analytics = () => {
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-medium text-sm">R$ {athlete.totalValue.toLocaleString()}</div>
-                      <div className="text-xs text-gray-500">Total</div>
+                      <div className="font-medium text-sm">R$ {athlete.totalValue.toLocaleString()}</d                      <div className="text-xs text-gray-500">Total de Ocorrências: {athlete.totalOccurrences}</div>
                     </div>
                   </div>
                 );
@@ -375,9 +367,31 @@ const Analytics = () => {
           </div>
         </div>
 
-
-
-        {/* Análise por Categoria de Idade e Tipo de Ocorrência */}
+        {/* Gráfico de Análise por Categoria de Idade e Tipo de Ocorrência */}
+        <div className="bg-white rounded-lg shadow p-6 mb-8">
+          <h2 className="text-xl text-red-600 font-semibold mb-4">Análise por Categoria de Idade e Tipo de Ocorrência</h2>
+          <div className="h-80">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart
+                data={ageCategoryOccurrenceData}
+                margin={{
+                  top: 20, right: 30, left: 20, bottom: 5,
+                }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="occurrenceType" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="count" fill="#8884d8" name="Contagem" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
         <div className="bg-white rounded-lg shadow p-6 mb-8">
           <h2 className="text-xl text-red-600 font-semibold mb-4">Análise por Categoria de Idade e Tipo de Ocorrência</h2>
           <div className="flex space-x-4 mb-4">
@@ -455,11 +469,3 @@ const Analytics = () => {
             month={categoryDetailModal.month}
             count={categoryDetailModal.count}
             color={categoryDetailModal.color}
-          />
-        )}
-      </div>
-    </div>
-  );
-};
-
-export default Analytics;
