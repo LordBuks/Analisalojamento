@@ -7,10 +7,13 @@ import { AthleteListModal } from '../components/dashboard/AthleteListModal';
 import { CategoryAthleteModal } from '../components/dashboard/CategoryAthleteModal';
 import { AthleteOccurrencesModal } from '../components/dashboard/AthleteOccurrencesModal'; // Importar o novo modal
 import MonthSelector from '../components/MonthSelector';
+import DataLoader from '../components/DataLoader'; // Importar o DataLoader
+import { useAuth } from '../hooks/useAuth'; // Importar o hook de autenticação
 import { getAllOccurrences, getMonthData, getAvailableMonths } from '../data/dataLoader';
 import { AthleteOccurrence } from '../data/athleteData';
 
 const Index = () => {
+  const { user } = useAuth(); // Obter informações do usuário autenticado
   const [selectedAthlete, setSelectedAthlete] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("all");
@@ -177,6 +180,13 @@ const Index = () => {
           selectedYear={selectedYear}
           onMonthChange={handleMonthChange}
         />
+
+        {/* Componente para carregar dados do Firebase - Apenas para Administradores */}
+        {user?.role === 'admin' && (
+          <div className="mb-8">
+            <DataLoader />
+          </div>
+        )}
 
         {/* Cards de Estatísticas */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">

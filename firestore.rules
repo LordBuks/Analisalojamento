@@ -1,0 +1,63 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Regras para a coleção de usuários
+    match /users/{userId} {
+      // Usuários podem ler e escrever apenas seus próprios dados
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      
+      // Administradores podem ler todos os usuários
+      allow read: if request.auth != null && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // Regras para as coleções de dados (monthlyData, occurrences, new_occurrences)
+    match /{collection}/{document} {
+      // Permitir leitura para usuários autenticados
+      allow read: if request.auth != null;
+      
+      // Permitir escrita apenas para administradores
+      allow write: if request.auth != null && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // Regras específicas para coleções de dados sensíveis
+    match /monthlyData/{document} {
+      // Leitura permitida para usuários autenticados
+      allow read: if request.auth != null;
+      
+      // Escrita apenas para administradores
+      allow create, update, delete: if request.auth != null && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    match /occurrences/{document} {
+      // Leitura permitida para usuários autenticados
+      allow read: if request.auth != null;
+      
+      // Escrita apenas para administradores
+      allow create, update, delete: if request.auth != null && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    match /new_occurrences/{document} {
+      // Leitura permitida para usuários autenticados
+      allow read: if request.auth != null;
+      
+      // Escrita apenas para administradores
+      allow create, update, delete: if request.auth != null && 
+        exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // Negar acesso a todas as outras coleções por padrão
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+
