@@ -4,9 +4,8 @@ import { auth } from '@/lib/firebase';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
-// Importando os componentes SVG inline
-import { InterLogo } from '@/components/InterLogo';
-import { ServicoSocialLogo } from '@/components/ServicoSocialLogo';
+import internacionalLogo from '@/assets/internacional_logo.png';
+import servicoSocialLogo from '@/assets/servico_social_logo.png';
 
 export default function LoginPage() {
   const { user, loading } = useAuth();
@@ -64,11 +63,13 @@ export default function LoginPage() {
       {/* Header com logo do Internacional */}
       <div className="flex-1 flex flex-col items-center justify-center px-4">
         <div className="w-full max-w-md">
-          {/* Logo do Internacional - Agora como componente SVG inline */}
+          {/* Logo do Internacional */}
           <div className="text-center mb-8">
-            <div className="mx-auto mb-4">
-              <InterLogo width={64} height={64} className="mx-auto" />
-            </div>
+            <img 
+              src={internacionalLogo} 
+              alt="Sport Club Internacional" 
+              className="w-16 h-16 mx-auto mb-4"
+            />
             <h1 className="text-2xl font-bold text-red-600 mb-2">
               Alojamento CTB
             </h1>
@@ -131,8 +132,11 @@ export default function LoginPage() {
       <footer className="bg-white border-t border-gray-200 py-6">
         <div className="max-w-md mx-auto text-center px-4">
           <div className="mb-4">
-            {/* Logo do Serviço Social - Agora como componente SVG inline */}
-            <ServicoSocialLogo width={64} height={64} className="mx-auto mb-2" />
+            <img 
+              src={servicoSocialLogo} 
+              alt="Serviço Social" 
+              className="w-16 h-16 mx-auto mb-2 object-contain"
+            />
           </div>
           <div className="text-sm text-gray-600 space-y-1">
             <p className="font-medium">Sistema de Gestão de Atletas Alojados</p>
