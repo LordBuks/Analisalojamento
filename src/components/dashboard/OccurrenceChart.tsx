@@ -147,7 +147,7 @@ export function OccurrenceChart({ data, title, type, onBarClick, onPieClick }: O
             cy="50%"
             labelLine={false}
             label={({ name, percent }) => 
-              percent > 0.05 ? `${name} (${(percent * 100).toFixed(0)}%)` : ''
+              percent > 0.01 ? `${name} (${(percent * 100).toFixed(1)}%)` : ''
             }
             outerRadius={100}
             innerRadius={40}
