@@ -1,15 +1,15 @@
 [
   {
-    "NOME": "Alexandre Pablo ",
-    "Cat": "Sub-15",
+    "NOME": "Alexandre Pablo",
+    "Cat": "Sub-16",
     "DATA": 45790,
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
     "Valor": 100.0
   },
   {
-    "NOME": "Alexandre Pablo ",
-    "Cat": "Sub-15",
+    "NOME": "Alexandre Pablo",
+    "Cat": "Sub-16",
     "DATA": 45806,
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
@@ -288,7 +288,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Jhontan Almeida ",
+    "NOME": "Jhonatan Almeida ",
     "Cat": "Sub-20",
     "DATA": 45785,
     "TIPO": "Falta Escolar",
@@ -296,7 +296,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Jonathan Almeida",
+    "NOME": "Jhonatan Almeida",
     "Cat": "Sub-20",
     "DATA": 45786,
     "TIPO": "Atrasos/Sair sem autorização",
@@ -304,7 +304,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Jhontan Almeida ",
+    "NOME": "Jhonatan Almeida ",
     "Cat": "Sub-20",
     "DATA": 45789,
     "TIPO": "Falta Escolar",
@@ -312,7 +312,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Jonathan Almeida",
+    "NOME": "Jhonathan Almeida",
     "Cat": "Sub-20",
     "DATA": 45790,
     "TIPO": "Uniforme",
@@ -320,7 +320,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Jhontan Almeida ",
+    "NOME": "Jhonatan Almeida ",
     "Cat": "Sub-20",
     "DATA": 45790,
     "TIPO": "Falta Escolar",
@@ -360,7 +360,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Kauã Cavalcante ",
+    "NOME": "Kauã Cavalcanti ",
     "Cat": "Sub-17",
     "DATA": 45782,
     "TIPO": "Desorganização",
@@ -368,7 +368,7 @@
     "Valor": 50.0
   },
   {
-    "NOME": "Kauã Cavalcante ",
+    "NOME": "Kauã Cavalcanti ",
     "Cat": "Sub-17",
     "DATA": 45790,
     "TIPO": "Desorganização",
@@ -376,7 +376,7 @@
     "Valor": 50.0
   },
   {
-    "NOME": "Lazaro Gonçalves",
+    "NOME": "Lázaro Gonçalves",
     "Cat": "Sub-20",
     "DATA": 45806,
     "TIPO": "Falta Escolar",
@@ -384,7 +384,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Lazaro Gonçalves",
+    "NOME": "Lázaro Gonçalves",
     "Cat": "Sub-20",
     "DATA": 45807,
     "TIPO": "Falta Escolar",
@@ -393,7 +393,7 @@
   },
   {
     "NOME": "Lucas Andrew",
-    "Cat": "Sub-15",
+    "Cat": "Sub-16",
     "DATA": 45800,
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
@@ -401,7 +401,7 @@
   },
   {
     "NOME": "Lucas Andrew",
-    "Cat": "Sub-15",
+    "Cat": "Sub-16",
     "DATA": 45806,
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",

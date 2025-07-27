@@ -1,0 +1,410 @@
+[
+  {
+    "NOME": "Arthur Henrique",
+    "Cat": "Sub-15",
+    "DATA": 45730,
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Cama desorganizada",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Esley Ezequiel",
+    "Cat": "Sub-20",
+    "DATA": 45933,
+    "TIPO": "Atrasos/Sair sem autorização",
+    "OCORRÊNCIA": "Chegar após o horário permitido, chegou as 23:13hs.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Esley Ezequiel",
+    "Cat": "Sub-20",
+    "DATA": 45933,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Esley Ezequiel",
+    "Cat": "Sub-20",
+    "DATA": 45738,
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Em ronda foi observado no quarto pacote de Doritos",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Everaldo Fabio ",
+    "Cat": "Sub-17",
+    "DATA": 45994,
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Quarto desorganizado e camas desarrumadas.",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Everaldo Fabio ",
+    "Cat": "Sub-17",
+    "DATA": 45735,
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Fora do quarto durante a segunda chamada mesmo após avisado",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Everaldo Fabio ",
+    "Cat": "Sub-17",
+    "DATA": 45743,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Gabriel Baggio ",
+    "Cat": "Sub-17",
+    "DATA": 45735,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Jackson Teixeira",
+    "Cat": "Sub-20",
+    "DATA": 45933,
+    "TIPO": "Atrasos/Sair sem autorização",
+    "OCORRÊNCIA": "Chegar após o horário permitido, chegou as 23:13hs.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Jackson Teixeira",
+    "Cat": "Sub-20",
+    "DATA": 45933,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Jackson Teixeira",
+    "Cat": "Sub-20",
+    "DATA": 45994,
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Ecesso de toalhas jogados em baixo da pia",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Joao Victor Cruvinel",
+    "Cat": "Sub-17",
+    "DATA": 45734,
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Embalagem de bolacha Oreo de baixo da cama",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Victor Cruvinel",
+    "Cat": "Sub-17",
+    "DATA": 45743,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Vitor Cruvinel",
+    "Cat": "Sub-17",
+    "DATA": 45734,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Vitor Gruvinel",
+    "Cat": "Sub-17",
+    "DATA": 45994,
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Cama desorganizada",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "João Lucas",
+    "Cat": "Sub-17",
+    "DATA": 45994,
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Quarto desorganizado e camas desarrumadas.",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "João Lucas",
+    "Cat": "Sub-17",
+    "DATA": 45734,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Lucas",
+    "Cat": "Sub-17",
+    "DATA": 45743,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Pedro Leite",
+    "Cat": "Sub-17",
+    "DATA": 45933,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Pedro Leite",
+    "Cat": "Sub-17",
+    "DATA": 45734,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Pedro Leite",
+    "Cat": "Sub-17",
+    "DATA": 45735,
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Fora do quarto durante a segunda chamada mesmo após avisado",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Pedro Stevanelli",
+    "Cat": "Sub-17",
+    "DATA": 45933,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Joao Victor Alves",
+    "Cat": "Sub-20",
+    "DATA": 45744,
+    "TIPO": "Atrasos/Sair sem autorização",
+    "OCORRÊNCIA": "Pernoitou fora do alojamento sem autorização",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Victor Miranda",
+    "Cat": "Sub-20",
+    "DATA": 45933,
+    "TIPO": "Atrasos/Sair sem autorização",
+    "OCORRÊNCIA": "Chegar após o horário permitido, chegou as 23:13hs.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Victor Miranda",
+    "Cat": "Sub-20",
+    "DATA": 45933,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Julio Cesar ",
+    "Cat": "Sub-17",
+    "DATA": 45743,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Julio César ",
+    "Cat": "Sub-17",
+    "DATA": 45735,
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Fora do quarto durante a segunda chamada mesmo após avisado",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Julio César",
+    "Cat": "Sub-17",
+    "DATA": 45933,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Kauã Cavalcanti",
+    "Cat": "Sub-17",
+    "DATA": 45933,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Kauã Cavalcanti",
+    "Cat": "Sub-17",
+    "DATA": 45735,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Lázaro Gonçalves",
+    "Cat": "Sub-20",
+    "DATA": 45933,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Natan Lacerda ",
+    "Cat": "Sub-15",
+    "DATA": 45933,
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Comendo salgadinho no quarto as 23:59hs",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pedro Martins",
+    "Cat": "Sub-17",
+    "DATA": 45994,
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Quarto desorganizado e camas desarrumadas.",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Pedro Martins",
+    "Cat": "Sub-17",
+    "DATA": 45734,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pedro Martins",
+    "Cat": "Sub-17",
+    "DATA": 45742,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pietro Zucchi",
+    "Cat": "Sub-17",
+    "DATA": 45730,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pietro Zucchi",
+    "Cat": "Sub-17",
+    "DATA": 45734,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Ray Correa",
+    "Cat": "Sub-15",
+    "DATA": 45730,
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Cama desorganizada",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Raykkonen Soares",
+    "Cat": "Sub-17",
+    "DATA": 45734,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Raykkonen Soares",
+    "Cat": "Sub-17",
+    "DATA": 45742,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Raykkonen Soares",
+    "Cat": "Sub-17",
+    "DATA": 45743,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Richard Rodrigues",
+    "Cat": "Sub-17",
+    "DATA": 45933,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Richard Rodrigues",
+    "Cat": "Sub-17",
+    "DATA": 45733,
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Sem camisa e de algazarra no alojamento as 21:30hs",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Richard Rodrigues",
+    "Cat": "Sub-17",
+    "DATA": 45735,
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Fora do quarto durante a segunda chamada mesmo após avisado",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Richarlysson Tosta",
+    "Cat": "Sub-17",
+    "DATA": 45735,
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Fora do quarto durante a chamada",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Richarlysson Tosta",
+    "Cat": "Sub-17",
+    "DATA": 45742,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Richarlysson Tosta",
+    "Cat": "Sub-17",
+    "DATA": 45743,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Vitor Hugo Neves",
+    "Cat": "Sub-17",
+    "DATA": 45734,
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Wallace Custodio",
+    "Cat": "Sub-17",
+    "DATA": 45735,
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Fora do quarto durante a segunda chamada mesmo após avisado",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Wesley Antnio ",
+    "Cat": "Sub-15",
+    "DATA": 45994,
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Cama desorganizada",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Yuri Manoel",
+    "Cat": "Sub-15",
+    "DATA": 45730,
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Cama desorganizada",
+    "Valor": 50.0
+  }
+]
