@@ -1,149 +1,125 @@
-import { useState, useEffect } from 'react';
-import { useAuth } from '@/context/AuthContext';
-import { auth } from '@/lib/firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import React, { useState } from 'react';
+import { useAuth } from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 
-// Importando os componentes SVG inline
-import { InterLogo } from '@/components/InterLogo';
-import { ServicoSocialLogo } from '@/components/ServicoSocialLogo';
-
-export default function LoginPage() {
-  const { user, loading } = useAuth();
-  const navigate = useNavigate();
+const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const { signIn, error } = useAuth();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!loading && user) {
-      navigate('/');
-    }
-  }, [user, loading, navigate]);
-
-  const handleEmailAuth = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsLoading(true);
-    setError('');
+    
+    if (!email || !password) {
+      return;
+    }
 
+    setIsLoading(true);
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-      navigate('/');
-    } catch (err: any) {
-      if (err.code === 'auth/user-not-found') {
-        setError('Usuário não encontrado.');
-      } else if (err.code === 'auth/wrong-password') {
-        setError('Senha incorreta.');
-      } else if (err.code === 'auth/invalid-email') {
-        setError('Email inválido.');
-      } else if (err.code === 'auth/invalid-credential') {
-        setError('Credenciais inválidas.');
-      } else {
-        setError('Falha ao fazer login.');
-      }
-      console.error(err);
+      await signIn(email, password);
+      navigate('/dashboard');
+    } catch (error) {
+      console.error('Erro no login:', error);
     } finally {
       setIsLoading(false);
     }
   };
 
-  if (loading || user) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">Carregando...</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col">
-      {/* Header com logo do Internacional */}
-      <div className="flex-1 flex flex-col items-center justify-center px-4">
-        <div className="w-full max-w-md">
-          {/* Logo do Internacional - Agora como componente SVG inline */}
-          <div className="text-center mb-8">
-            <div className="mx-auto mb-4">
-              <InterLogo width={64} height={64} className="mx-auto" />
-            </div>
-            <h1 className="text-2xl font-bold text-red-600 mb-2">
-              Alojamento CTB
-            </h1>
-            <h2 className="text-lg font-semibold text-red-600 mb-8">
-              Login
-            </h2>
+    <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center px-4">
+      {/* Card único com tudo */}
+      <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
+        {/* Header */}
+        <div className="mb-8">
+          <div className="mb-4 mx-auto w-16 h-16 flex justify-center">
+            <img 
+              src="/src/assets/internacional_logo_novo.png" 
+              alt="Logo Internacional" 
+              className="w-full h-full object-contain"
+            />
           </div>
+          <h1 className="text-2xl font-bold text-red-600 text-center">
+            Alojamento CTB
+          </h1>
+        </div>
 
-          {/* Formulário de Login */}
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <form onSubmit={handleEmailAuth} className="space-y-6">
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email:
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
-                  required
-                />
+        {/* Formulário de Login */}
+        <div className="mb-8">
+          <h2 className="text-xl font-semibold text-red-600 text-center mb-6">
+            Login
+          </h2>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                Email:
+              </label>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                required
+                disabled={isLoading}
+              />
+            </div>
+
+            <div>
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+                Senha:
+              </label>
+              <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+                required
+                disabled={isLoading}
+              />
+            </div>
+
+            {error && (
+              <div className="text-red-600 text-sm text-center">
+                {error}
               </div>
+            )}
 
-              <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
-                  Senha:
-                </label>
-                <input
-                  id="password"
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500"
-                  required
-                  minLength={6}
-                />
-              </div>
-
-              {error && (
-                <div className="text-red-600 text-sm text-center">
-                  {error}
-                </div>
-              )}
-
+            <div className="mb-8">
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+                className="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
-                {isLoading ? 'Carregando...' : 'Entrar'}
+                {isLoading ? 'Entrando...' : 'Entrar'}
               </button>
-            </form>
+            </div>
+          </form>
+        </div>
+
+        {/* Footer */}
+        <div className="text-center">
+          <div className="w-16 h-16 mx-auto mb-2 flex justify-center">
+            <img 
+              src="/src/assets/servico_social_logo_novo.png" 
+              alt="Logo Serviço Social" 
+              className="w-full h-full object-contain"
+            />
           </div>
+          <p className="text-sm text-gray-600">
+            Sistema de Gestão de Atletas Alojados
+          </p>
+          <p className="text-xs text-gray-500">
+            Departamento de Serviço Social
+          </p>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 py-6">
-        <div className="max-w-md mx-auto text-center px-4">
-          <div className="mb-4">
-            {/* Logo do Serviço Social - Agora como componente SVG inline */}
-            <ServicoSocialLogo width={64} height={64} className="mx-auto mb-2" />
-          </div>
-          <div className="text-sm text-gray-600 space-y-1">
-            <p className="font-medium">Sistema de Gestão de Atletas Alojados</p>
-            <p>Departamento de Serviço Social</p>
-          </div>
-          <div className="mt-4 text-xs text-gray-500">
-            © 2025 TechVamp.
-          </div>
-        </div>
-      </footer>
     </div>
   );
-}
+};
+
+export default LoginPage;
 
