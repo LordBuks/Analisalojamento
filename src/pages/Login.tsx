@@ -37,7 +37,7 @@ const LoginPage: React.FC = () => {
           <InterLogo width={64} height={64} />
         </div>
         <h1 className="text-2xl font-bold text-red-600 text-center">
-          Alojamento CTB
+          Sistema de Gestão- Alojamentos
         </h1>
       </div>
 
