@@ -28,18 +28,13 @@ interface OccurrenceChartProps {
 
 // Paleta de cores completamente distintas para o gráfico de pizza
 const INTER_COLORS = [
-  '#E5050F', // Vermelho principal do Internacional
-  '#FFD700', // Dourado/Amarelo
-  '#FF8C00', // Laranja
-  '#32CD32', // Verde
-  '#8A2BE2', // Roxo/Violeta
-  '#8B4513', // Marrom
-  '#000080', // Azul marinho
-  '#808080', // Cinza
-  '#800080', // Púrpura
-  '#008080', // Verde-azulado
-  '#FFC0CB', // Rosa claro
-  '#A0522D', // Sienna
+  '#f80c8eff',
+  '#740a8fff',
+  '#a6a8a5ff',
+  '#ee780aff',
+  '#FF0000',
+  '#722710ff',
+  '#8B5CF6'
 ];
 
 export function OccurrenceChart({ data, title, type, onBarClick, onPieClick }: OccurrenceChartProps) {
