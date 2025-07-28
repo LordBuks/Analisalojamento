@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import { InterLogo } from './InterLogo';
+import { ServicoSocialLogo } from './ServicoSocialLogo';
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -32,11 +34,7 @@ const LoginPage: React.FC = () => {
       {/* Logo CTB */}
       <div className="mb-8">
         <div className="mb-4 mx-auto w-16 h-16">
-          <img 
-            src="/inter-logo.png" 
-            alt="Logo Internacional" 
-            className="w-full h-full object-contain"
-          />
+          <InterLogo width={64} height={64} />
         </div>
         <h1 className="text-2xl font-bold text-red-600 text-center">
           Alojamento CTB
@@ -99,11 +97,7 @@ const LoginPage: React.FC = () => {
       {/* Logo do Sistema */}
       <div className="mt-8 text-center">
         <div className="w-12 h-12 mx-auto mb-2">
-          <img 
-            src="/logo-servico-social.png" 
-            alt="Logo Serviço Social" 
-            className="w-full h-full object-contain"
-          />
+          <ServicoSocialLogo width={48} height={48} />
         </div>
         <p className="text-sm text-gray-600">
           Sistema de Gestão de Atletas Alojados
