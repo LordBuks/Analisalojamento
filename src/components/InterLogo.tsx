@@ -23,5 +23,3 @@ export const InterLogo: React.FC<InterLogoProps> = ({
     />
   );
 };
-
-export default InterLogo;
