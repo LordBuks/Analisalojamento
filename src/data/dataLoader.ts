@@ -15,7 +15,7 @@ export const loadMonthlyData = async (): Promise<MonthlyData[]> => {
       { file: 'junho-2025.json', month: 'Junho', year: 2025 },
      { file: 'maio-2025.json', month: 'Maio', year: 2025 },
     { file: 'abril-2025.json', month: 'Abril', year: 2025 },
-   { file: 'marco-2025.json', month: 'Marco', year: 2025 }
+   { file: 'marco-2025.json', month: 'Março', year: 2025 }
   ];
 
   for (const { file, month, year } of monthlyFiles) {
