@@ -22,12 +22,12 @@ export const AthleteOccurrencesModal: React.FC<AthleteOccurrencesModalProps> = (
   const firstOccurrence = occurrences[0];
   const fotoUrl = firstOccurrence?.fotoUrl;
   const categoryColors: { [key: string]: string } = {
-    'Falta Escolar': '#FFC0CB',
-    'Alimentação Irregular': '#36A2EB',
-    'Uniforme': '#FFCE56',
-    'Desorganização': '#4BC0C0',
+    'Falta Escolar': '#f80c8eff',
+    'Alimentação Irregular': '#740a8fff',
+    'Uniforme': '#a6a8a5ff',
+    'Desorganização': '#ee780aff',
     'Comportamento': '#FF0000',
-    'Atrasos/Sair sem autorização': '#FF9F40',
+    'Atrasos/Sair sem autorização': '#722710ff',
     'Outras': '#8B5CF6',
   };
 

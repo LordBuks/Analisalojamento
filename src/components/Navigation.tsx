@@ -32,7 +32,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onPageChange }) =>
               }`}
             >
               <BarChart3 className="h-4 w-4" />
-              <span>Dashboard Principal</span>
+              <span>Painel Principal</span>
             </button>
             
             <button
@@ -44,7 +44,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onPageChange }) =>
               }`}
             >
               <TrendingUp className="h-4 w-4" />
-              <span>Analytics</span>
+              <span>Painel de Análises</span>
             </button>
           </div>
 
