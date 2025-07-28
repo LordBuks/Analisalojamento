@@ -27,15 +27,17 @@ interface OccurrenceChartProps {
 }
 
 // Paleta de cores completamente distintas para o gráfico de pizza
-const INTER_COLORS = [
-  '#f80c8eff',
-  '#740a8fff',
-  '#a6a8a5ff',
-  '#ee780aff',
-  '#FF0000',
-  '#722710ff',
-  '#8B5CF6'
-];
+const categoryColors: { [key: string]: string } = {
+  'Falta Escolar': '#f80c8eff',
+  'Alimentação Irregular': '#740a8fff',
+  'Uniforme': '#a6a8a5ff',
+  'Desorganização': '#ee780aff',
+  'Comportamento': '#FF0000',
+  'Atrasos/Sair sem autorização': '#722710ff',
+  'Outras': '#8B5CF6'
+};
+
+const INTER_COLORS = Object.values(categoryColors);
 
 export function OccurrenceChart({ data, title, type, onBarClick, onPieClick }: OccurrenceChartProps) {
   const CustomTooltip = ({ active, payload, label }: any) => {
@@ -103,7 +105,7 @@ export function OccurrenceChart({ data, title, type, onBarClick, onPieClick }: O
         <XAxis 
           dataKey="name" 
           stroke="#374151"
-          fontSize={12}
+          fontSize={14}
           angle={-45}
           textAnchor="end"
           height={80}
@@ -111,7 +113,7 @@ export function OccurrenceChart({ data, title, type, onBarClick, onPieClick }: O
         />
         <YAxis 
           stroke="#374151" 
-          fontSize={12}
+          fontSize={14}
           tick={{ fill: '#374151' }}
         />
         <Tooltip content={<CustomTooltip />} />
@@ -151,12 +153,12 @@ export function OccurrenceChart({ data, title, type, onBarClick, onPieClick }: O
             stroke="#ffffff"
             strokeWidth={2}
             onClick={handlePieClick}
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: 'pointer', fontSize: '12px' }}
           >
             {data.map((entry, index) => (
               <Cell 
                 key={`cell-${index}`} 
-                fill={INTER_COLORS[index % INTER_COLORS.length]}
+                fill={categoryColors[entry.name] || INTER_COLORS[index % INTER_COLORS.length]}
               />
             ))}
           </Pie>
