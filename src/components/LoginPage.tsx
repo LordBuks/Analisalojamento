@@ -97,7 +97,7 @@ const LoginPage: React.FC = () => {
       {/* Logo do Sistema */}
       <div className="mt-8 text-center">
         <div className="w-16 h-16 mx-auto mb-2">
-          <ServicoSocialLogo width={48} height={48} />
+          <ServicoSocialLogo width={64} height={64} />
         </div>
         <p className="text-sm text-gray-600">
           Sistema de Gestão de Atletas Alojados
