@@ -105,6 +105,9 @@ const LoginPage: React.FC = () => {
         <p className="text-xs text-gray-500">
           Departamento de Serviço Social
         </p>
+        <p className="text-xs text-gray-500 mt-4">
+          © 2025 🧛TechVamp
+        </p>
       </div>
     </div>
   );
