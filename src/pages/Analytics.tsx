@@ -174,7 +174,8 @@ const Analytics = () => {
             category: occ.CAT,
             months: new Set(),
             totalOccurrences: 0,
-            totalValue: 0
+            totalValue: 0,
+            occurrences: [] // Inicializa um array vazio para ocorrências
           });
         }
         
@@ -182,6 +183,7 @@ const Analytics = () => {
         athlete.months.add(monthData.month);
         athlete.totalOccurrences++;
         athlete.totalValue += parseInt(occ.VALOR);
+        athlete.occurrences.push(occ); // Adiciona a ocorrência atual ao array
       });
     });
 
@@ -542,3 +544,4 @@ const Analytics = () => {
 };
 
 export default Analytics;
+
