@@ -19,7 +19,11 @@ export const ServicoSocialLogo: React.FC<ServicoSocialLogoProps> = ({
       width={width}
       height={height}
       className={className}
-      style={{ objectFit: 'contain' }}
+      style={{ 
+        objectFit: 'contain',
+        maxWidth: '100%',
+        maxHeight: '100%'
+      }}
     />
   );
 };
