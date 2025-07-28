@@ -1,21 +1,21 @@
 import React from 'react';
-import logoInternacional from '../assets/internacional_logo.png';
+import logoServicoSocial from '../assets/servico_social_logo.png';
 
-interface InterLogoProps {
+interface ServicoSocialLogoProps {
   className?: string;
   width?: number;
   height?: number;
 }
 
-export const InterLogo: React.FC<InterLogoProps> = ({ 
+export const ServicoSocialLogo: React.FC<ServicoSocialLogoProps> = ({ 
   className = "", 
   width = 64, 
   height = 64 
 }) => {
   return (
     <img
-      src={logoInternacional}
-      alt="Logo Sport Club Internacional"
+      src={logoServicoSocial}
+      alt="Logo Serviço Social"
       width={width}
       height={height}
       className={className}
@@ -23,5 +23,3 @@ export const InterLogo: React.FC<InterLogoProps> = ({
     />
   );
 };
-
-export default InterLogo;
