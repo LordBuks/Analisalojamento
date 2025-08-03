@@ -1,0 +1,1066 @@
+[
+  {
+    "NOME": "Alexandre Pablo",
+    "Cat": "Sub-16",
+    "DATA": "02/07/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Desrespeitar o horário de silêncio com musicas alta.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Alexandre Pablo",
+    "Cat": "Sub-16",
+    "DATA": "14/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Bernardo Noal",
+    "Cat": "Sub-14",
+    "DATA": "14/07/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda foi observado a cama desarrumada as 10:02hs..",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Bernardo Noal",
+    "Cat": "Sub-14",
+    "DATA": "16/07/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Sem uniforme no alomoço as 12:13hs.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Danilo Fortunato",
+    "Cat": "Sub-16",
+    "DATA": "02/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Danilo Fortunato",
+    "Cat": "Sub-16",
+    "DATA": "18/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Davi David",
+    "Cat": "Sub-17",
+    "DATA": "14/07/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda foi observado a cama desarrumada as 10:02hs..",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Davi David",
+    "Cat": "Sub-17",
+    "DATA": "21/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Davi Gabriel",
+    "Cat": "Sub-15",
+    "DATA": "01/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Enzo Bagggio",
+    "Cat": "Sub-15",
+    "DATA": "15/07/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Atletas fora do quarto e de algazarra após o horário de silêncio",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Esley Ezequiel",
+    "Cat": "Sub-20",
+    "DATA": "19/07/25",
+    "TIPO": "Atrasos/Sair sem autorização",
+    "OCORRÊNCIA": "Não pernoitaram no Alojamento e não foi localizado a autorização",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Everaldo Fabio",
+    "Cat": "Sub-17",
+    "DATA": "14/07/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda foi observado a cama desarrumada as 10:02hs..",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Gabriel Baggio",
+    "Cat": "Sub-17",
+    "DATA": "14/07/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda foi observado a cama desarrumada as 10:02hs..",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Gabriel Ryan",
+    "Cat": "Sub-20",
+    "DATA": "10/07/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Sem uniforme na janta as 18:00hs.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Gabriel Ryan",
+    "Cat": "Sub-17",
+    "DATA": "10/07/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Brincando de lutinha dentro do onibûs no retorno da escola",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Gabriel Ryan",
+    "Cat": "Sub-20",
+    "DATA": "19/07/25",
+    "TIPO": "Atrasos/Sair sem autorização",
+    "OCORRÊNCIA": "Não pernoitaram no Alojamento e não foi localizado a autorização",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Gustavo Mattos",
+    "Cat": "Sub-15",
+    "DATA": "10/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Gustavo Mattos",
+    "Cat": "Sub-15",
+    "DATA": "15/07/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Atletas fora do quarto e de algazarra após o horário de silêncio",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Isak Felipe",
+    "Cat": "Sub-15",
+    "DATA": "15/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Isak Felipe",
+    "Cat": "Sub-15",
+    "DATA": "21/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Isak Felipe",
+    "Cat": "Sub-15",
+    "DATA": "23/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Jheimison Henrique",
+    "Cat": "Sub-16",
+    "DATA": "14/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Jhonatan Almeida",
+    "Cat": "Sub-20",
+    "DATA": "03/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Jhonatan Almeida",
+    "Cat": "Sub-20",
+    "DATA": "04/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Jhonatan Almeida",
+    "Cat": "Sub-20",
+    "DATA": "04/07/25",
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Saiu do comendo do  refeitório na ceia as 22:30hs.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Jhonatan Almeida",
+    "Cat": "Sub-20",
+    "DATA": "08/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Jhonatan Almeida",
+    "Cat": "Sub-20",
+    "DATA": "10/07/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Sem uniforme na janta as 18:00hs.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Jhonatan Almeida",
+    "Cat": "Sub-20",
+    "DATA": "10/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Jhonatan Almeida",
+    "Cat": "Sub-20",
+    "DATA": "14/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Lucas",
+    "Cat": "Sub-17",
+    "DATA": "01/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Lucas",
+    "Cat": "Sub-17",
+    "DATA": "04/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Lucas",
+    "Cat": "Sub-17",
+    "DATA": "08/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Lucas",
+    "Cat": "Sub-17",
+    "DATA": "17/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Lucas",
+    "Cat": "Sub-17",
+    "DATA": "20/07/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Atleta no café sem o uniforme as 08:30hs.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Lucas",
+    "Cat": "Sub-17",
+    "DATA": "21/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Lucas",
+    "Cat": "Sub-17",
+    "DATA": "22/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Lucas",
+    "Cat": "Sub-17",
+    "DATA": "18/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Pedro Leite",
+    "Cat": "Sub-17",
+    "DATA": "02/07/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Desrespeitar o horário de silêncio com musicas alta.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Pedro Leite",
+    "Cat": "Sub-17",
+    "DATA": "08/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Pedro Leite",
+    "Cat": "Sub-17",
+    "DATA": "11/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Pedro Leite",
+    "Cat": "Sub-17",
+    "DATA": "12/07/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Correndo pelo corredor sem o uniforme.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Pedro Leite",
+    "Cat": "Sub-17",
+    "DATA": "14/07/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda foi observado a cama desarrumada as 10:02hs..",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "João Pedro Leite",
+    "Cat": "Sub-17",
+    "DATA": "16/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Pedro Leite",
+    "Cat": "Sub-17",
+    "DATA": "18/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Victor Alves",
+    "Cat": "Sub-20",
+    "DATA": "03/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Victor Alves",
+    "Cat": "Sub-20",
+    "DATA": "04/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Victor Alves",
+    "Cat": "Sub-20",
+    "DATA": "08/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Victor Alves",
+    "Cat": "Sub-20",
+    "DATA": "10/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Victor Alves",
+    "Cat": "Sub-20",
+    "DATA": "14/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Victor Alves",
+    "Cat": "Sub-20",
+    "DATA": "16/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Victor Alves",
+    "Cat": "Sub-20",
+    "DATA": "17/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Victor Alves",
+    "Cat": "Sub-20",
+    "DATA": "19/07/25",
+    "TIPO": "Atrasos/Sair sem autorização",
+    "OCORRÊNCIA": "Não pernoitaram no Alojamento e não foi localizado a autorização",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Kayki Sander",
+    "Cat": "Sub-15",
+    "DATA": "01/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Kayki Sander",
+    "Cat": "Sub-15",
+    "DATA": "02/07/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Desrespeitar o horário de silêncio com musicas alta.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Kayki Sander",
+    "Cat": "Sub-15",
+    "DATA": "04/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Kayki Sander",
+    "Cat": "Sub-15",
+    "DATA": "10/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Kayki Sander",
+    "Cat": "Sub-15",
+    "DATA": "15/07/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Atletas fora do quarto e de algazarra após o horário de silêncio",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Lázaro Gonçalves",
+    "Cat": "Sub-20",
+    "DATA": "14/07/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda foi observado a cama desarrumada as 10:02hs..",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Lázaro Gonçalves",
+    "Cat": "Sub-20",
+    "DATA": "18/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Lázaro Gonçalves",
+    "Cat": "Sub-20",
+    "DATA": "20/07/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Atleta no café sem o uniforme as 08:56hs.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Lucas Andrew",
+    "Cat": "Sub-16",
+    "DATA": "14/07/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda foi observado a cama desarrumada as 10:02hs..",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Lucas Andrew",
+    "Cat": "Sub-16",
+    "DATA": "18/07/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda foi observado o Q-04 todo bagunçado por volta das 09:40hs",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Lucas Gabriel",
+    "Cat": "Sub-16",
+    "DATA": "17/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Lucas Gabriel",
+    "Cat": "Sub-16",
+    "DATA": "18/07/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda foi observado o Q-04 todo bagunçado por volta das 09:40hs",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Lukas Pedroza",
+    "Cat": "Sub-16",
+    "DATA": "02/07/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Desrespeitar o horário de silêncio com musicas alta.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Luiz Gustavo",
+    "Cat": "Sub-16",
+    "DATA": "11/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Luiz Gustavo",
+    "Cat": "Sub-16",
+    "DATA": "17/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Lukas Pedroza",
+    "Cat": "Sub-16",
+    "DATA": "14/07/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda foi observado a cama desarrumada as 10:02hs..",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Lukas Pedroza",
+    "Cat": "Sub-16",
+    "DATA": "21/07/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Atleta de algazarra no onibûs chutando a porta interna",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Matheus Ferreira",
+    "Cat": "Sub-17",
+    "DATA": "01/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Matheus Ferreira",
+    "Cat": "Sub-17",
+    "DATA": "22/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Mauricio Matheus",
+    "Cat": "Sub-15",
+    "DATA": "02/07/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Desrespeitar o horário de silêncio com musicas alta.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Natan Lacerda",
+    "Cat": "Sub-15",
+    "DATA": "10/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pedro Martins",
+    "Cat": "Sub-17",
+    "DATA": "16/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pedro Henrique Campos",
+    "Cat": "Sub-15",
+    "DATA": "04/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pedro Henrique Campos",
+    "Cat": "Sub-15",
+    "DATA": "05/07/25",
+    "TIPO": "Atrasos/Sair sem autorização",
+    "OCORRÊNCIA": "Chegar no Alojamento após horário permitido , as 21:50hs.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pedro Henrique Campos",
+    "Cat": "Sub-15",
+    "DATA": "10/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pedro Henrique Campos",
+    "Cat": "Sub-15",
+    "DATA": "14/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pedro Henrique Campos",
+    "Cat": "Sub-15",
+    "DATA": "15/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pedro Henrique Campos",
+    "Cat": "Sub-15",
+    "DATA": "17/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pedro Henrique da Silva",
+    "Cat": "Sub-16",
+    "DATA": "02/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pedro Henrique da Silva",
+    "Cat": "Sub-16",
+    "DATA": "02/07/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Desrespeitar o horário de silêncio com musicas alta.",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Pedro Henrique da Silva",
+    "Cat": "Sub-16",
+    "DATA": "14/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pedro Martins",
+    "Cat": "Sub-17",
+    "DATA": "08/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pedro Martins",
+    "Cat": "Sub-17",
+    "DATA": "11/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pedro Martins",
+    "Cat": "Sub-17",
+    "DATA": "14/07/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda foi observado a cama desarrumada as 10:02hs..",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Pedro Martins",
+    "Cat": "Sub-17",
+    "DATA": "18/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pedro Martins",
+    "Cat": "Sub-17",
+    "DATA": "22/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pedro Martins",
+    "Cat": "Sub-17",
+    "DATA": "01/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Petherson Lucas",
+    "Cat": "Sub-16",
+    "DATA": "18/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pietro Zucchi",
+    "Cat": "Sub-17",
+    "DATA": "01/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pietro Zucchi",
+    "Cat": "Sub-17",
+    "DATA": "04/07/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Saiu do comendo do  refeitório no café.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pietro Zucchi",
+    "Cat": "Sub-17",
+    "DATA": "04/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pietro Zucchi",
+    "Cat": "Sub-17",
+    "DATA": "10/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pietro Zucchi",
+    "Cat": "Sub-17",
+    "DATA": "17/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pietro Zucchi",
+    "Cat": "Sub-17",
+    "DATA": "18/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Ray Corrêa",
+    "Cat": "Sub-16",
+    "DATA": "21/07/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Atleta de algazarra no onibûs chutando a porta interna",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Ray Corrêa",
+    "Cat": "Sub-16",
+    "DATA": "22/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Raykkonen Pereira",
+    "Cat": "Sub-17",
+    "DATA": "01/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Raykkonen Pereira",
+    "Cat": "Sub-17",
+    "DATA": "02/07/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Desrespeitar o horário de silêncio com musicas alta.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Raykkonen Pereira",
+    "Cat": "Sub-17",
+    "DATA": "04/07/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Sem uniforme no refeitório na janta.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Raykkonen Pereira",
+    "Cat": "Sub-17",
+    "DATA": "04/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Raykkonen Pereira",
+    "Cat": "Sub-17",
+    "DATA": "14/07/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda foi observado a cama desarrumada as 10:02hs..",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Raykkonen Pereira",
+    "Cat": "Sub-17",
+    "DATA": "17/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Raykkonen Pereira",
+    "Cat": "Sub-17",
+    "DATA": "18/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Richard Rodrigues",
+    "Cat": "Sub-17",
+    "DATA": "10/07/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Brincando de lutinha dentro do onibûs no retorno da escola",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Richard Rodrigues",
+    "Cat": "Sub-17",
+    "DATA": "11/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Richard Rodrigues",
+    "Cat": "Sub-17",
+    "DATA": "14/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Richard Rodrigues",
+    "Cat": "Sub-17",
+    "DATA": "18/07/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Atleta jantando sem o uniforme de uso obrigatório.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Richard Rodrigues",
+    "Cat": "Sub-17",
+    "DATA": "18/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Roger Cavalheiro",
+    "Cat": "Sub-16",
+    "DATA": "17/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Roger Cavalheiro",
+    "Cat": "Sub-16",
+    "DATA": "18/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Thiago Luiz",
+    "Cat": "Sub-16",
+    "DATA": "01/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Thiago Luiz",
+    "Cat": "Sub-16",
+    "DATA": "02/07/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Cama desarrumada 10:40hs.",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Thiago Luiz",
+    "Cat": "Sub-16",
+    "DATA": "03/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Thiago Luiz",
+    "Cat": "Sub-16",
+    "DATA": "10/07/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Sem uniforme no refeitório no café.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Thiago Luiz",
+    "Cat": "Sub-16",
+    "DATA": "10/07/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Sem uniforme na janta as 18:00hs.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Thiago Luiz",
+    "Cat": "Sub-16",
+    "DATA": "11/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Thiago Luiz",
+    "Cat": "Sub-16",
+    "DATA": "18/07/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda foi observado o Q-04 todo bagunçado por volta das 09:40hs",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Victor Hugo Matos",
+    "Cat": "Sub-15",
+    "DATA": "10/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Victor Rossi",
+    "Cat": "Sub-15",
+    "DATA": "08/07/25",
+    "TIPO": "Atrasos/Sair sem autorização",
+    "OCORRÊNCIA": "Em ronda foi observado diversas embalagens de chocolate embaixo da cama ás 20:12hs.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Victor Rossi",
+    "Cat": "Sub-15",
+    "DATA": "10/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Victor Rossi",
+    "Cat": "Sub-15",
+    "DATA": "15/07/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Atletas fora do quarto e de algazarra após o horário de silêncio",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Victor Rossi",
+    "Cat": "Sub-15",
+    "DATA": "18/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Vitor Hugo Neves",
+    "Cat": "Sub-17",
+    "DATA": "01/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Vitor Hugo Neves",
+    "Cat": "Sub-17",
+    "DATA": "02/07/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Desrespeitar o horário de silêncio com musicas alta.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Vitor Hugo Neves",
+    "Cat": "Sub-17",
+    "DATA": "04/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Vitor Hugo Neves",
+    "Cat": "Sub-17",
+    "DATA": "11/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Vitor Hugo Neves",
+    "Cat": "Sub-17",
+    "DATA": "14/07/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda foi observado a cama desarrumada as 10:02hs..",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Vitor Hugo Neves",
+    "Cat": "Sub-17",
+    "DATA": "17/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Vitor Hugo Neves",
+    "Cat": "Sub-17",
+    "DATA": "18/07/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Wesley Antonio",
+    "Cat": "Sub-15",
+    "DATA": "02/07/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Cama desarrumada 10:40hs.",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Wesley Antonio",
+    "Cat": "Sub-15",
+    "DATA": "05/07/25",
+    "TIPO": "Atrasos/Sair sem autorização",
+    "OCORRÊNCIA": "Chegar no Alojamento após horário permitido , as 21:50hs.",
+    "Valor": 100.0
+  }
+]
