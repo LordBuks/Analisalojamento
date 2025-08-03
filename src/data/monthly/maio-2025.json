@@ -312,7 +312,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Jhonathan Almeida",
+    "NOME": "Jhonatan Almeida",
     "Cat": "Sub-20",
     "DATA": 45790,
     "TIPO": "Uniforme",
@@ -624,7 +624,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Richarlysson Souza Tosta",
+    "NOME": "Richarlysson Tosta",
     "Cat": "Sub-17",
     "DATA": 45778,
     "TIPO": "Uniforme",
@@ -632,7 +632,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Richarlysson Souza Tosta",
+    "NOME": "Richarlysson Tosta",
     "Cat": "Sub-17",
     "DATA": 45782,
     "TIPO": "Uniforme",
@@ -640,7 +640,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Richarlysson Souza Tosta",
+    "NOME": "Richarlysson Tosta",
     "Cat": "Sub-17",
     "DATA": 45784,
     "TIPO": "Uniforme",
@@ -648,7 +648,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Richarlysson Souza Tosta",
+    "NOME": "Richarlysson Tosta",
     "Cat": "Sub-17",
     "DATA": 45786,
     "TIPO": "Uniforme",
@@ -656,7 +656,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Richarlysson Souza Tosta",
+    "NOME": "Richarlysson Tosta",
     "Cat": "Sub-17",
     "DATA": 45786,
     "TIPO": "Atrasos/Sair sem autorização",
@@ -672,32 +672,32 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Thiago Luiz da Silva",
-    "Cat": "Sub-17",
+    "NOME": "Thiago Luiz",
+    "Cat": "Sub-16",
     "DATA": 45781,
     "TIPO": "Comportamento",
     "OCORRÊNCIA": "De algazzarra no quarto e quabraram a cama comemorando gol Flamengo.",
     "Valor": 100.0
   },
   {
-    "NOME": "Thiago Luiz da Silva",
-    "Cat": "Sub-17",
+    "NOME": "Thiago Luiz",
+    "Cat": "Sub-16",
     "DATA": 45791,
     "TIPO": "Comportamento",
     "OCORRÊNCIA": "Som alto no Alojamento em horário comercial, recolhido as 14:30hs.",
     "Valor": 100.0
   },
   {
-    "NOME": "Thiago Luiz da Silva",
-    "Cat": "Sub-17",
+    "NOME": "Thiago Luiz",
+    "Cat": "Sub-16",
     "DATA": 45797,
     "TIPO": "Uniforme",
     "OCORRÊNCIA": "Sem uniforme na Ceia.",
     "Valor": 100.0
   },
   {
-    "NOME": "Thiago Luiz da Silva",
-    "Cat": "Sub-17",
+    "NOME": "Thiago Luiz",
+    "Cat": "Sub-16",
     "DATA": 45804,
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
