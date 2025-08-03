@@ -461,12 +461,12 @@ const Analytics = () => {
                 
                 // Cores específicas para cada tipo de ocorrência (seguindo padrão do gráfico de pizza)
                 const occurrenceColors: { [key: string]: string } = {
-                  'Falta Escolar': '#FFC0CB',      // Rosa
+                  'Falta Escolar': '#FF69B4',      // Rosa mais forte
                   'Comportamento': '#FF0000',       // Vermelho
                   'Desorganização': '#FF9F40',      // Laranja
                   'Uniforme': '#6B7280',           // Cinza
-                  'Atraso/Saída sem autorização': '#8B4513',  // Marrom
-                  'Alimentação irregular': '#8B5CF6'          // Roxo
+                  'Atrasos/Sair sem autorização': '#8B4513',  // Marrom
+                  'Alimentação Irregular': '#8B5CF6'          // Roxo
                 };
                 
                 const color = occurrenceColors[occurrenceType] || '#6B7280';
