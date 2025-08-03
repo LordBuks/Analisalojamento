@@ -2,7 +2,7 @@
   {
     "NOME": "Alexandre Pablo",
     "Cat": "Sub-16",
-    "DATA": 45761,
+    "DATA": "14/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -10,7 +10,7 @@
   {
     "NOME": "Alexandre Pablo",
     "Cat": "Sub-16",
-    "DATA": 45756,
+    "DATA": "09/04/25",
     "TIPO": "Comportamento",
     "OCORRÊNCIA": "Estava fora de seu quarto após as 23h, não acatou orientação do monitor",
     "Valor": 100.0
@@ -18,7 +18,7 @@
   {
     "NOME": "Arhim Benjamim",
     "Cat": "Sub-20",
-    "DATA": 45763,
+    "DATA": "14/04/25",
     "TIPO": "Alimentação Irregular",
     "OCORRÊNCIA": "Comeu o Kit Café da tarde no quarto",
     "Valor": 100.0
@@ -26,7 +26,7 @@
   {
     "NOME": "Bernardo Natário",
     "Cat": "Sub-14",
-    "DATA": 45748,
+    "DATA": "01/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Ar condionado ligado quarto vazio",
     "Valor": 50.0
@@ -34,7 +34,7 @@
   {
     "NOME": "Danilo Fortunato",
     "Cat": "Sub-16",
-    "DATA": 45776,
+    "DATA": "29/04/25",
     "TIPO": "Uniforme",
     "OCORRÊNCIA": "Sem uniforme no refeitório foi orientado e não acatou, 18h15",
     "Valor": 100.0
@@ -42,7 +42,7 @@
   {
     "NOME": "Davi David",
     "Cat": "Sub-17",
-    "DATA": 45772,
+    "DATA": "25/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -50,7 +50,7 @@
   {
     "NOME": "Davi David",
     "Cat": "Sub-17",
-    "DATA": 45770,
+    "DATA": "23/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Excesso de toalhas no quarto",
     "Valor": 50.0
@@ -58,7 +58,7 @@
   {
     "NOME": "Davi David",
     "Cat": "Sub-17",
-    "DATA": 45775,
+    "DATA": "28/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Ar condionado ligado quarto vazio",
     "Valor": 50.0
@@ -66,7 +66,7 @@
   {
     "NOME": "Esley Ezequiel",
     "Cat": "Sub-20",
-    "DATA": 45751,
+    "DATA": "04/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -74,7 +74,7 @@
   {
     "NOME": "Esley Ezequiel",
     "Cat": "Sub-20",
-    "DATA": 45753,
+    "DATA": "06/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Excesso de toalhas no banheiro",
     "Valor": 50.0
@@ -82,7 +82,7 @@
   {
     "NOME": "Esley Ezequiel",
     "Cat": "Sub-20",
-    "DATA": 45754,
+    "DATA": "07/04/25",
     "TIPO": "Alimentação Irregular",
     "OCORRÊNCIA": "Em ronda no quarto várias embalagens de salgadinhos, doce e garrafa de suco",
     "Valor": 100.0
@@ -90,7 +90,7 @@
   {
     "NOME": "Everaldo Fabio",
     "Cat": "Sub-17",
-    "DATA": 45753,
+    "DATA": "06/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Excesso de toalhas no banheiro",
     "Valor": 50.0
@@ -98,7 +98,7 @@
   {
     "NOME": "Everaldo Ponciano",
     "Cat": "Sub-17",
-    "DATA": 45771,
+    "DATA": "24/04/25",
     "TIPO": "Alimentação Irregular",
     "OCORRÊNCIA": "Entrou com chocolate no alojamento",
     "Valor": 100.0
@@ -106,7 +106,7 @@
   {
     "NOME": "Gabriel Baggio",
     "Cat": "Sub-16",
-    "DATA": 45751,
+    "DATA": "04/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Julio Cesar",
     "Valor": 100.0
@@ -114,7 +114,7 @@
   {
     "NOME": "Gabriel Baggio",
     "Cat": "Sub-17",
-    "DATA": 45770,
+    "DATA": "23/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Quarto desorganizado.",
     "Valor": 50.0
@@ -122,7 +122,7 @@
   {
     "NOME": "Gabriel Lara",
     "Cat": "Sub-20",
-    "DATA": 45762,
+    "DATA": "15/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Julio Cesar",
     "Valor": 100.0
@@ -130,7 +130,7 @@
   {
     "NOME": "Gabriel Lara",
     "Cat": "Sub-20",
-    "DATA": 45769,
+    "DATA": "22/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Julio Cesar",
     "Valor": 100.0
@@ -138,7 +138,7 @@
   {
     "NOME": "Gabriel Palma",
     "Cat": "Sub-20",
-    "DATA": 45754,
+    "DATA": "07/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Julio Cesar",
     "Valor": 100.0
@@ -146,7 +146,7 @@
   {
     "NOME": "Gabriel Palma",
     "Cat": "Sub-20",
-    "DATA": 45771,
+    "DATA": "24/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Julio Cesar",
     "Valor": 100.0
@@ -154,7 +154,7 @@
   {
     "NOME": "Gabriel Ryan",
     "Cat": "Sub-20",
-    "DATA": 45752,
+    "DATA": "05/04/25",
     "TIPO": "Comportamento",
     "OCORRÊNCIA": "Algazarra, som alto e gritaria no quarto, foi chamada atenção várias vezes",
     "Valor": 100.0
@@ -162,7 +162,7 @@
   {
     "NOME": "Gabriel Ryan",
     "Cat": "Sub-20",
-    "DATA": 45763,
+    "DATA": "16/04/25",
     "TIPO": "Comportamento",
     "OCORRÊNCIA": "Estavam tumultuando a ceia, pedindo lanche dos outros e brincadeira de tapas",
     "Valor": 100.0
@@ -170,7 +170,7 @@
   {
     "NOME": "Jackson Teixeira",
     "Cat": "Sub-20",
-    "DATA": 45753,
+    "DATA": "06/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Excesso de toalhas no banheiro",
     "Valor": 50.0
@@ -178,7 +178,7 @@
   {
     "NOME": "Jackson Teixeira",
     "Cat": "Sub-20",
-    "DATA": 45754,
+    "DATA": "07/04/25",
     "TIPO": "Alimentação Irregular",
     "OCORRÊNCIA": "Em ronda no quarto várias embalagens de salgadinhos, doce e garrafa de suco",
     "Valor": 100.0
@@ -186,7 +186,7 @@
   {
     "NOME": "Jackson Teixeira",
     "Cat": "Sub-20",
-    "DATA": 45761,
+    "DATA": "14/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -194,7 +194,7 @@
   {
     "NOME": "Jackson Teixeira",
     "Cat": "Sub-20",
-    "DATA": 45771,
+    "DATA": "24/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -202,7 +202,7 @@
   {
     "NOME": "Jackson Teixeira",
     "Cat": "Sub-20",
-    "DATA": 45777,
+    "DATA": "30/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -210,7 +210,7 @@
   {
     "NOME": "Jackson Teixeira",
     "Cat": "Sub-20",
-    "DATA": 45772,
+    "DATA": "25/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -218,7 +218,7 @@
   {
     "NOME": "Jheimison Henrique",
     "Cat": "Sub-16",
-    "DATA": 45748,
+    "DATA": "01/04/25",
     "TIPO": "Alimentação Irregular",
     "OCORRÊNCIA": "07h54 estava tomando café fora do refeitório ",
     "Valor": 100.0
@@ -226,7 +226,7 @@
   {
     "NOME": "João Lucas",
     "Cat": "Sub-17",
-    "DATA": 45753,
+    "DATA": "06/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Excesso de toalhas no banheiro",
     "Valor": 50.0
@@ -234,7 +234,7 @@
   {
     "NOME": "João Lucas",
     "Cat": "Sub-17",
-    "DATA": 45771,
+    "DATA": "24/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Julio Cesar",
     "Valor": 100.0
@@ -242,7 +242,7 @@
   {
     "NOME": "João Lucas",
     "Cat": "Sub-17",
-    "DATA": 45777,
+    "DATA": "30/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Julio Cesar",
     "Valor": 100.0
@@ -250,7 +250,7 @@
   {
     "NOME": "João Lucas",
     "Cat": "Sub-17",
-    "DATA": 45772,
+    "DATA": "25/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Julio Cesar",
     "Valor": 100.0
@@ -258,7 +258,7 @@
   {
     "NOME": "João Pedro Leite",
     "Cat": "Sub-17",
-    "DATA": 45770,
+    "DATA": "23/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Quarto desorganizado.",
     "Valor": 50.0
@@ -266,7 +266,7 @@
   {
     "NOME": "João Pedro Leite",
     "Cat": "Sub-17",
-    "DATA": 45771,
+    "DATA": "24/04/25",
     "TIPO": "Comportamento",
     "OCORRÊNCIA": "Entrou com chocolate no alojamento e não quis entregar ",
     "Valor": 100.0
@@ -274,7 +274,7 @@
   {
     "NOME": "João Pedro Leite",
     "Cat": "Sub-17",
-    "DATA": 45750,
+    "DATA": "03/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -282,7 +282,7 @@
   {
     "NOME": "João Pedro Leite",
     "Cat": "Sub-17",
-    "DATA": 45758,
+    "DATA": "11/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -290,7 +290,7 @@
   {
     "NOME": "João Pedro Leite",
     "Cat": "Sub-17",
-    "DATA": 45776,
+    "DATA": "29/04/25",
     "TIPO": "Uniforme",
     "OCORRÊNCIA": "Sem uniforme no refeirorio, parte de baixo, 17h23",
     "Valor": 100.0
@@ -298,7 +298,7 @@
   {
     "NOME": "João Pedro Leite",
     "Cat": "Sub-17",
-    "DATA": 45763,
+    "DATA": "16/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -306,7 +306,7 @@
   {
     "NOME": "João Pedro Leite",
     "Cat": "Sub-17",
-    "DATA": 45777,
+    "DATA": "30/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -314,7 +314,7 @@
   {
     "NOME": "João Pedro Leite",
     "Cat": "Sub-17",
-    "DATA": 45772,
+    "DATA": "25/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -322,7 +322,7 @@
   {
     "NOME": "João Pedro Stevanelli",
     "Cat": "Sub-17",
-    "DATA": 45748,
+    "DATA": "01/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Ar condionado ligado quarto vazio",
     "Valor": 50.0
@@ -330,7 +330,7 @@
   {
     "NOME": "João Pedro Stevanelli",
     "Cat": "Sub-17",
-    "DATA": 45755,
+    "DATA": "08/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Ar condionado ligado quarto vazio",
     "Valor": 50.0
@@ -338,7 +338,7 @@
   {
     "NOME": "João Pedro Stevanelli",
     "Cat": "Sub-17",
-    "DATA": 45770,
+    "DATA": "23/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Excesso de toalhas no quarto",
     "Valor": 50.0
@@ -346,7 +346,7 @@
   {
     "NOME": "João Pedro Stevanelli",
     "Cat": "Sub-17",
-    "DATA": 45750,
+    "DATA": "03/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -354,7 +354,7 @@
   {
     "NOME": "João Pedro Stevanelli",
     "Cat": "Sub-17",
-    "DATA": 45755,
+    "DATA": "08/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -362,7 +362,7 @@
   {
     "NOME": "João Pedro Stevanelli",
     "Cat": "Sub-17",
-    "DATA": 45758,
+    "DATA": "11/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -370,7 +370,7 @@
   {
     "NOME": "João Pedro Stevanelli",
     "Cat": "Sub-17",
-    "DATA": 45769,
+    "DATA": "22/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -378,7 +378,7 @@
   {
     "NOME": "João Pedro Stevanelli",
     "Cat": "Sub-17",
-    "DATA": 45777,
+    "DATA": "30/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -386,7 +386,7 @@
   {
     "NOME": "João Victor Alves",
     "Cat": "Sub-20",
-    "DATA": 45750,
+    "DATA": "03/04/25",
     "TIPO": "Atrasos/Sair sem autorização",
     "OCORRÊNCIA": "Chegou após o horario permitido sem autorização 20h40",
     "Valor": 100.0
@@ -394,7 +394,7 @@
   {
     "NOME": "João Victor Alves",
     "Cat": "Sub-20",
-    "DATA": 45750,
+    "DATA": "03/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Julio Cesar",
     "Valor": 100.0
@@ -402,7 +402,7 @@
   {
     "NOME": "João Victor Alves",
     "Cat": "Sub-20",
-    "DATA": 45750,
+    "DATA": 08/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Julio Cesar",
     "Valor": 100.0
@@ -410,15 +410,7 @@
   {
     "NOME": "João Victor Alves",
     "Cat": "Sub-20",
-    "DATA": 45755,
-    "TIPO": "Falta Escolar",
-    "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Julio Cesar",
-    "Valor": 100.0
-  },
-  {
-    "NOME": "João Victor Alves",
-    "Cat": "Sub-20",
-    "DATA": 45762,
+    "DATA": "15/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Julio Cesar",
     "Valor": 100.0
@@ -426,7 +418,7 @@
   {
     "NOME": "João Victor Cruvinel",
     "Cat": "Sub-17",
-    "DATA": 45748,
+    "DATA": "01/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Ar condionado ligado quarto vazio",
     "Valor": 50.0
@@ -434,7 +426,7 @@
   {
     "NOME": "Jhonatan Almeida",
     "Cat": "Sub-20",
-    "DATA": 45750,
+    "DATA": "03/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Julio Cesar",
     "Valor": 100.0
@@ -442,7 +434,7 @@
   {
     "NOME": "Jhonatan Almeida",
     "Cat": "Sub-20",
-    "DATA": 45755,
+    "DATA": "08/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Julio Cesar",
     "Valor": 100.0
@@ -450,7 +442,7 @@
   {
     "NOME": "Jhonatan Almeida",
     "Cat": "Sub-20",
-    "DATA": 45762,
+    "DATA": "15/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Julio Cesar",
     "Valor": 100.0
@@ -458,7 +450,7 @@
   {
     "NOME": "Jhonatan Almeida",
     "Cat": "Sub-20",
-    "DATA": 45777,
+    "DATA": "30/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Julio Cesar",
     "Valor": 100.0
@@ -466,7 +458,7 @@
   {
     "NOME": "Jhonatan Almeida",
     "Cat": "Sub-20",
-    "DATA": 45772,
+    "DATA": "25/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Julio Cesar",
     "Valor": 100.0
@@ -474,7 +466,7 @@
   {
     "NOME": "Julio Cesar",
     "Cat": "Sub-17",
-    "DATA": 45752,
+    "DATA": "05/04/25",
     "TIPO": "Comportamento",
     "OCORRÊNCIA": "Algazarra, som alto e gritaria no quarto, foi chamada atenção várias vezes",
     "Valor": 100.0
@@ -482,7 +474,7 @@
   {
     "NOME": "Julio Cesar",
     "Cat": "Sub-17",
-    "DATA": 45770,
+    "DATA": "23/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Excesso de toalhas no quarto",
     "Valor": 50.0
@@ -490,7 +482,7 @@
   {
     "NOME": "Julio Cesar",
     "Cat": "Sub-17",
-    "DATA": 45775,
+    "DATA": "28/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Ar condionado ligado quarto vazio",
     "Valor": 50.0
@@ -498,7 +490,7 @@
   {
     "NOME": "Julio Cesar",
     "Cat": "Sub-17",
-    "DATA": 45772,
+    "DATA": "25/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -506,7 +498,7 @@
   {
     "NOME": "Kauã Cavalcanti",
     "Cat": "Sub-17",
-    "DATA": 45770,
+    "DATA": "23/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Quarto desorganizado.",
     "Valor": 50.0
@@ -514,7 +506,7 @@
   {
     "NOME": "Kauã Pio",
     "Cat": "Sub-14",
-    "DATA": 45748,
+    "DATA": "01/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Ar condionado ligado quarto vazio",
     "Valor": 50.0
@@ -522,7 +514,7 @@
   {
     "NOME": "Lázaro Gonçalves",
     "Cat": "Sub-20",
-    "DATA": 45753,
+    "DATA": "06/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Excesso de toalhas no banheiro",
     "Valor": 50.0
@@ -530,7 +522,7 @@
   {
     "NOME": "Lázaro Gonçalves",
     "Cat": "Sub-20",
-    "DATA": 45754,
+    "DATA": "07/04/25",
     "TIPO": "Alimentação Irregular",
     "OCORRÊNCIA": "Em ronda no quarto várias embalagens de salgadinhos, doce e garrafa de suco",
     "Valor": 100.0
@@ -538,7 +530,7 @@
   {
     "NOME": "Lázaro Gonçalves",
     "Cat": "Sub-20",
-    "DATA": 45750,
+    "DATA": "03/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -546,7 +538,7 @@
   {
     "NOME": "Lázaro Gonçalves",
     "Cat": "Sub-20",
-    "DATA": 45751,
+    "DATA": "04/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -554,7 +546,7 @@
   {
     "NOME": "Lázaro Gonçalves",
     "Cat": "Sub-20",
-    "DATA": 45771,
+    "DATA": "24/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -562,7 +554,7 @@
   {
     "NOME": "Lázaro Gonçalves",
     "Cat": "Sub-20",
-    "DATA": 45777,
+    "DATA": "30/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -570,7 +562,7 @@
   {
     "NOME": "Luan Paim",
     "Cat": "Sub-20",
-    "DATA": 45757,
+    "DATA": "10/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -578,7 +570,7 @@
   {
     "NOME": "Lucas Andrew",
     "Cat": "Sub-16",
-    "DATA": 45749,
+    "DATA": "02/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -586,7 +578,7 @@
   {
     "NOME": "Luiz Gustavo",
     "Cat": "Sub-16",
-    "DATA": 45749,
+    "DATA": "01/04/25",
     "TIPO": "Alimentação Irregular",
     "OCORRÊNCIA": "12h06 levou alimento do refeitório para o quarto",
     "Valor": 100.0
@@ -594,7 +586,7 @@
   {
     "NOME": "Luiz Gustavo",
     "Cat": "Sub-16",
-    "DATA": 45753,
+    "DATA": "05/04/25",
     "TIPO": "Comportamento",
     "OCORRÊNCIA": "Algazarra, som alto e gritaria no quarto, foi chamada atenção várias vezes",
     "Valor": 100.0
@@ -602,7 +594,7 @@
   {
     "NOME": "Marcos Vinicius",
     "Cat": "Sub-14",
-    "DATA": 45771,
+    "DATA": "24/04/25",
     "TIPO": "Alimentação Irregular",
     "OCORRÊNCIA": "Entrou com chocolate no alojamento",
     "Valor": 100.0
@@ -610,7 +602,7 @@
   {
     "NOME": "Pedro Henrique Inocente",
     "Cat": "Sub-14",
-    "DATA": 45748,
+    "DATA": "01/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Ar condionado ligado quarto vazio",
     "Valor": 50.0
@@ -618,7 +610,7 @@
   {
     "NOME": "Pedro Martins",
     "Cat": "Sub-17",
-    "DATA": 45750,
+    "DATA": "03/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -626,7 +618,7 @@
   {
     "NOME": "Pedro Martins",
     "Cat": "Sub-17",
-    "DATA": 45772,
+    "DATA": "25/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -634,7 +626,7 @@
   {
     "NOME": "Pedro Martins",
     "Cat": "Sub-17",
-    "DATA": 45753,
+    "DATA": "06/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Excesso de toalhas no banheiro",
     "Valor": 50.0
@@ -642,7 +634,7 @@
   {
     "NOME": "Pietro Zucchi",
     "Cat": "Sub-17",
-    "DATA": 45748,
+    "DATA": "01/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Ar condionado ligado quarto vazio",
     "Valor": 50.0
@@ -650,7 +642,7 @@
   {
     "NOME": "Pietro Zucchi",
     "Cat": "Sub-17",
-    "DATA": 45760,
+    "DATA": "13/04/25",
     "TIPO": "Alimentação Irregular",
     "OCORRÊNCIA": "Comendo no quarto lanche que trouxe do refeitório",
     "Valor": 100.0
@@ -658,7 +650,7 @@
   {
     "NOME": "Pietro Zucchi",
     "Cat": "Sub-17",
-    "DATA": 45750,
+    "DATA": "03/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -666,7 +658,7 @@
   {
     "NOME": "Pietro Zucchi",
     "Cat": "Sub-17",
-    "DATA": 45751,
+    "DATA": "04/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -674,7 +666,7 @@
   {
     "NOME": "Pietro Zucchi",
     "Cat": "Sub-17",
-    "DATA": 45756,
+    "DATA": "09/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -682,7 +674,7 @@
   {
     "NOME": "Pietro Zucchi",
     "Cat": "Sub-17",
-    "DATA": 45758,
+    "DATA": "11/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -690,7 +682,7 @@
   {
     "NOME": "Pietro Zucchi",
     "Cat": "Sub-17",
-    "DATA": 45763,
+    "DATA": "16/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -698,7 +690,7 @@
   {
     "NOME": "Pietro Zucchi",
     "Cat": "Sub-17",
-    "DATA": 45777,
+    "DATA": "30/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -706,7 +698,7 @@
   {
     "NOME": "Raykkonen Pereira",
     "Cat": "Sub-17",
-    "DATA": 45748,
+    "DATA": "01/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Ar condionado ligado quarto vazio",
     "Valor": 50.0
@@ -714,7 +706,7 @@
   {
     "NOME": "Raykkonen Pereira",
     "Cat": "Sub-17",
-    "DATA": 45755,
+    "DATA": "08/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Ar condionado ligado quarto vazio",
     "Valor": 50.0
@@ -722,7 +714,7 @@
   {
     "NOME": "Raykkonen Pereira",
     "Cat": "Sub-17",
-    "DATA": 45770,
+    "DATA": "23/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Excesso de toalhas no quarto",
     "Valor": 50.0
@@ -730,7 +722,7 @@
   {
     "NOME": "Raykkonen Pereira",
     "Cat": "Sub-17",
-    "DATA": 45750,
+    "DATA": "03/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Julio Cesar",
     "Valor": 100.0
@@ -738,7 +730,7 @@
   {
     "NOME": "Raykkonen Pereira",
     "Cat": "Sub-17",
-    "DATA": 45772,
+    "DATA": "25/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Julio Cesar",
     "Valor": 100.0
@@ -746,7 +738,7 @@
   {
     "NOME": "Richard Rodrigues",
     "Cat": "Sub-17",
-    "DATA": 45752,
+    "DATA": "05/04/25",
     "TIPO": "Comportamento",
     "OCORRÊNCIA": "Algazarra, som alto e gritaria no quarto, foi chamada atenção várias vezes",
     "Valor": 100.0
@@ -754,7 +746,7 @@
   {
     "NOME": "Richard Rodrigues",
     "Cat": "Sub-16",
-    "DATA": 45763,
+    "DATA": "16/04/25",
     "TIPO": "Comportamento",
     "OCORRÊNCIA": "Estavam tumultuando a ceia, pedindo lanche dos outros e brincadeira de tapas",
     "Valor": 100.0
@@ -762,7 +754,7 @@
   {
     "NOME": "Richard Rodrigues",
     "Cat": "Sub-17",
-    "DATA": 45770,
+    "DATA": "23/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Excesso de toalhas no quarto",
     "Valor": 50.0
@@ -770,7 +762,7 @@
   {
     "NOME": "Richard Rodrigues",
     "Cat": "Sub-17",
-    "DATA": 45775,
+    "DATA": "28/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Ar condionado ligado quarto vazio",
     "Valor": 50.0
@@ -778,7 +770,7 @@
   {
     "NOME": "Richarlysson Tosta",
     "Cat": "Sub-17",
-    "DATA": 45748,
+    "DATA": "01/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Ar condionado ligado quarto vazio",
     "Valor": 50.0
@@ -786,7 +778,7 @@
   {
     "NOME": "Richarlysson Tosta",
     "Cat": "Sub-17",
-    "DATA": 45752,
+    "DATA": "05/04/25",
     "TIPO": "Alimentação Irregular",
     "OCORRÊNCIA": "Comeu o Kit Café da tarde no quarto",
     "Valor": 50.0
@@ -794,7 +786,7 @@
   {
     "NOME": "Thiago Luiz",
     "Cat": "Sub-16",
-    "DATA": 45752,
+    "DATA": "05/04/25",
     "TIPO": "Comportamento",
     "OCORRÊNCIA": "Algazarra, som alto e gritaria no quarto, foi chamada atenção várias vezes",
     "Valor": 100.0
@@ -802,7 +794,7 @@
   {
     "NOME": "Thiago Luiz",
     "Cat": "Sub-16",
-    "DATA": 45748,
+    "DATA": "01/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -810,7 +802,7 @@
   {
     "NOME": "Thiago Luiz",
     "Cat": "Sub-16",
-    "DATA": 45761,
+    "DATA": "14/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -818,7 +810,7 @@
   {
     "NOME": "Vitor Hugo Neves",
     "Cat": "Sub-17",
-    "DATA": 45748,
+    "DATA": "01/04/25",
     "TIPO": "Alimentação Irregular",
     "OCORRÊNCIA": "12h06 levou alimento do refeitório para o quarto",
     "Valor": 100.0
@@ -826,7 +818,7 @@
   {
     "NOME": "Vitor Hugo Neves",
     "Cat": "Sub-17",
-    "DATA": 45748,
+    "DATA": "01/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Ar condionado ligado quarto vazio",
     "Valor": 50.0
@@ -834,7 +826,7 @@
   {
     "NOME": "Vitor Hugo Neves",
     "Cat": "Sub-17",
-    "DATA": 45755,
+    "DATA": "08/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Ar condionado ligado quarto vazio",
     "Valor": 50.0
@@ -842,7 +834,7 @@
   {
     "NOME": "Vitor Hugo Neves",
     "Cat": "Sub-17",
-    "DATA": 45770,
+    "DATA": "23/04/25",
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Excesso de toalhas no quarto",
     "Valor": 50.0
@@ -850,7 +842,7 @@
   {
     "NOME": "Vitor Hugo Neves",
     "Cat": "Sub-17",
-    "DATA": 45755,
+    "DATA": "08/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -858,7 +850,7 @@
   {
     "NOME": "Vitor Hugo Neves",
     "Cat": "Sub-17",
-    "DATA": 45758,
+    "DATA": "11/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -866,7 +858,7 @@
   {
     "NOME": "Vitor Hugo Neves",
     "Cat": "Sub-17",
-    "DATA": 45763,
+    "DATA": "16/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -874,7 +866,7 @@
   {
     "NOME": "Vitor Hugo Neves",
     "Cat": "Sub-17",
-    "DATA": 45769,
+    "DATA": "22/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -882,7 +874,7 @@
   {
     "NOME": "Vitor Hugo Neves",
     "Cat": "Sub-17",
-    "DATA": 45777,
+    "DATA": "30/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -890,7 +882,7 @@
   {
     "NOME": "Vitor Hugo Neves",
     "Cat": "Sub-17",
-    "DATA": 45772,
+    "DATA": "25/04/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Faltas escolares sem justificativa Escola Gentil",
     "Valor": 100.0
@@ -898,7 +890,7 @@
   {
     "NOME": "Vitor Gabriel Rossi",
     "Cat": "Sub-15",
-    "DATA": 45756,
+    "DATA": "09/04/25",
     "TIPO": "Comportamento",
     "OCORRÊNCIA": "Estava fora de seu quarto após as 23h, não acatou orientação do monitor",
     "Valor": 100.0
