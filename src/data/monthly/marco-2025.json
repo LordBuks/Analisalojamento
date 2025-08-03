@@ -88,7 +88,7 @@
     "Valor": 50.0
   },
   {
-    "NOME": "Joao Victor Cruvinel",
+    "NOME": "João Victor Cruvinel",
     "Cat": "Sub-17",
     "DATA": 45734,
     "TIPO": "Alimentação Irregular",
@@ -104,7 +104,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "João Vitor Cruvinel",
+    "NOME": "João Victor Cruvinel",
     "Cat": "Sub-17",
     "DATA": 45734,
     "TIPO": "Falta Escolar",
@@ -112,9 +112,9 @@
     "Valor": 100.0
   },
   {
-    "NOME": "João Vitor Gruvinel",
+    "NOME": "João Victor Cruvinel",
     "Cat": "Sub-17",
-    "DATA": 45994,
+    "DATA": 45728,
     "TIPO": "Desorganização",
     "OCORRÊNCIA": "Cama desorganizada",
     "Valor": 50.0
@@ -176,7 +176,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Joao Victor Alves",
+    "NOME": "João Victor Alves",
     "Cat": "Sub-20",
     "DATA": 45744,
     "TIPO": "Atrasos/Sair sem autorização",

@@ -224,7 +224,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "João Lucas Bezerra",
+    "NOME": "João Lucas",
     "Cat": "Sub-17",
     "DATA": 45753,
     "TIPO": "Desorganização",
@@ -424,7 +424,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "João Vitor Cruvinel",
+    "NOME": "João Victor Cruvinel",
     "Cat": "Sub-17",
     "DATA": 45748,
     "TIPO": "Desorganização",
@@ -586,7 +586,7 @@
   {
     "NOME": "Luiz Gustavo",
     "Cat": "Sub-16",
-    "DATA": 45748,
+    "DATA": 45749,
     "TIPO": "Alimentação Irregular",
     "OCORRÊNCIA": "12h06 levou alimento do refeitório para o quarto",
     "Valor": 100.0
@@ -594,7 +594,7 @@
   {
     "NOME": "Luiz Gustavo",
     "Cat": "Sub-16",
-    "DATA": 45752,
+    "DATA": 45753,
     "TIPO": "Comportamento",
     "OCORRÊNCIA": "Algazarra, som alto e gritaria no quarto, foi chamada atenção várias vezes",
     "Valor": 100.0
