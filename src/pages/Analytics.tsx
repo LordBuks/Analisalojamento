@@ -20,6 +20,31 @@ const Analytics = () => {
   const [selectedRecurrenceType, setSelectedRecurrenceType] = useState<string | null>(null);
   const [selectedPeriod, setSelectedPeriod] = useState<string>("all");
 
+  // Função para normalizar nomes de atletas (corrige inconsistências nos dados)
+  const normalizeAthleteName = (name: string): string => {
+    if (!name) return '';
+    
+    // Remove espaços extras e converte para lowercase para comparação
+    const normalized = name.trim().toLowerCase();
+    
+    // Mapeamento de nomes com inconsistências conhecidas (apenas casos confirmados)
+    const nameMapping: { [key: string]: string } = {
+      // Lukas Pedroza/Pedrosa - mesmo atleta com grafia diferente
+      'lukas pedrosa': 'Lukas Pedroza',
+      'lukas pedroza': 'Lukas Pedroza',
+      
+      // Victor Hugo Matos/Mattos - mesmo atleta com grafia diferente
+      'victor hugo matos': 'Victor Hugo Mattos',
+      'victor hugo mattos': 'Victor Hugo Mattos',
+      
+      // Adicione outros mapeamentos apenas quando confirmado que são a mesma pessoa
+      // NÃO incluir João Victor/João Vitor pois são pessoas diferentes
+    };
+    
+    // Retorna o nome normalizado ou o nome original com capitalização adequada
+    return nameMapping[normalized] || name.trim();
+  };
+
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -45,7 +70,7 @@ const Analytics = () => {
   // Dados para timeline
   const timelineData = useMemo(() => {
     return monthlyData.map(monthData => {
-      const uniqueAthletes = new Set(monthData.data.map((occ: any) => occ.NOME));
+      const uniqueAthletes = new Set(monthData.data.map((occ: any) => normalizeAthleteName(occ.NOME)));
       const totalValue = monthData.data.reduce((sum: number, occ: any) => sum + parseInt(occ.VALOR), 0);
       
       return {
@@ -87,10 +112,11 @@ const Analytics = () => {
     
     monthlyData.forEach(monthData => {
       monthData.data.forEach((occ: any) => {
-        if (!athleteMap.has(occ.NOME)) {
-          athleteMap.set(occ.NOME, new Set());
+        const normalizedName = normalizeAthleteName(occ.NOME);
+        if (!athleteMap.has(normalizedName)) {
+          athleteMap.set(normalizedName, new Set());
         }
-        athleteMap.get(occ.NOME).add(monthData.month);
+        athleteMap.get(normalizedName).add(monthData.month);
       });
     });
 
@@ -170,9 +196,10 @@ const Analytics = () => {
     
     monthlyData.forEach(monthData => {
       monthData.data.forEach((occ: any) => {
-        if (!athleteStats.has(occ.NOME)) {
-          athleteStats.set(occ.NOME, {
-            name: occ.NOME,
+        const normalizedName = normalizeAthleteName(occ.NOME);
+        if (!athleteStats.has(normalizedName)) {
+          athleteStats.set(normalizedName, {
+            name: normalizedName,
             category: occ.CAT,
             months: new Set(),
             totalOccurrences: 0,
@@ -181,7 +208,7 @@ const Analytics = () => {
           });
         }
         
-        const athlete = athleteStats.get(occ.NOME);
+        const athlete = athleteStats.get(normalizedName);
         athlete.months.add(monthData.month);
         athlete.totalOccurrences++;
         athlete.totalValue += parseInt(occ.VALOR);
@@ -212,16 +239,18 @@ const Analytics = () => {
         }
         
         const typeMap = occurrenceTypeStats.get(occ.TIPO);
-        if (!typeMap.has(occ.NOME)) {
-          typeMap.set(occ.NOME, {
-            name: occ.NOME,
+        const normalizedName = normalizeAthleteName(occ.NOME);
+        
+        if (!typeMap.has(normalizedName)) {
+          typeMap.set(normalizedName, {
+            name: normalizedName,
             category: occ.CAT,
             count: 0,
             totalValue: 0
           });
         }
         
-        const athlete = typeMap.get(occ.NOME);
+        const athlete = typeMap.get(normalizedName);
         athlete.count++;
         athlete.totalValue += parseInt(occ.VALOR);
       });
@@ -288,8 +317,6 @@ const Analytics = () => {
   const handleCloseRecurrenceModal = () => {
     setSelectedRecurrenceType(null);
   };
-
-  const colors = ['#FFC0CB', '#FF6384', '#FFCE56', '#4BC0C0', '#FF0000', '#FF9F40', '#8B5CF6'];
 
   if (loading) {
     return (
@@ -426,7 +453,7 @@ const Analytics = () => {
             </Select>
           </div>
           
-          <div className="h-[400px] overflow-x-auto">
+          <div className="h-[500px] overflow-x-auto">
             <div className="grid grid-cols-6 gap-4 h-full min-w-[900px]">
               {/* Definindo ordem fixa das colunas */}
               {['Falta Escolar', 'Desorganização', 'Uniforme', 'Alimentação irregular', 'Atraso/Saída sem autorização', 'Comportamento'].map((occurrenceType) => {
@@ -434,12 +461,12 @@ const Analytics = () => {
                 
                 // Cores específicas para cada tipo de ocorrência (seguindo padrão do gráfico de pizza)
                 const occurrenceColors: { [key: string]: string } = {
-                  'Falta Escolar': '#EF4444',
-                  'Desorganização': '#F97316', 
-                  'Uniforme': '#6B7280',
-                  'Alimentação irregular': '#3B82F6',
-                  'Atraso/Saída sem autorização': '#10B981',
-                  'Comportamento': '#8B5CF6'
+                  'Falta Escolar': '#FFC0CB',      // Rosa
+                  'Comportamento': '#FF0000',       // Vermelho
+                  'Desorganização': '#FF9F40',      // Laranja
+                  'Uniforme': '#6B7280',           // Cinza
+                  'Atraso/Saída sem autorização': '#8B4513',  // Marrom
+                  'Alimentação irregular': '#8B5CF6'          // Roxo
                 };
                 
                 const color = occurrenceColors[occurrenceType] || '#6B7280';
