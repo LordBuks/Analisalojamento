@@ -158,7 +158,7 @@ export function OccurrenceChart({ data, title, type, onBarClick, onPieClick }: O
             {data.map((entry, index) => (
               <Cell 
                 key={`cell-${index}`} 
-                fill={categoryColors[entry.name] || INTER_COLORS[index % INTER_COLORS.length]}
+                fill={categoryColors[entry.name]}
               />
             ))}
           </Pie>
