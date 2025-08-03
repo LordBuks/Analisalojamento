@@ -26,15 +26,15 @@ interface OccurrenceChartProps {
   onPieClick?: (categoryName: string) => void;
 }
 
-// Paleta de cores completamente distintas para o gráfico de pizza
+// Paleta de cores padronizada conforme especificação
 const categoryColors: { [key: string]: string } = {
-  'Falta Escolar': '#f80c8eff',
-  'Alimentação Irregular': '#740a8fff',
-  'Uniforme': '#a6a8a5ff',
-  'Desorganização': '#ee780aff',
-  'Comportamento': '#FF0000',
-  'Atrasos/Sair sem autorização': '#722710ff',
-  'Outras': '#8B5CF6'
+  'Falta Escolar': '#FFC0CB',           // Rosa
+  'Comportamento': '#FF0000',           // Vermelho
+  'Desorganização': '#FF9F40',          // Laranja
+  'Uniforme': '#6B7280',               // Cinza
+  'Atrasos/Sair sem autorização': '#8B4513',  // Marrom
+  'Alimentação Irregular': '#8B5CF6',   // Roxo
+  'Outras': '#8B5CF6'                   // Roxo (fallback)
 };
 
 const INTER_COLORS = Object.values(categoryColors);
