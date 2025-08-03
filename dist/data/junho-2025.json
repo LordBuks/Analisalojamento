@@ -1,0 +1,1002 @@
+[
+  {
+    "NOME": "Alexandre Pablo",
+    "Cat": "Sub-16",
+    "DATA": "23/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Danilo Fortunato",
+    "Cat": "Sub-16",
+    "DATA": "12/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Danilo Fortunato",
+    "Cat": "Sub-16",
+    "DATA": "26/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Davi David",
+    "Cat": "Sub-17",
+    "DATA": "01/06/25",
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Em ronda às 10h Q1 encontrado embalagens de chocolate ",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Davi David",
+    "Cat": "Sub-17",
+    "DATA": "14/05/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 20h05 foi encotrado acúmulo de toalhas jogadas no chão ",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Davi Gabriel",
+    "Cat": "Sub-16",
+    "DATA": "03/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 15h30 cama desarrumada",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Enzo Baggio",
+    "Cat": "Sub-16",
+    "DATA": "02/06/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Algazarra após o horario do silêncio, chamada atenção em mais de 1 ocasião",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Esley Ezequiel",
+    "Cat": "Sub-20",
+    "DATA": "01/06/25",
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Em ronda às 15h20 foi observado embalagens de chocolate ao lado da cama",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Esley Ezequiel",
+    "Cat": "Sub-20",
+    "DATA": "11/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Gabriel Baggio",
+    "Cat": "Sub-17",
+    "DATA": "09/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 09h20 foi encotrado acúmulo de toalhas jogadas no chão ",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Gabriel Ryan",
+    "Cat": "Sub-20",
+    "DATA": "09/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 09h20 foi encotrado acúmulo de toalhas jogadas no chão ",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Gustavo Mattos",
+    "Cat": "Sub-16",
+    "DATA": "01/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 15h20 foi observado a cama totalmente desarrumada",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Gustavo Mattos",
+    "Cat": "Sub-16",
+    "DATA": "02/06/25",
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Em ronda às 16h16  foi encontrado embalagens chocolate",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Gustavo Mattos",
+    "Cat": "Sub-15",
+    "DATA": "17/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda às 18h estava sem uniforme no alojamento",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Jhonatan Almeida",
+    "Cat": "Sub-20",
+    "DATA": "02/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Jhonatan Almeida",
+    "Cat": "Sub-20",
+    "DATA": "04/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Jhonatan Almeida",
+    "Cat": "Sub-20",
+    "DATA": "08/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Jhonatan Almeida",
+    "Cat": "Sub-20",
+    "DATA": "09/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda às 15h estava sem uniforme no alojamento, ignorou a solicitação.",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Jhonatan Almeida",
+    "Cat": "Sub-20",
+    "DATA": "11/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Jhonatan Almeida",
+    "Cat": "Sub-20",
+    "DATA": "12/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Jhonatan Almeida",
+    "Cat": "Sub-20",
+    "DATA": "26/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Jhonatan Almeida",
+    "Cat": "Sub-20",
+    "DATA": "27/06/25",
+    "TIPO": "Atrasos/Sair sem autorização",
+    "OCORRÊNCIA": "Atleta dormiu fora do alojamento sem autorização",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Lucas",
+    "Cat": "Sub-17",
+    "DATA": "05/06/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "O atleta não deixou o celular no alojamento e levou para a escola",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Lucas",
+    "Cat": "Sub-17",
+    "DATA": "03/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda estava sem uniforme na ceia",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Lucas",
+    "Cat": "Sub-17",
+    "DATA": "09/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Lucas",
+    "Cat": "Sub-17",
+    "DATA": "09/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Estava sem uniforme no alojamento",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Lucas",
+    "Cat": "Sub-17",
+    "DATA": "09/06/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Em ronda às 13h22 estava de algazarra e som alto no quarto 1",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Lucas",
+    "Cat": "Sub-17",
+    "DATA": "09/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Lucas",
+    "Cat": "Sub-17",
+    "DATA": "15/05/25",
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Em ronda demanhã foi encontrado diversas embalagens de doces ",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Pedro Leite",
+    "Cat": "Sub-17",
+    "DATA": "09/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 09h20 foi encotrado acúmulo de toalhas jogadas no chão ",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "João Pedro Leite",
+    "Cat": "Sub-17",
+    "DATA": "11/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda estava sem uniforme na ceia",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Pedro Leite",
+    "Cat": "Sub-17",
+    "DATA": "12/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Pedro Leite",
+    "Cat": "Sub-17",
+    "DATA": "15/05/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda estava sem uniforme na ceia",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Pedro Leite",
+    "Cat": "Sub-17",
+    "DATA": "26/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Victor Alves",
+    "Cat": "Sub-20",
+    "DATA": "02/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Victor Alves",
+    "Cat": "Sub-20",
+    "DATA": "04/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Victor Alves",
+    "Cat": "Sub-20",
+    "DATA": "08/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Victor Alves",
+    "Cat": "Sub-20",
+    "DATA": "11/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Victor Alves",
+    "Cat": "Sub-20",
+    "DATA": "12/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Victor Alves",
+    "Cat": "Sub-20",
+    "DATA": "13/06/25",
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Em ronda às 14h10 encontrado embalagens de doces e salgados no quarto",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Victor Alves",
+    "Cat": "Sub-20",
+    "DATA": "21/06/25",
+    "TIPO": "Atrasos/Sair sem autorização",
+    "OCORRÊNCIA": "Atleta chegou após o horário permitido sem autorização às 22h10",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Victor Alves",
+    "Cat": "Sub-20",
+    "DATA": "25/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda estava sem uniforme na ceia",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Victor Alves",
+    "Cat": "Sub-20",
+    "DATA": "26/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "João Vitor Galindo",
+    "Cat": "Sub-20",
+    "DATA": "01/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 15h20 foi observado a cama totalmente desarrumada",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "João Vitor Galindo",
+    "Cat": "Sub-20",
+    "DATA": "09/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 09h20 foi encotrado acúmulo de toalhas jogadas no chão ",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "João Vitor Meier",
+    "Cat": "Sub-16",
+    "DATA": "11/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda estava sem uniforme na ceia",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Julio Cesar",
+    "Cat": "Sub-17",
+    "DATA": "01/06/25",
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Em ronda às 10h Q1 encontrado embalagens de chocolate ",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Julio Cesar",
+    "Cat": "Sub-17",
+    "DATA": "09/06/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Em ronda às 13h22 estava de algazarra e som alto no quarto 1",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Julio Cesar",
+    "Cat": "Sub-17",
+    "DATA": "14/05/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 20h05 foi encotrado acúmulo de toalhas jogadas no chão ",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Julio Cesar",
+    "Cat": "Sub-17",
+    "DATA": "26/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Kaiky Sander",
+    "Cat": "Sub-15",
+    "DATA": "01/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Kaiky Sander",
+    "Cat": "Sub-15",
+    "DATA": "02/06/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Algazarra após o horario do silêncio, chamada atenção em mais de 1 ocasião",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Kaiky Sander",
+    "Cat": "Sub-15",
+    "DATA": "22/06/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Atleta Kaike Sander fora do quarto às 23h foi avisado às 00h às 01h",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Kauâ Cavalcanti",
+    "Cat": "Sub-17",
+    "DATA": "08/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Kauâ Cavalcanti",
+    "Cat": "Sub-17",
+    "DATA": "09/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 09h20 foi encotrado acúmulo de toalhas jogadas no chão ",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Kauâ Cavalcanti",
+    "Cat": "Sub-17",
+    "DATA": "21/06/25",
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Em ronda foi encontrado pode com comida podre, lata de refrigerante no armario",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Lázaro Gonçalves",
+    "Cat": "Sub-20",
+    "DATA": "01/06/25",
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Em ronda às 15h20 foi observado embalagens de chocolate ao lado da cama",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Lázaro Gonçalves",
+    "Cat": "Sub-20",
+    "DATA": "09/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda às 11h17  estava sem uniforme no almoço",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Lázaro Gonçalves",
+    "Cat": "Sub-20",
+    "DATA": "24/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Lázaro Gonçalves",
+    "Cat": "Sub-20",
+    "DATA": "25/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda estava sem uniforme na ceia",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Luan Pain",
+    "Cat": "Sub-20",
+    "DATA": "13/06/25",
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Em ronda às 14h10 encontrado embalagens de doces e salgados no quarto",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Lucas Andrew",
+    "Cat": "Sub-16",
+    "DATA": "25/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 11h ar condicionado ligado sem ninguem no quarto",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Lucas Gabriel",
+    "Cat": "Sub-16",
+    "DATA": "25/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 11h ar condicionado ligado sem ninguem no quarto",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Lukas Pedrosa",
+    "Cat": "Sub-16",
+    "DATA": "01/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Lukas Pedrosa",
+    "Cat": "Sub-15",
+    "DATA": "02/06/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Algazarra após o horario do silêncio, chamada atenção em mais de 1 ocasião",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Lukas Pedrosa",
+    "Cat": "Sub-16",
+    "DATA": "07/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda às 18h19 estava sem uniforme na janta",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Lukas Pedrosa",
+    "Cat": "Sub-16",
+    "DATA": "08/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Lukas Pedrosa",
+    "Cat": "Sub-16",
+    "DATA": "19/06/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Algazarra após o horario do silêncio,  discutindo por causa de APOSTA de jogo",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Marcos Neves",
+    "Cat": "Sub-14",
+    "DATA": "01/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 15h20 foi observado a cama totalmente desarrumada",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Marcos Neves",
+    "Cat": "Sub-14",
+    "DATA": "02/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 15h15 ar condiconado ligado e ninguém no quarto",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Marcos Neves",
+    "Cat": "Sub-14",
+    "DATA": "03/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 15h30 cama desarrumada",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Marcos Neves",
+    "Cat": "Sub-14",
+    "DATA": "10/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Padre Léo",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Marcos Neves",
+    "Cat": "Sub-14",
+    "DATA": "16/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Padre Léo",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Matheus Ferreira",
+    "Cat": "Sub-17",
+    "DATA": "02/06/25",
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Em ronda às 16h16  foi encontrado embalagens de salgado e lata de energético",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Matheus Ferreira",
+    "Cat": "Sub-17",
+    "DATA": "09/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Matheus Ferreira",
+    "Cat": "Sub-17",
+    "DATA": "09/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Matheus Ferreira",
+    "Cat": "Sub-17",
+    "DATA": "15/05/25",
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Em ronda demanhã foi encontrado diversas embalagens de doces ",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Matheus Ferreira",
+    "Cat": "Sub-17",
+    "DATA": "03/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda estava sem uniforme na ceia",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Matheus Mauricio",
+    "Cat": "Sub-14",
+    "DATA": "02/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Padre Léo",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Natan Lacerda",
+    "Cat": "Sub-16",
+    "DATA": "02/06/25",
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Em ronda às 16h16  foi encontrado embalagens chocolate",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pedro Henrique Campos",
+    "Cat": "Sub-14",
+    "DATA": "01/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 15h20 foi observado a cama totalmente desarrumada",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Pedro Henrique Campos",
+    "Cat": "Sub-15",
+    "DATA": "01/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pedro Henrique Campos",
+    "Cat": "Sub-15",
+    "DATA": "02/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 15h15 ar condiconado ligado e ninguém no quarto",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Pedro Henrique Campos",
+    "Cat": "Sub-15",
+    "DATA": "03/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 15h30 cama desarrumada",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Pedro Henrique Campos",
+    "Cat": "Sub-15",
+    "DATA": "12/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pedro Henrique Campos",
+    "Cat": "Sub-15",
+    "DATA": "22/06/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Dormiu fora do seu quarto sem  autorização, dormiu no quarto 09",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Pedro Henrique da Silva",
+    "Cat": "Sub-16",
+    "DATA": "19/06/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Algazarra após o horario do silêncio,  discutindo por causa de APOSTA de jogo",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pedro Martins",
+    "Cat": "Sub-17",
+    "DATA": "11/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda estava sem uniforme na ceia",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Petro Zucchi",
+    "Cat": "Sub-17",
+    "DATA": "05/06/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "O atleta não deixou o celular no alojamento e levou para a escola",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pietro Zucchi",
+    "Cat": "Sub-17",
+    "DATA": "01/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pietro Zucchi",
+    "Cat": "Sub-17",
+    "DATA": "01/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Sem uniforme na janta",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Pietro Zucchi",
+    "Cat": "Sub-17",
+    "DATA": "15/05/25",
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Em ronda demanhã foi encontrado diversas embalagens de doces ",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Ray Corrêa",
+    "Cat": "Sub-16",
+    "DATA": "04/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Raykkonen Pereira",
+    "Cat": "Sub-17",
+    "DATA": "09/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Raykkonen Pereira",
+    "Cat": "Sub-17",
+    "DATA": "09/06/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Em ronda às 13h22 estava de algazarra e som alto no quarto 1",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Raykkonen Pereira",
+    "Cat": "Sub-17",
+    "DATA": "09/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Raykkonen Pereira",
+    "Cat": "Sub-17",
+    "DATA": "01/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 15h20 foi observado a cama totalmente desarrumada",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Raykkonen Pereira",
+    "Cat": "Sub-17",
+    "DATA": "03/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda estava sem uniforme na ceia",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Richard Rodrigues",
+    "Cat": "Sub-17",
+    "DATA": "01/06/25",
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Em ronda às 10h Q1 encontrado embalagens de chocolate ",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Richard Rodrigues",
+    "Cat": "Sub-17",
+    "DATA": "08/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Richard Rodrigues",
+    "Cat": "Sub-17",
+    "DATA": "12/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Richard Rodrigues",
+    "Cat": "Sub-17",
+    "DATA": "14/05/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 20h05 foi encotrado acúmulo de toalhas jogadas no chão ",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Richard Rodrigues",
+    "Cat": "Sub-17",
+    "DATA": "21/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda estava sem uniforme na ceia, argumentou que podia dar caixinha",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Roger Cavalheiro",
+    "Cat": "Sub-16",
+    "DATA": "01/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Juliano Nascimento",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Roger Cavalheiro",
+    "Cat": "Sub-16",
+    "DATA": "26/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Juliano Nascimento",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Thiago Luiz",
+    "Cat": "Sub-16",
+    "DATA": "05/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda às 11h40 estava sem uniforme no almoço",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Thiago Luiz",
+    "Cat": "Sub-16",
+    "DATA": "25/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 11h ar condicionado ligado sem ninguem no quarto",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Victor Hugo Mattos",
+    "Cat": "Sub-15",
+    "DATA": "02/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 15h15 ar condiconado ligado e ninguém no quarto",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Victor Hugo Mattos",
+    "Cat": "Sub-15",
+    "DATA": "07/06/25",
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Em ronda às 20h encontrado embalagens de chocolate na cama",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Victor Hugo Mattos",
+    "Cat": "Sub-15",
+    "DATA": "15/05/25",
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Em ronda demanhã foi encontrado diversas embalagens de doces e salgados",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Victor Hugo Mattos",
+    "Cat": "Sub-15",
+    "DATA": "16/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Padre Léo",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Victor Hugo Mattos",
+    "Cat": "Sub-15",
+    "DATA": "25/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda às 16h26 estava sem uniforme no alojamento",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Victor Rossi",
+    "Cat": "Sub-16",
+    "DATA": "02/06/25",
+    "TIPO": "Alimentação Irregular",
+    "OCORRÊNCIA": "Em ronda às 16h16  foi encontrado embalagens chocolate",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Victor Rossi",
+    "Cat": "Sub-15",
+    "DATA": "11/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Victor Rossi",
+    "Cat": "Sub-16",
+    "DATA": "01/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 15h20 foi observado a cama totalmente desarrumada",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Vitor Hugo Neves",
+    "Cat": "Sub-17",
+    "DATA": "05/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda estava sem uniforme na ceia",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Vitor Hugo Neves",
+    "Cat": "Sub-17",
+    "DATA": "07/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda às 18h19 estava sem uniforme na janta",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Vitor Hugo Neves",
+    "Cat": "Sub-17",
+    "DATA": "09/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda às 08h10 estava sem uniforme no café",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Vitor Hugo Neves",
+    "Cat": "Sub-17",
+    "DATA": "15/05/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda estava sem uniforme na ceia",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Vitor Hugo Neves",
+    "Cat": "Sub-17",
+    "DATA": "25/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda às 11h38 sem uniforme no almoço",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Vitor Hugo Neves",
+    "Cat": "Sub-17",
+    "DATA": "25/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda estava sem uniforme na ceia",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Vitor Hugo Neves",
+    "Cat": "Sub-17",
+    "DATA": "26/06/25",
+    "TIPO": "Falta Escolar",
+    "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Vitor Hugo Neves",
+    "Cat": "Sub-17",
+    "DATA": "01/06/25",
+    "TIPO": "Desorganização",
+    "OCORRÊNCIA": "Em ronda às 15h20 foi observado a cama totalmente desarrumada",
+    "Valor": 50.0
+  },
+  {
+    "NOME": "Wesley Antônio",
+    "Cat": "Sub-15",
+    "DATA": "25/06/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Em ronda às 12h02 estava sem uniforme no almoço",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Yuri Manoel",
+    "Cat": "Sub-16",
+    "DATA": "19/06/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Algazarra após o horario do silêncio,  discutindo por causa de APOSTA de jogo",
+    "Valor": 100.0
+  }
+]

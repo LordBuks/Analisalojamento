@@ -7,6 +7,7 @@ import { testOccurrences } from '../data/testData';
 import { RecurrenceAthleteModal } from '../components/dashboard/RecurrenceAthleteModal';
 import { CategoryDetailModal } from '../components/dashboard/CategoryDetailModal';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../components/ui/select';
+import BolaMurchaImage from '../assets/bola_murcha.png';
 
 const Analytics = () => {
   const [loading, setLoading] = useState(true);
@@ -17,6 +18,7 @@ const Analytics = () => {
   const [selectedAthlete, setSelectedAthlete] = useState<string>("");
   const [selectedBehavioralTrendOccurrenceType, setSelectedBehavioralTrendOccurrenceType] = useState<string>("");
   const [selectedRecurrenceType, setSelectedRecurrenceType] = useState<string | null>(null);
+  const [selectedPeriod, setSelectedPeriod] = useState<string>("all");
 
   useEffect(() => {
     const loadData = async () => {
@@ -197,6 +199,45 @@ const Analytics = () => {
       .slice(0, 10);
   }, [allAthleteStats]);
 
+  // Análise dos Top 5 atletas por tipo de ocorrência
+  const top5AthletesByOccurrenceType = useMemo(() => {
+    const filteredData = selectedPeriod === "all" ? monthlyData : monthlyData.filter(monthData => monthData.month === selectedPeriod);
+    
+    const occurrenceTypeStats = new Map();
+    
+    filteredData.forEach(monthData => {
+      monthData.data.forEach((occ: any) => {
+        if (!occurrenceTypeStats.has(occ.TIPO)) {
+          occurrenceTypeStats.set(occ.TIPO, new Map());
+        }
+        
+        const typeMap = occurrenceTypeStats.get(occ.TIPO);
+        if (!typeMap.has(occ.NOME)) {
+          typeMap.set(occ.NOME, {
+            name: occ.NOME,
+            category: occ.CAT,
+            count: 0,
+            totalValue: 0
+          });
+        }
+        
+        const athlete = typeMap.get(occ.NOME);
+        athlete.count++;
+        athlete.totalValue += parseInt(occ.VALOR);
+      });
+    });
+
+    const result = new Map();
+    occurrenceTypeStats.forEach((athleteMap, occurrenceType) => {
+      const sortedAthletes = Array.from(athleteMap.values())
+        .sort((a: any, b: any) => b.count - a.count)
+        .slice(0, 5);
+      result.set(occurrenceType, sortedAthletes);
+    });
+
+    return result;
+  }, [monthlyData, selectedPeriod]);
+
   // Estatísticas comparativas
   const comparativeStats = useMemo(() => {
     if (timelineData.length < 2) return null;
@@ -362,6 +403,93 @@ const Analytics = () => {
                 />
               </LineChart>
             </ResponsiveContainer>
+          </div>
+        </div>
+
+        {/* Top 5 Atletas por Ocorrências */}
+        <div className="bg-white rounded-lg shadow p-6 mb-8">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center">
+              <img src={BolaMurchaImage} alt="Bola Murcha" className="w-8 h-8 mr-3" />
+              <h2 className="text-xl text-red-600 font-semibold">Top 5 Bola Murcha</h2>
+            </div>
+            <Select onValueChange={setSelectedPeriod} defaultValue="all">
+              <SelectTrigger className="w-[200px]">
+                <SelectValue placeholder="Selecionar Período" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Todos os meses</SelectItem>
+                {monthlyData.map(monthData => (
+                  <SelectItem key={monthData.month} value={monthData.month}>{monthData.month}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+          
+          <div className="h-[400px] overflow-x-auto">
+            <div className="grid grid-cols-6 gap-4 h-full min-w-[900px]">
+              {/* Definindo ordem fixa das colunas */}
+              {['Falta Escolar', 'Desorganização', 'Uniforme', 'Alimentação irregular', 'Atraso/Saída sem autorização', 'Comportamento'].map((occurrenceType) => {
+                const athletes = top5AthletesByOccurrenceType.get(occurrenceType) || [];
+                
+                // Cores específicas para cada tipo de ocorrência (seguindo padrão do gráfico de pizza)
+                const occurrenceColors: { [key: string]: string } = {
+                  'Falta Escolar': '#EF4444',
+                  'Desorganização': '#F97316', 
+                  'Uniforme': '#6B7280',
+                  'Alimentação irregular': '#3B82F6',
+                  'Atraso/Saída sem autorização': '#10B981',
+                  'Comportamento': '#8B5CF6'
+                };
+                
+                const color = occurrenceColors[occurrenceType] || '#6B7280';
+                const maxCount = Math.max(...(athletes as any[]).map((a: any) => a.count), 1);
+                
+                return (
+                  <div key={occurrenceType} className="flex flex-col">
+                    <h3 className="font-semibold text-gray-800 text-xs mb-4 text-center border-b pb-2 h-12 flex items-center justify-center">
+                      {occurrenceType}
+                    </h3>
+                    <div className="flex-1 space-y-4">
+                      {(athletes as any[]).map((athlete, athleteIndex) => {
+                        const barWidth = (athlete.count / maxCount) * 100;
+                        
+                        return (
+                          <div key={athlete.name} className="flex flex-col mb-4">
+                            {/* Círculo com iniciais e Nome do Atleta */}
+                            <div className="flex items-center space-x-2 mb-2">
+                              <div 
+                                className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs flex-shrink-0"
+                                style={{ backgroundColor: color }}
+                              >
+                                {athlete.name.split(" ").map((n: string) => n[0]).join("").toUpperCase().slice(0, 2)}
+                              </div>
+                              <p className="text-xs font-medium text-gray-800 truncate">{athlete.name}</p>
+                            </div>
+                            
+                            {/* Barra horizontal e Contagem abaixo */}
+                            <div className="flex items-center space-x-2">
+                              <div className="w-full bg-gray-200 rounded-full h-2">
+                                <div 
+                                  className="h-2 rounded-full transition-all duration-300"
+                                  style={{ 
+                                    backgroundColor: color,
+                                    width: `${barWidth}%`
+                                  }}
+                                ></div>
+                              </div>
+                              <span className="text-xs font-bold text-gray-600 min-w-[20px]">
+                                {athlete.count}
+                              </span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       
