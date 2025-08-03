@@ -28,7 +28,7 @@ interface OccurrenceChartProps {
 
 // Paleta de cores padronizada conforme especificação
 const categoryColors: { [key: string]: string } = {
-  'Falta Escolar': '#FFC0CB',           // Rosa
+  'Falta Escolar': '#FF69B4',           // Rosa mais forte
   'Comportamento': '#FF0000',           // Vermelho
   'Desorganização': '#FF9F40',          // Laranja
   'Uniforme': '#6B7280',               // Cinza
