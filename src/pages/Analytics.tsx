@@ -456,7 +456,7 @@ const Analytics = () => {
           <div className="h-[500px] overflow-x-auto">
             <div className="grid grid-cols-6 gap-4 h-full min-w-[900px]">
               {/* Definindo ordem fixa das colunas */}
-              {['Falta Escolar', 'Desorganização', 'Uniforme', 'Alimentação irregular', 'Atraso/Saída sem autorização', 'Comportamento'].map((occurrenceType) => {
+              {["Falta Escolar", "Desorganização", "Uniforme", "Alimentação Irregular", "Atrasos/Sair sem autorização", "Comportamento"].map((occurrenceType) => {
                 const athletes = top5AthletesByOccurrenceType.get(occurrenceType) || [];
                 
                 // Cores específicas para cada tipo de ocorrência (seguindo padrão do gráfico de pizza)
@@ -582,7 +582,7 @@ const Analytics = () => {
                     outerRadius={100}
                     fill="#8884d8"
                     dataKey="value"
-                    label={({ name, value, percent }) => `${name}: ${value} (${(percent * 100).toFixed(0)}%)`}
+                    label={({ name, value, percent }) => <tspan style={{ fontWeight: 'bold' }}>{`${name}: ${value} (${(percent * 100).toFixed(0)}%)`}</tspan>}
                     onClick={handlePieClick}
                   >
                     {recurrenceAnalysis.map((entry, index) => (
