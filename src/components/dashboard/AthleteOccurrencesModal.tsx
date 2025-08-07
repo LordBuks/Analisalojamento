@@ -1,22 +1,37 @@
 import React from 'react';
-import { X, User, AlertCircle, DollarSign } from 'lucide-react';
+import { X, User, AlertCircle, DollarSign, FileText } from 'lucide-react';
 import { AthleteOccurrence } from '../../data/athleteData';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { format } from 'date-fns';
-import { ptBR } from 'date-fns/locale';
+import { Button } from "@/components/ui/button";
+import { generateAthletePDF } from '../../utils/pdfGenerator';
 
 interface AthleteOccurrencesModalProps {
   athleteName: string;
   occurrences: AthleteOccurrence[];
   onClose: () => void;
+  month: string;
+  year: number;
 }
+
+// Função para formatar data sem usar date-fns
+const formatDate = (date: Date): string => {
+  if (isNaN(date.getTime())) return 'Data Inválida';
+  
+  const day = date.getDate().toString().padStart(2, '0');
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const year = date.getFullYear();
+  
+  return `${day}/${month}/${year}`;
+};
 
 export const AthleteOccurrencesModal: React.FC<AthleteOccurrencesModalProps> = ({
   athleteName,
   occurrences,
   onClose,
+  month,
+  year,
 }) => {
   const initials = athleteName.split(' ').map(n => n[0]).join('').slice(0, 2);
   const firstOccurrence = occurrences[0];
@@ -43,6 +58,15 @@ export const AthleteOccurrencesModal: React.FC<AthleteOccurrencesModalProps> = (
   const category = firstOccurrence?.CAT || 'N/A';
   const totalValue = occurrences.reduce((sum, occ) => sum + Number(occ.VALOR), 0);
 
+  const handleGeneratePDF = () => {
+    try {
+      generateAthletePDF(athleteName, category, occurrences, month, year);
+    } catch (error) {
+      console.error('Erro ao gerar PDF:', error);
+      alert('Erro ao gerar PDF. Tente novamente.');
+    }
+  };
+
   return (
     <Dialog open={true} onOpenChange={onClose}>
       <DialogContent className="max-w-3xl max-h-[90vh] overflow-hidden flex flex-col">
@@ -57,9 +81,19 @@ export const AthleteOccurrencesModal: React.FC<AthleteOccurrencesModalProps> = (
               ))}
             </div>
           </DialogTitle>
-          <button onClick={onClose} className="flex items-center justify-center w-8 h-8 rounded-full bg-red-600 text-white hover:bg-red-700 transition-colors">
-            <X size={20} />
-          </button>
+          <div className="flex items-center gap-2 ml-auto">
+            <Button
+              onClick={handleGeneratePDF}
+              className="bg-red-600 hover:bg-red-700 text-white"
+              size="sm"
+            >
+              <FileText className="h-4 w-4 mr-2" />
+              Salvar PDF
+            </Button>
+            <button onClick={onClose} className="flex items-center justify-center w-8 h-8 rounded-full bg-red-600 text-white hover:bg-red-700 transition-colors">
+              <X size={20} />
+            </button>
+          </div>
         </DialogHeader>
         {/* Cabeçalho com foto e informações do atleta */}
         <div className="bg-gradient-to-r from-red-50 to-white border border-red-100 rounded-lg p-6 mb-4">
@@ -107,7 +141,7 @@ export const AthleteOccurrencesModal: React.FC<AthleteOccurrencesModalProps> = (
           <div className="flex-1 overflow-y-auto space-y-4 pr-2">
             {occurrences.map((occurrence, index) => {
               const dateObject = new Date(occurrence.DATA);
-              const formattedDate = isNaN(dateObject.getTime()) ? 'Data Inválida' : format(dateObject, 'dd/MM/yyyy', { locale: ptBR });
+              const formattedDate = formatDate(dateObject);
 
               return (
                 <div key={index} className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
@@ -125,3 +159,4 @@ export const AthleteOccurrencesModal: React.FC<AthleteOccurrencesModalProps> = (
     </Dialog>
   );
 };
+
