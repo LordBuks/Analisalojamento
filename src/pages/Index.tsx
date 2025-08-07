@@ -11,6 +11,8 @@ import DataLoader from '../components/DataLoader'; // Importar o DataLoader
 import { useAuth } from '../hooks/useAuth'; // Importar o hook de autenticação
 import { getAllOccurrences, getMonthData, getAvailableMonths } from '../data/dataLoader';
 import { AthleteOccurrence } from '../data/athleteData';
+import { generateAthletePDF, generateGeneralPDF } from '../utils/pdfGenerator';
+import { Button } from "@/components/ui/button";
 
 const Index = () => {
   const { user } = useAuth(); // Obter informações do usuário autenticado
@@ -149,6 +151,31 @@ const Index = () => {
     setSelectedCategory(categoryName);
   };
 
+  // Função para gerar PDF geral
+  const handleGenerateGeneralPDF = async () => {
+    try {
+      // Preparar dados dos atletas para o PDF
+      const allAthletesData = athleteStats.map(athlete => ({
+        name: athlete.name,
+        category: athlete.category,
+        occurrences: athlete.occurrences
+      }));
+
+      const monthName = selectedMonth === 'all' ? 'Geral' : selectedMonth;
+      
+      await generateGeneralPDF(
+        monthName,
+        totalAthletes,
+        totalOccurrences,
+        totalValue,
+        allAthletesData
+      );
+    } catch (error) {
+      console.error('Erro ao gerar PDF:', error);
+      alert('Erro ao gerar PDF. Verifique o console para mais detalhes.');
+    }
+  };
+
   const handleMonthChange = (month: string, year: number) => {
     setSelectedMonth(month);
     setSelectedYear(year);
@@ -214,6 +241,16 @@ const Index = () => {
             icon={TrendingUp}
             color="purple"
           />
+        </div>
+
+        {/* Botão Gerar PDF Geral */}
+        <div className="mb-8">
+          <Button 
+            onClick={handleGenerateGeneralPDF}
+            className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+          >
+            Gerar PDF Geral
+          </Button>
         </div>
 
         {/* Gráficos */}
@@ -349,6 +386,8 @@ const Index = () => {
             athleteName={selectedAthleteForOccurrences}
             occurrences={currentData.filter(occ => occ.NOME === selectedAthleteForOccurrences)}
             onClose={() => setSelectedAthleteForOccurrences(null)}
+            month={selectedMonth === 'all' ? 'Geral' : selectedMonth}
+            year={selectedYear}
           />
         )}
 
