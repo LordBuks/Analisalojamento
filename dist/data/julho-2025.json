@@ -63,6 +63,14 @@
     "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
     "Valor": 100.0
   },
+   {
+    "NOME": "Davi David",
+    "Cat": "Sub-17",
+    "DATA": "28/07/25",
+    "TIPO": "Atrasos/Sair sem autorização",
+    "OCORRÊNCIA": "Chegou após o horário permitido às 20h20",
+    "Valor": 100.0
+  },
   {
     "NOME": "Davi Gabriel",
     "Cat": "Sub-15",
@@ -88,7 +96,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Everaldo Fabio",
+    "NOME": "Everaldo Fábio",
     "Cat": "Sub-17",
     "DATA": "14/07/25",
     "TIPO": "Desorganização",
@@ -197,7 +205,7 @@
     "DATA": "04/07/25",
     "TIPO": "Alimentação Irregular",
     "OCORRÊNCIA": "Saiu do comendo do  refeitório na ceia as 22:30hs.",
-    "Valor": 100.0
+    "Valor": 50.0
   },
   {
     "NOME": "Jhonatan Almeida",
@@ -229,6 +237,14 @@
     "DATA": "14/07/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Jhonatan Almeida",
+    "Cat": "Sub-20",
+    "DATA": "26/07/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Sem uniforme no café às 08h10.",
     "Valor": 100.0
   },
   {
@@ -456,6 +472,14 @@
     "Valor": 100.0
   },
   {
+    "NOME": "Kayki Sander",
+    "Cat": "Sub-15",
+    "DATA": "28/07/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Desrespeitar o horário de silêncio, jogando conversa e gritos às 01h41.",
+    "Valor": 100.0
+  },
+  {
     "NOME": "Lázaro Gonçalves",
     "Cat": "Sub-20",
     "DATA": "14/07/25",
@@ -512,7 +536,7 @@
     "Valor": 50.0
   },
   {
-    "NOME": "Lukas Pedroza",
+    "NOME": "Lukas Pedrosa",
     "Cat": "Sub-16",
     "DATA": "02/07/25",
     "TIPO": "Comportamento",
@@ -536,7 +560,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Lukas Pedroza",
+    "NOME": "Lukas Pedrosa",
     "Cat": "Sub-16",
     "DATA": "14/07/25",
     "TIPO": "Desorganização",
@@ -544,11 +568,19 @@
     "Valor": 50.0
   },
   {
-    "NOME": "Lukas Pedroza",
+    "NOME": "Lukas Pedrosa",
     "Cat": "Sub-16",
     "DATA": "21/07/25",
     "TIPO": "Comportamento",
     "OCORRÊNCIA": "Atleta de algazarra no onibûs chutando a porta interna",
+    "Valor": 100.0
+  },
+   {
+    "NOME": "Lukas Pedrosa",
+    "Cat": "Sub-16",
+    "DATA": "28/07/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Desrespeitar o horário de silêncio, jogando conversa e gritos às 01h41.",
     "Valor": 100.0
   },
   {
@@ -651,9 +683,9 @@
     "NOME": "Pedro Henrique da Silva",
     "Cat": "Sub-16",
     "DATA": "02/07/25",
-    "TIPO": "Desorganização",
+    "TIPO": "Comportamento",
     "OCORRÊNCIA": "Desrespeitar o horário de silêncio com musicas alta.",
-    "Valor": 50.0
+    "Valor": 100.0
   },
   {
     "NOME": "Pedro Henrique da Silva",
@@ -733,7 +765,7 @@
     "DATA": "04/07/25",
     "TIPO": "Uniforme",
     "OCORRÊNCIA": "Saiu do comendo do  refeitório no café.",
-    "Valor": 100.0
+    "Valor": 50.0
   },
   {
     "NOME": "Pietro Zucchi",
@@ -765,6 +797,14 @@
     "DATA": "18/07/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+    {
+    "NOME": "Pietro Zucchi",
+    "Cat": "Sub-17",
+    "DATA": "26/07/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Sem Uniforme Obrigatorio café as 08h10",
     "Valor": 100.0
   },
   {
@@ -837,6 +877,14 @@
     "DATA": "18/07/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Falta escolar sem justificativa Escola Julio Cesar",
+    "Valor": 100.0
+  },
+  {
+    "NOME": "Raykkonen Pereira",
+    "Cat": "Sub-17",
+    "DATA": "28/07/25",
+    "TIPO": "Comportamento",
+    "OCORRÊNCIA": "Desrespeitar o horário de silêncio, jogando conversa e gritos às 01h41.",
     "Valor": 100.0
   },
   {
@@ -951,6 +999,22 @@
     "OCORRÊNCIA": "Em ronda foi observado o Q-04 todo bagunçado por volta das 09:40hs",
     "Valor": 50.0
   },
+   {
+    "NOME": "Thiago Luiz",
+    "Cat": "Sub-16",
+    "DATA": "26/07/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Sem Uniforme Obrigatorio Alnoço",
+    "Valor": 100.0
+  },
+   {
+    "NOME": "Thiago Luiz",
+    "Cat": "Sub-16",
+    "DATA": "28/07/25",
+    "TIPO": "Atrasos/Sair sem autorização",
+    "OCORRÊNCIA": "Chegou após o horário permitido às 20h20 sem autorização",
+    "Valor": 100.0
+  },
   {
     "NOME": "Victor Hugo Matos",
     "Cat": "Sub-15",
@@ -1045,6 +1109,14 @@
     "DATA": "18/07/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
+    "Valor": 100.0
+  },
+   {
+    "NOME": "Vitor Hugo Neves",
+    "Cat": "Sub-17",
+    "DATA": "26/07/25",
+    "TIPO": "Uniforme",
+    "OCORRÊNCIA": "Sem Uniforme Obrigatorio café as 08h04",
     "Valor": 100.0
   },
   {
