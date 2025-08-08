@@ -1,7 +1,7 @@
 import jsPDF from 'jspdf';
 import { AthleteOccurrence } from '../data/athleteData';
 
-import { servicoSocialLogoBase64 } from './servicoSocialLogo';
+
 
 export interface GroupedOccurrences {
   [key: string]: AthleteOccurrence[];
@@ -68,7 +68,7 @@ export const generateAthletePDF = async (athleteName: string, category: string, 
   const maxContentHeight = pageHeight - footerHeight - 20; // 20 para margem superior
   
   // Carregar logo do serviço social
-  let logoBase64 = servicoSocialLogoBase64;
+
   
   // Função para adicionar footer personalizado
   const addCustomFooter = (pageNumber: number, totalPages: number) => {
@@ -90,15 +90,17 @@ export const generateAthletePDF = async (athleteName: string, category: string, 
     const text2Width = doc.getTextWidth(footerText2);
     
     // Adicionar logo do serviço social (proporcional a 10mm de altura)
-    if (logoBase64) {
+    if (true) {
       try {
+        const img = new Image();
+        img.src = "/servico_social_logo.png"; // Caminho relativo à raiz do projeto
         const logoHeight = 10;
         const logoWidth = (25.92 / 18) * logoHeight;
         const logoX = (pageWidth - logoWidth) / 2;
         const logoY = footerY - 10 - (logoHeight / 2); // Centralizado com a linha vermelha passando pelo meio
-        doc.addImage(logoBase64, "PNG", logoX, logoY, logoWidth, logoHeight);
+        doc.addImage(img, "PNG", logoX, logoY, logoWidth, logoHeight);
       } catch (error) {
-        console.warn("Erro ao adicionar logo no footer");
+        console.warn("Erro ao adicionar logo no footer", error);
       }
     }
     
@@ -488,15 +490,17 @@ X88Ol9m9TMC/wt9Nm+kkz1IF9N7r5GjleoYnpp26lCvwsMeo+WunJHqDS6W5PufTC31Iq9MINGqX
     const text1Width = doc.getTextWidth(footerText1);
     const text2Width = doc.getTextWidth(footerText2);
 
-    if (logoBase64) {
+    if (true) {
       try {
+        const img = new Image();
+        img.src = "/servico_social_logo.png"; // Caminho relativo à raiz do projeto
         const logoHeight = 10;
         const logoWidth = (25.92 / 18) * logoHeight;
         const logoX = (pageWidth - logoWidth) / 2;
         const logoY = footerY - 10 - (logoHeight / 2); // Centralizado com a linha vermelha passando pelo meio
-        doc.addImage(logoBase64, "PNG", logoX, logoY, logoWidth, logoHeight);
+        doc.addImage(img, "PNG", logoX, logoY, logoWidth, logoHeight);
       } catch (error) {
-        console.warn("Erro ao adicionar logo no footer");
+        console.warn("Erro ao adicionar logo no footer", error);
       }
     }
 
