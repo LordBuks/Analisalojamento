@@ -1,6 +1,8 @@
 import jsPDF from 'jspdf';
 import { AthleteOccurrence } from '../data/athleteData';
 
+import { servicoSocialLogoBase64 } from './servicoSocialLogo';
+
 export interface GroupedOccurrences {
   [key: string]: AthleteOccurrence[];
 }
@@ -28,22 +30,7 @@ const formatDateTime = (date: Date): string => {
   return `${day}/${month}/${year} ${hours}:${minutes}`;
 };
 
-// Função para converter imagem para base64
-const getImageAsBase64 = async (imagePath: string): Promise<string> => {
-  try {
-    const response = await fetch(imagePath);
-    const blob = await response.blob();
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result as string);
-      reader.onerror = reject;
-      reader.readAsDataURL(blob);
-    });
-  } catch (error) {
-    console.error('Erro ao carregar imagem:', error);
-    return '';
-  }
-};
+
 
 // Função para calcular o espaço necessário para uma ocorrência
 const calculateOccurrenceSpace = (doc: jsPDF, occurrence: AthleteOccurrence, contentWidth: number, margin: number): number => {
@@ -81,12 +68,7 @@ export const generateAthletePDF = async (athleteName: string, category: string, 
   const maxContentHeight = pageHeight - footerHeight - 20; // 20 para margem superior
   
   // Carregar logo do serviço social
-  let logoBase64 = '';
-  try {
-    logoBase64 = await getImageAsBase64('/src/assets/servico_social_logo.png');
-  } catch (error) {
-    console.warn('Não foi possível carregar o logo do serviço social');
-  }
+  let logoBase64 = servicoSocialLogoBase64;
   
   // Função para adicionar footer personalizado
   const addCustomFooter = (pageNumber: number, totalPages: number) => {
@@ -113,8 +95,8 @@ export const generateAthletePDF = async (athleteName: string, category: string, 
         const logoHeight = 10;
         const logoWidth = (25.92 / 18) * logoHeight;
         const logoX = (pageWidth - logoWidth) / 2;
-        const logoY = footerY - logoHeight - 5; // Ajustado para ficar acima do texto
-        doc.addImage(logoBase64, "PNG", logoX, footerY - 10 - (logoHeight / 2), logoWidth, logoHeight);
+        const logoY = footerY - 10 - (logoHeight / 2); // Centralizado com a linha vermelha passando pelo meio
+        doc.addImage(logoBase64, "PNG", logoX, logoY, logoWidth, logoHeight);
       } catch (error) {
         console.warn("Erro ao adicionar logo no footer");
       }
@@ -511,8 +493,8 @@ X88Ol9m9TMC/wt9Nm+kkz1IF9N7r5GjleoYnpp26lCvwsMeo+WunJHqDS6W5PufTC31Iq9MINGqX
         const logoHeight = 10;
         const logoWidth = (25.92 / 18) * logoHeight;
         const logoX = (pageWidth - logoWidth) / 2;
-        const logoY = footerY - logoHeight - 5; // Ajustado para ficar acima do texto
-        doc.addImage(logoBase64, "PNG", logoX, footerY - 10 - (logoHeight / 2), logoWidth, logoHeight);
+        const logoY = footerY - 10 - (logoHeight / 2); // Centralizado com a linha vermelha passando pelo meio
+        doc.addImage(logoBase64, "PNG", logoX, logoY, logoWidth, logoHeight);
       } catch (error) {
         console.warn("Erro ao adicionar logo no footer");
       }
