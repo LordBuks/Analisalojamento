@@ -521,7 +521,7 @@ X88Ol9m9TMC/wt9Nm+kkz1IF9N7r5GjleoYnpp26lCvwsMeo+WunJHqDS6W5PufTC31Iq9MINGqX
   doc.setFont(undefined, 'bold');
   doc.setFontSize(20);
   doc.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
-  doc.text(`Relatório Geral - ${month}`, margin, yPosition);
+  doc.text(`Relatório Disciplinar - "Caixinha" ${month} - 2025`, margin, yPosition);
   yPosition += 15;
 
   doc.setDrawColor(primaryColor[0], primaryColor[1], primaryColor[2]);
