@@ -49,7 +49,7 @@
   },
   {
     "NOME": "Enzo Baggio",
-    "Cat": "Sub-16",
+    "Cat": "Sub-15",
     "DATA": "02/06/25",
     "TIPO": "Comportamento",
     "OCORRÊNCIA": "Algazarra após o horario do silêncio, chamada atenção em mais de 1 ocasião",
@@ -424,7 +424,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Kauâ Cavalcanti",
+    "NOME": "Kauã Cavalcanti",
     "Cat": "Sub-17",
     "DATA": "08/06/25",
     "TIPO": "Falta Escolar",
@@ -432,7 +432,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Kauâ Cavalcanti",
+    "NOME": "Kauã Cavalcanti",
     "Cat": "Sub-17",
     "DATA": "09/06/25",
     "TIPO": "Desorganização",
@@ -440,7 +440,7 @@
     "Valor": 50.0
   },
   {
-    "NOME": "Kauâ Cavalcanti",
+    "NOME": "Kauã Cavalcanti",
     "Cat": "Sub-17",
     "DATA": "21/06/25",
     "TIPO": "Alimentação Irregular",
@@ -480,7 +480,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Luan Pain",
+    "NOME": "Luan Paim",
     "Cat": "Sub-20",
     "DATA": "13/06/25",
     "TIPO": "Alimentação Irregular",
@@ -544,7 +544,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Marcos Neves",
+    "NOME": "Marcos Vinicius",
     "Cat": "Sub-14",
     "DATA": "01/06/25",
     "TIPO": "Desorganização",
@@ -552,15 +552,15 @@
     "Valor": 50.0
   },
   {
-    "NOME": "Marcos Neves",
+    "NOME": "Marcos Vinicius",
     "Cat": "Sub-14",
     "DATA": "02/06/25",
     "TIPO": "Desorganização",
-    "OCORRÊNCIA": "Em ronda às 15h15 ar condiconado ligado e ninguém no quarto",
+    "OCORRÊNCIA": "Em ronda às 15h15 ar condicionado ligado e ninguém no quarto",
     "Valor": 50.0
   },
   {
-    "NOME": "Marcos Neves",
+    "NOME": "Marcos Vinicius",
     "Cat": "Sub-14",
     "DATA": "03/06/25",
     "TIPO": "Desorganização",
@@ -568,7 +568,7 @@
     "Valor": 50.0
   },
   {
-    "NOME": "Marcos Neves",
+    "NOME": "Marcos Vinicius",
     "Cat": "Sub-14",
     "DATA": "10/06/25",
     "TIPO": "Falta Escolar",
@@ -576,7 +576,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Marcos Neves",
+    "NOME": "Marcos Vinicius",
     "Cat": "Sub-14",
     "DATA": "16/06/25",
     "TIPO": "Falta Escolar",
@@ -624,7 +624,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Matheus Mauricio",
+    "NOME": "Mauricio Matheus",
     "Cat": "Sub-14",
     "DATA": "02/06/25",
     "TIPO": "Falta Escolar",
@@ -704,7 +704,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Petro Zucchi",
+    "NOME": "Pietro Zucchi",
     "Cat": "Sub-17",
     "DATA": "05/06/25",
     "TIPO": "Comportamento",
@@ -856,7 +856,7 @@
     "Valor": 50.0
   },
   {
-    "NOME": "Victor Hugo Mattos",
+    "NOME": "Victor Hugo de Matos",
     "Cat": "Sub-15",
     "DATA": "02/06/25",
     "TIPO": "Desorganização",
@@ -864,7 +864,7 @@
     "Valor": 50.0
   },
   {
-    "NOME": "Victor Hugo Mattos",
+    "NOME": "Victor Hugo de Matos",
     "Cat": "Sub-15",
     "DATA": "07/06/25",
     "TIPO": "Alimentação Irregular",
@@ -872,7 +872,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Victor Hugo Mattos",
+    "NOME": "Victor Hugo de Matos",
     "Cat": "Sub-15",
     "DATA": "15/05/25",
     "TIPO": "Alimentação Irregular",
@@ -880,7 +880,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Victor Hugo Mattos",
+    "NOME": "Victor Hugo de Matos",
     "Cat": "Sub-15",
     "DATA": "16/06/25",
     "TIPO": "Falta Escolar",
@@ -888,7 +888,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Victor Hugo Mattos",
+    "NOME": "Victor Hugo de Matos",
     "Cat": "Sub-15",
     "DATA": "25/06/25",
     "TIPO": "Uniforme",
