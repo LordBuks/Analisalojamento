@@ -218,7 +218,7 @@ const Index = () => {
         {/* Cards de Estatísticas */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <StatCard
-            title={<span className="text-bold text-red-600">Total de Atletas</span>}
+            title={<span className="text-bold text-red-600">Atletas com ocorrências</span>}
             value={totalAthletes.toString()}
             icon={Users}
             color="red"
