@@ -304,7 +304,7 @@ export const generateGeneralPDF = async (month: string, totalAthletes: number, t
   // Informações do painel principal
   doc.setFontSize(14);
   doc.setTextColor(secondaryColor[0], secondaryColor[1], secondaryColor[2]);
-  doc.text(`Total de Atletas: ${totalAthletes}`, margin, yPosition);
+  doc.text(`Atletas com ocorrências: ${totalAthletes}`, margin, yPosition);
   yPosition += 8;
   doc.text(`Total de Ocorrências: ${totalOccurrences}`, margin, yPosition);
   yPosition += 8;
