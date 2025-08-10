@@ -208,7 +208,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Julio César",
+    "NOME": "Julio Cesar",
     "Cat": "Sub-17",
     "DATA": "19/03/25",
     "TIPO": "Comportamento",
@@ -216,9 +216,9 @@
     "Valor": 50.0
   },
   {
-    "NOME": "Julio César",
+    "NOME": "Julio Cesar",
     "Cat": "Sub-17",
-    "DATA": "10.03.25",
+    "DATA": "10/03/25",
     "TIPO": "Falta Escolar",
     "OCORRÊNCIA": "Falta escolar sem justificativa Escola Gentil",
     "Valor": 100.0
