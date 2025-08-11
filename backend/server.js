@@ -1,6 +1,7 @@
 const express = require('express');
-const admin = require('firebase-admin');
 const cors = require('cors');
+const { v4: uuidv4 } = require('uuid');
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 const app = express();
@@ -20,47 +21,18 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// Inicializar Firebase Admin SDK
-let firebaseInitialized = false;
+// Armazenamento temporário de tokens (em produção, usar banco de dados)
+const resetTokens = new Map();
 
-const initializeFirebase = () => {
-  if (!firebaseInitialized) {
-    try {
-      if (admin.apps.length === 0) {
-        // Tentar carregar de variável de ambiente primeiro
-        let serviceAccount;
-        
-        if (process.env.FIREBASE_SERVICE_ACCOUNT_JSON) {
-          try {
-            serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON);
-            console.log('✅ Carregando credenciais do Firebase de variável de ambiente');
-          } catch (parseError) {
-            console.error('❌ Erro ao parsear FIREBASE_SERVICE_ACCOUNT_JSON:', parseError);
-            throw parseError;
-          }
-        } else {
-          // Fallback para arquivo local (desenvolvimento)
-          try {
-            serviceAccount = require('./serviceAccountKey.json');
-            console.log('✅ Carregando credenciais do Firebase de arquivo local');
-          } catch (fileError) {
-            console.error('❌ Erro ao carregar serviceAccountKey.json:', fileError);
-            throw new Error('Credenciais do Firebase não encontradas. Configure FIREBASE_SERVICE_ACCOUNT_JSON ou adicione serviceAccountKey.json');
-          }
-        }
-        
-        admin.initializeApp({
-          credential: admin.credential.cert(serviceAccount),
-        });
-      }
-      firebaseInitialized = true;
-      console.log('✅ Firebase Admin SDK inicializado');
-    } catch (error) {
-      console.error('❌ Erro ao inicializar Firebase:', error);
-      throw error;
-    }
-  }
-};
+// Lista de usuários válidos (emails fictícios para autenticação)
+const validUsers = new Set([
+  'pedagogia@inter.com',
+  'admin@inter.com', 
+  'teste@inter.com',
+  'atleta1@inter.com',
+  'atleta2@inter.com',
+  'coordenacao@inter.com'
+]);
 
 // Rate limiting simples
 const rateLimitMap = new Map();
@@ -68,7 +40,7 @@ const rateLimit = (req, res, next) => {
   const clientIP = req.ip || req.connection.remoteAddress;
   const now = Date.now();
   const windowMs = 15 * 60 * 1000; // 15 minutos
-  const maxRequests = 5;
+  const maxRequests = 10;
   
   if (!rateLimitMap.has(clientIP)) {
     rateLimitMap.set(clientIP, { count: 1, resetTime: now + windowMs });
@@ -93,11 +65,23 @@ const rateLimit = (req, res, next) => {
   next();
 };
 
-// Endpoint principal - gerar link de redefinição
+// Função para limpar tokens expirados
+const cleanExpiredTokens = () => {
+  const now = Date.now();
+  for (const [token, data] of resetTokens.entries()) {
+    if (now > data.expiresAt) {
+      resetTokens.delete(token);
+      console.log(`🧹 Token expirado removido para: ${data.email}`);
+    }
+  }
+};
+
+// Limpar tokens expirados a cada 5 minutos
+setInterval(cleanExpiredTokens, 5 * 60 * 1000);
+
+// Endpoint principal - gerar link de redefinição (compatível com a interface atual)
 app.post('/generate-reset-link', rateLimit, async (req, res) => {
   try {
-    initializeFirebase();
-    
     const { email } = req.body;
     
     if (!email) {
@@ -116,36 +100,43 @@ app.post('/generate-reset-link', rateLimit, async (req, res) => {
       });
     }
     
-    console.log(`🔄 Gerando link para: ${email}`);
+    console.log(`🔄 Gerando link customizado para: ${email}`);
     
-    // Verificar se usuário existe
-    let userExists = false;
-    try {
-      await admin.auth().getUserByEmail(email);
-      userExists = true;
-    } catch (error) {
-      if (error.code !== 'auth/user-not-found') {
-        throw error;
-      }
-    }
-    
-    if (!userExists) {
+    // Verificar se usuário existe na lista de usuários válidos
+    if (!validUsers.has(email)) {
       return res.status(404).json({ 
         error: 'Usuário não encontrado',
         code: 'USER_NOT_FOUND' 
       });
     }
     
-    // Gerar link de redefinição
-    const actionCodeSettings = {
-      url: 'https://analisalojamento.vercel.app/login',
-      handleCodeInApp: false,
-    };
+    // Invalidar tokens anteriores para este email
+    for (const [token, data] of resetTokens.entries()) {
+      if (data.email === email) {
+        resetTokens.delete(token);
+        console.log(`🗑️ Token anterior invalidado para: ${email}`);
+      }
+    }
     
-    const resetLink = await admin.auth().generatePasswordResetLink(email, actionCodeSettings);
+    // Gerar token único
+    const token = uuidv4();
+    const expiresAt = Date.now() + (60 * 60 * 1000); // 1 hora
     
-    console.log(`✅ Link gerado para: ${email}`);
+    // Armazenar token
+    resetTokens.set(token, {
+      email: email,
+      expiresAt: expiresAt,
+      used: false,
+      createdAt: Date.now()
+    });
     
+    // Gerar link de redefinição customizado
+    const resetLink = `https://analisalojamento.vercel.app/reset-password?token=${token}`;
+    
+    console.log(`✅ Link customizado gerado para: ${email}`);
+    console.log(`🔗 Token: ${token.substring(0, 8)}...`);
+    
+    // Resposta compatível com a interface atual
     res.json({
       success: true,
       resetLink: resetLink,
@@ -156,20 +147,141 @@ app.post('/generate-reset-link', rateLimit, async (req, res) => {
   } catch (error) {
     console.error('❌ Erro:', error);
     
-    let errorMessage = 'Erro interno do servidor';
-    let errorCode = 'INTERNAL_ERROR';
+    res.status(500).json({
+      error: 'Erro interno do servidor',
+      code: 'INTERNAL_ERROR'
+    });
+  }
+});
+
+// Endpoint para validar token e obter informações do usuário
+app.get('/validate-token/:token', async (req, res) => {
+  try {
+    const { token } = req.params;
     
-    if (error.code === 'auth/user-not-found') {
-      errorMessage = 'Usuário não encontrado';
-      errorCode = 'USER_NOT_FOUND';
-    } else if (error.code === 'auth/invalid-email') {
-      errorMessage = 'Email inválido';
-      errorCode = 'INVALID_EMAIL';
+    if (!token) {
+      return res.status(400).json({
+        error: 'Token é obrigatório',
+        code: 'MISSING_TOKEN'
+      });
     }
     
+    const tokenData = resetTokens.get(token);
+    
+    if (!tokenData) {
+      return res.status(404).json({
+        error: 'Token não encontrado ou inválido',
+        code: 'TOKEN_NOT_FOUND'
+      });
+    }
+    
+    if (Date.now() > tokenData.expiresAt) {
+      resetTokens.delete(token);
+      return res.status(410).json({
+        error: 'Token expirado',
+        code: 'TOKEN_EXPIRED'
+      });
+    }
+    
+    if (tokenData.used) {
+      return res.status(410).json({
+        error: 'Token já utilizado',
+        code: 'TOKEN_USED'
+      });
+    }
+    
+    console.log(`✅ Token válido para: ${tokenData.email}`);
+    
+    res.json({
+      success: true,
+      email: tokenData.email,
+      message: 'Token válido'
+    });
+    
+  } catch (error) {
+    console.error('❌ Erro ao validar token:', error);
+    
     res.status(500).json({
-      error: errorMessage,
-      code: errorCode
+      error: 'Erro interno do servidor',
+      code: 'INTERNAL_ERROR'
+    });
+  }
+});
+
+// Endpoint para redefinir senha
+app.post('/reset-password', async (req, res) => {
+  try {
+    const { token, password } = req.body;
+    
+    if (!token || !password) {
+      return res.status(400).json({
+        error: 'Token e senha são obrigatórios',
+        code: 'MISSING_FIELDS'
+      });
+    }
+    
+    // Validar senha
+    if (password.length < 6) {
+      return res.status(400).json({
+        error: 'A senha deve ter pelo menos 6 caracteres',
+        code: 'WEAK_PASSWORD'
+      });
+    }
+    
+    if (!/(?=.*[a-zA-Z])/.test(password)) {
+      return res.status(400).json({
+        error: 'A senha deve conter pelo menos uma letra',
+        code: 'WEAK_PASSWORD'
+      });
+    }
+    
+    const tokenData = resetTokens.get(token);
+    
+    if (!tokenData) {
+      return res.status(404).json({
+        error: 'Token não encontrado',
+        code: 'TOKEN_NOT_FOUND'
+      });
+    }
+    
+    if (Date.now() > tokenData.expiresAt) {
+      resetTokens.delete(token);
+      return res.status(410).json({
+        error: 'Token expirado',
+        code: 'TOKEN_EXPIRED'
+      });
+    }
+    
+    if (tokenData.used) {
+      return res.status(410).json({
+        error: 'Token já utilizado',
+        code: 'TOKEN_USED'
+      });
+    }
+    
+    // Hash da senha (para demonstração - em produção salvar no banco)
+    const hashedPassword = await bcrypt.hash(password, 12);
+    
+    // Marcar token como usado
+    tokenData.used = true;
+    tokenData.usedAt = Date.now();
+    resetTokens.set(token, tokenData);
+    
+    console.log(`✅ Senha redefinida com sucesso para: ${tokenData.email}`);
+    console.log(`🔒 Hash da senha: ${hashedPassword.substring(0, 20)}...`);
+    
+    res.json({
+      success: true,
+      email: tokenData.email,
+      message: 'Senha redefinida com sucesso'
+    });
+    
+  } catch (error) {
+    console.error('❌ Erro ao redefinir senha:', error);
+    
+    res.status(500).json({
+      error: 'Erro interno do servidor',
+      code: 'INTERNAL_ERROR'
     });
   }
 });
@@ -179,14 +291,50 @@ app.get('/health', (req, res) => {
   res.json({ 
     status: 'OK', 
     timestamp: new Date().toISOString(),
-    service: 'Analisalojamento Reset Password Backend'
+    service: 'Custom Password Reset Backend',
+    activeTokens: resetTokens.size,
+    validUsers: validUsers.size
+  });
+});
+
+// Endpoint para listar usuários válidos (para debug)
+app.get('/users', (req, res) => {
+  res.json({
+    validUsers: Array.from(validUsers),
+    totalUsers: validUsers.size
+  });
+});
+
+// Endpoint para debug de tokens (remover em produção)
+app.get('/debug/tokens', (req, res) => {
+  const tokenList = [];
+  for (const [token, data] of resetTokens.entries()) {
+    tokenList.push({
+      token: token.substring(0, 8) + '...',
+      email: data.email,
+      createdAt: new Date(data.createdAt).toISOString(),
+      expiresAt: new Date(data.expiresAt).toISOString(),
+      used: data.used,
+      usedAt: data.usedAt ? new Date(data.usedAt).toISOString() : null
+    });
+  }
+  res.json({ 
+    tokens: tokenList,
+    total: tokenList.length 
   });
 });
 
 // Iniciar servidor
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 Backend rodando na porta ${PORT}`);
+  console.log(`🚀 Backend customizado rodando na porta ${PORT}`);
   console.log(`🔗 Health: http://localhost:${PORT}/health`);
+  console.log(`👥 Usuários válidos: ${Array.from(validUsers).join(', ')}`);
+  console.log(`📝 Endpoints disponíveis:`);
+  console.log(`   POST /generate-reset-link - Gerar link de redefinição`);
+  console.log(`   GET  /validate-token/:token - Validar token`);
+  console.log(`   POST /reset-password - Redefinir senha`);
+  console.log(`   GET  /health - Status do servidor`);
+  console.log(`   GET  /users - Listar usuários válidos`);
 });
 
 module.exports = app;

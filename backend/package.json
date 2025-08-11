@@ -1,23 +1,24 @@
 {
-  "name": "analisalojamento-backend",
+  "name": "custom-password-reset-backend",
   "version": "1.0.0",
-  "description": "Backend seguro para redefinição de senha - Sistema de Alojamentos",
-  "main": "server.js",
+  "description": "Backend customizado para redefinição de senha - substitui Firebase",
+  "main": "server_simplificado.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "node server_simplificado.js",
+    "dev": "nodemon server_simplificado.js"
   },
-  "keywords": ["firebase", "reset-password", "security"],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "express": "^4.18.2",
-    "firebase-admin": "^12.0.0",
     "cors": "^2.8.5",
+    "uuid": "^9.0.0",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.3.1"
   },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18.0.0"
   }
 }
 
