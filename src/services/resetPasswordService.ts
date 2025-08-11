@@ -145,6 +145,7 @@ class CustomResetPasswordService {
 }
 
 export const customResetPasswordService = new CustomResetPasswordService();
+export const resetPasswordService = customResetPasswordService; // Compatibilidade com código existente
 export type { GenerateResetLinkResponse, ValidateTokenResponse, ResetPasswordResponse, ErrorResponse };
 
 
