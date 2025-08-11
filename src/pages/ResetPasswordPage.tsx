@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { customResetPasswordService } from '../services/customResetPasswordService';
+import { customResetPasswordService } from '../services/CustomResetPasswordService';
 import { InterLogo } from '../components/InterLogo';
 import { ServicoSocialLogo } from '../components/ServicoSocialLogo';
 
