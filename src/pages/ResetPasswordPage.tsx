@@ -1,58 +1,64 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { getAuth, confirmPasswordReset, verifyPasswordResetCode } from 'firebase/auth';
-import app from '../firebaseConfig'; // Importa a configuração do Firebase
+import { customResetPasswordService } from '../services/customResetPasswordService';
 import { InterLogo } from '../components/InterLogo';
 import { ServicoSocialLogo } from '../components/ServicoSocialLogo';
 
-const ResetPasswordPage: React.FC = () => {
+const CustomResetPasswordPage: React.FC = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const [message, setMessage] = useState<{ text: string; type: 'success' | 'error' | null }>({
+  const [message, setMessage] = useState<{ text: string; type: 'success' | 'error' | 'info' | null }>({
     text: '',
     type: null,
   });
-  const [oobCode, setOobCode] = useState<string | null>(null);
+  const [token, setToken] = useState<string | null>(null);
   const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [isValidToken, setIsValidToken] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const auth = getAuth(app);
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
-    const code = queryParams.get('oobCode');
-    setOobCode(code);
+    const resetToken = queryParams.get('token');
+    setToken(resetToken);
 
-    if (!code) {
+    if (!resetToken) {
       setMessage({
-        text: 'Link inválido ou expirado. Por favor, solicite um novo link de redefinição de senha.',
+        text: 'Link inválido. Por favor, solicite um novo link de redefinição de senha.',
         type: 'error',
       });
       setIsLoading(false);
       return;
     }
 
-    const verifyCode = async () => {
+    const validateToken = async () => {
       try {
-        const email = await verifyPasswordResetCode(auth, code);
-        setUserEmail(email);
+        const response = await customResetPasswordService.validateToken(resetToken);
+        setUserEmail(response.email);
+        setIsValidToken(true);
+        setMessage({
+          text: `Caro usuário, você deve redefinir sua senha neste primeiro acesso para o seu email ${response.email}`,
+          type: 'info',
+        });
         setIsLoading(false);
       } catch (error: any) {
-        console.error('Erro ao verificar o código:', error);
+        console.error('Erro ao validar token:', error);
         let errorMessage = 'Link inválido ou expirado. Por favor, solicite um novo link de redefinição de senha.';
-        if (error.code === 'auth/expired-action-code') {
+        
+        if (error.message.includes('expirado')) {
           errorMessage = 'Link expirado. Por favor, solicite um novo link.';
-        } else if (error.code === 'auth/invalid-action-code') {
-          errorMessage = 'Link inválido. Por favor, solicite um novo link.';
+        } else if (error.message.includes('utilizado')) {
+          errorMessage = 'Link já utilizado. Por favor, solicite um novo link.';
         }
+        
         setMessage({ text: errorMessage, type: 'error' });
         setIsLoading(false);
       }
     };
 
-    verifyCode();
-  }, [location.search, auth]);
+    validateToken();
+  }, [location.search]);
 
   const validatePassword = (pwd: string) => {
     if (pwd.length < 6) {
@@ -79,28 +85,35 @@ const ResetPasswordPage: React.FC = () => {
       return;
     }
 
-    if (!oobCode) {
-      setMessage({ text: 'Código de redefinição não encontrado.', type: 'error' });
+    if (!token) {
+      setMessage({ text: 'Token de redefinição não encontrado.', type: 'error' });
       return;
     }
 
     setIsLoading(true);
     try {
-      await confirmPasswordReset(auth, oobCode, password);
-      setMessage({ text: 'Senha definida com sucesso! Você será redirecionado para a página de login.', type: 'success' });
+      await customResetPasswordService.resetPassword(token, password);
+      setMessage({ 
+        text: 'Senha definida com sucesso! Você pode agora fazer login com sua nova senha.', 
+        type: 'success' 
+      });
+      
+      // Redirecionar para login após 3 segundos
       setTimeout(() => {
-      // navigate("/login"); // Redireciona para a página de login após sucesso
+        navigate('/login');
       }, 3000);
     } catch (error: any) {
       console.error('Erro ao definir a senha:', error);
       let errorMessage = 'Erro ao definir a senha. Por favor, tente novamente.';
-      if (error.code === 'auth/expired-action-code') {
+      
+      if (error.message.includes('expirado')) {
         errorMessage = 'Link expirado. Por favor, solicite um novo link.';
-      } else if (error.code === 'auth/invalid-action-code') {
-        errorMessage = 'Link inválido. Por favor, solicite um novo link.';
-      } else if (error.code === 'auth/weak-password') {
-        errorMessage = 'Senha muito fraca. Use pelo menos 6 caracteres com letras e números.';
+      } else if (error.message.includes('utilizado')) {
+        errorMessage = 'Link já utilizado. Por favor, solicite um novo link.';
+      } else if (error.message.includes('caracteres')) {
+        errorMessage = 'Senha deve ter pelo menos 6 caracteres com letras.';
       }
+      
       setMessage({ text: errorMessage, type: 'error' });
     } finally {
       setIsLoading(false);
@@ -133,24 +146,19 @@ const ResetPasswordPage: React.FC = () => {
 
         {message.text && (
           <div
-            className={`text-sm text-center mb-4 p-3 rounded-md ${message.type === 'error' ? 'text-red-700 bg-red-50 border border-red-200' : 'text-green-700 bg-green-50 border border-green-200'}`}
+            className={`text-sm text-center mb-4 p-3 rounded-md ${
+              message.type === 'error' 
+                ? 'text-red-700 bg-red-50 border border-red-200' 
+                : message.type === 'success'
+                ? 'text-green-700 bg-green-50 border border-green-200'
+                : 'text-blue-700 bg-blue-50 border border-blue-200'
+            }`}
           >
             {message.text}
           </div>
         )}
 
-        {!isLoading && message.type !== 'success' && message.type !== 'error' && userEmail && (
-          <div className="text-center mb-6">
-            <p className="text-sm text-gray-600">
-              Defina sua senha para acessar o sistema
-            </p>
-            <p className="text-sm font-medium text-gray-800 mt-2">
-              Email: <span className="text-red-600">{userEmail}</span>
-            </p>
-          </div>
-        )}
-
-        {!isLoading && message.type !== 'success' && (
+        {!isLoading && isValidToken && message.type !== 'success' && (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
@@ -192,6 +200,17 @@ const ResetPasswordPage: React.FC = () => {
             </button>
           </form>
         )}
+
+        {!isValidToken && !isLoading && (
+          <div className="text-center">
+            <button
+              onClick={() => window.location.href = '/admin/reset-password'}
+              className="text-red-600 hover:text-red-700 text-sm underline"
+            >
+              Solicitar novo link de redefinição
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Logo do Sistema */}
@@ -210,6 +229,5 @@ const ResetPasswordPage: React.FC = () => {
   );
 };
 
-export default ResetPasswordPage;
-
+export default CustomResetPasswordPage;
 
