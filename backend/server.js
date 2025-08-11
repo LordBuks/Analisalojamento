@@ -138,7 +138,7 @@ app.post('/generate-reset-link', rateLimit, async (req, res) => {
     
     // Gerar link de redefinição
     const actionCodeSettings = {
-      url: 'https://analisalojamento.vercel.app/reset-password',
+      url: 'https://analisalojamento.vercel.app/login',
       handleCodeInApp: false,
     };
     

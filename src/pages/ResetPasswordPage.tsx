@@ -89,7 +89,7 @@ const ResetPasswordPage: React.FC = () => {
       await confirmPasswordReset(auth, oobCode, password);
       setMessage({ text: 'Senha definida com sucesso! Você será redirecionado para a página de login.', type: 'success' });
       setTimeout(() => {
-        navigate('/login'); // Redireciona para a página de login após sucesso
+      // navigate("/login"); // Redireciona para a página de login após sucesso
       }, 3000);
     } catch (error: any) {
       console.error('Erro ao definir a senha:', error);
