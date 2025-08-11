@@ -78,6 +78,13 @@ const DataLoader: React.FC = () => {
           >
             {loading ? 'Verificando...' : 'Verificar Status'}
           </button>
+
+          <button
+            onClick={() => window.open('/admin/reset-password', '_blank')}
+            className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+          >
+            Redefinir Senha
+          </button>
         </div>
 
         {message && (
