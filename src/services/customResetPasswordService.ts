@@ -29,7 +29,7 @@ class CustomResetPasswordService {
 
   constructor() {
     // URL do backend customizado
-    this.baseUrl = 'https://backend-git-main-lucianos-projects-3b17d3d8.vercel.app';
+    this.baseUrl = import.meta.env.VITE_CUSTOM_RESET_BACKEND_URL || 'https://backend-git-main-lucianos-projects-3b17d3d8.vercel.app';
   }
 
   /**
@@ -146,6 +146,4 @@ class CustomResetPasswordService {
 
 export const customResetPasswordService = new CustomResetPasswordService();
 export type { GenerateResetLinkResponse, ValidateTokenResponse, ResetPasswordResponse, ErrorResponse };
-
-
 
