@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
-import { InterLogo } from './InterLogo';
-import { ServicoSocialLogo } from './ServicoSocialLogo';
+import { InterLogo } from '../components/InterLogo';
+import { ServicoSocialLogo } from "../components/ServicoSocialLogo";
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');

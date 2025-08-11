@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './hooks/useAuth';
-import LoginPage from './components/LoginPage';
+import LoginPage from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import Navigation from './components/Navigation';
 import Index from './pages/Index';
 import Analytics from './pages/Analytics';
+import ResetPasswordPage from './pages/ResetPasswordPage';
+import AdminResetPassword from './pages/AdminResetPassword';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<'dashboard' | 'analytics'>('dashboard');
@@ -45,6 +47,18 @@ function App() {
               <ProtectedRoute>
                 <Navigation currentPage={currentPage} onPageChange={setCurrentPage} />
                 <Analytics />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/reset-password" 
+            element={<ResetPasswordPage />} 
+          />
+          <Route 
+            path="/admin/reset-password" 
+            element={
+              <ProtectedRoute>
+                <AdminResetPassword />
               </ProtectedRoute>
             } 
           />
