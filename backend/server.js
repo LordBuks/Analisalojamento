@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 3001;
 app.use(cors({
   origin: [
     'https://analisalojamento.vercel.app',
+    'https://dashboard-disciplinar-atletas.vercel.app',
     'http://localhost:3000',
     'http://localhost:5173',
     'https://localhost:3000',
@@ -26,7 +27,28 @@ const initializeFirebase = () => {
   if (!firebaseInitialized) {
     try {
       if (admin.apps.length === 0) {
-        const serviceAccount = require('./serviceAccountKey.json');
+        // Tentar carregar de variável de ambiente primeiro
+        let serviceAccount;
+        
+        if (process.env.FIREBASE_SERVICE_ACCOUNT_JSON) {
+          try {
+            serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON);
+            console.log('✅ Carregando credenciais do Firebase de variável de ambiente');
+          } catch (parseError) {
+            console.error('❌ Erro ao parsear FIREBASE_SERVICE_ACCOUNT_JSON:', parseError);
+            throw parseError;
+          }
+        } else {
+          // Fallback para arquivo local (desenvolvimento)
+          try {
+            serviceAccount = require('./serviceAccountKey.json');
+            console.log('✅ Carregando credenciais do Firebase de arquivo local');
+          } catch (fileError) {
+            console.error('❌ Erro ao carregar serviceAccountKey.json:', fileError);
+            throw new Error('Credenciais do Firebase não encontradas. Configure FIREBASE_SERVICE_ACCOUNT_JSON ou adicione serviceAccountKey.json');
+          }
+        }
+        
         admin.initializeApp({
           credential: admin.credential.cert(serviceAccount),
         });
