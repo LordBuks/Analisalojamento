@@ -590,5 +590,6 @@ firebase-debug.log.json
 
 # Vercel specific
 .vercel/
+backend/serviceAccountKey.json
 
 
