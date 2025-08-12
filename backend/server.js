@@ -149,6 +149,7 @@ const updateFirebasePassword = async (email, newPassword) => {
     return true;
   } catch (error) {
     console.error(`❌ Erro ao atualizar senha no Firebase para ${email}:`, error.message);
+    console.error(`   Detalhes do erro do Firebase:`, error.code, error.stack);
     throw error;
   }
 };
@@ -166,7 +167,10 @@ app.post('/generate-reset-link', rateLimit, async (req, res) => {
     }
     
     // Validar formato do email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^
+@]+@[^
+@]+\.[^
+@]+$/;
     if (!emailRegex.test(email)) {
       return res.status(400).json({ 
         error: 'Formato de email inválido',
@@ -442,4 +446,6 @@ app.listen(PORT, '0.0.0.0', () => {
 });
 
 module.exports = app;
+
+
 
