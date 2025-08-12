@@ -42,18 +42,54 @@ try {
   console.log('   Funcionando apenas com backend customizado (sem integração Firebase)');
 }
 
-// Middleware
+// Middleware CORS - Configuração mais permissiva para resolver problemas de CORS
 app.use(cors({
-  origin: [
-    'https://analisalojamento.vercel.app',
-    'https://dashboard-disciplinar-atletas.vercel.app',
-    'http://localhost:3000',
-    'http://localhost:5173',
-    'https://localhost:3000',
-    'https://localhost:5173'
-  ],
-  credentials: true
+  origin: function (origin, callback) {
+    // Permitir requisições sem origin (ex: mobile apps, Postman)
+    if (!origin) return callback(null, true);
+    
+    // Lista de origens permitidas
+    const allowedOrigins = [
+      'https://analisalojamento.vercel.app',
+      'https://dashboard-disciplinar-atletas.vercel.app',
+      'http://localhost:3000',
+      'http://localhost:5173',
+      'https://localhost:3000',
+      'https://localhost:5173'
+    ];
+    
+    // Verificar se a origem está na lista ou se é um subdomínio do Vercel
+    if (allowedOrigins.includes(origin) || origin.includes('.vercel.app')) {
+      return callback(null, true);
+    }
+    
+    // Para desenvolvimento, permitir qualquer origem localhost
+    if (origin.includes('localhost') || origin.includes('127.0.0.1')) {
+      return callback(null, true);
+    }
+    
+    console.log(`⚠️ Origem não permitida: ${origin}`);
+    callback(new Error('Não permitido pelo CORS'));
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
+
+// Middleware adicional para headers CORS
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  
+  next();
+});
+
 app.use(express.json());
 
 // Armazenamento temporário de tokens (em produção, usar banco de dados)
@@ -121,9 +157,12 @@ const getUserUidByEmail = async (email) => {
   }
   
   try {
+    console.log(`🔍 Buscando UID para email: ${email}`);
     const userRecord = await admin.auth().getUserByEmail(email);
+    console.log(`✅ UID encontrado: ${userRecord.uid}`);
     return userRecord.uid;
   } catch (error) {
+    console.error(`❌ Erro ao buscar UID para ${email}:`, error.code, error.message);
     if (error.code === 'auth/user-not-found') {
       throw new Error(`Usuário com email ${email} não encontrado no Firebase`);
     }
@@ -139,7 +178,10 @@ const updateFirebasePassword = async (email, newPassword) => {
   }
   
   try {
+    console.log(`🔄 Iniciando atualização de senha no Firebase para: ${email}`);
+    
     const uid = await getUserUidByEmail(email);
+    console.log(`📋 UID obtido: ${uid}`);
     
     await admin.auth().updateUser(uid, {
       password: newPassword
@@ -149,7 +191,8 @@ const updateFirebasePassword = async (email, newPassword) => {
     return true;
   } catch (error) {
     console.error(`❌ Erro ao atualizar senha no Firebase para ${email}:`, error.message);
-    console.error(`   Detalhes do erro do Firebase:`, error.code, error.stack);
+    console.error(`   Código do erro: ${error.code}`);
+    console.error(`   Stack trace:`, error.stack);
     throw error;
   }
 };
@@ -157,6 +200,9 @@ const updateFirebasePassword = async (email, newPassword) => {
 // Endpoint principal - gerar link de redefinição (compatível com a interface atual)
 app.post('/generate-reset-link', rateLimit, async (req, res) => {
   try {
+    console.log(`🔄 Requisição recebida de origem: ${req.headers.origin}`);
+    console.log(`📧 Dados recebidos:`, req.body);
+    
     const { email } = req.body;
     
     if (!email) {
@@ -167,10 +213,7 @@ app.post('/generate-reset-link', rateLimit, async (req, res) => {
     }
     
     // Validar formato do email
-    const emailRegex = /^[^
-@]+@[^
-@]+\.[^
-@]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return res.status(400).json({ 
         error: 'Formato de email inválido',
@@ -446,6 +489,4 @@ app.listen(PORT, '0.0.0.0', () => {
 });
 
 module.exports = app;
-
-
 

@@ -17,6 +17,8 @@ interface ResetPasswordResponse {
   success: boolean;
   email: string;
   message: string;
+  firebaseUpdated?: boolean;
+  firebaseError?: string;
 }
 
 interface ErrorResponse {
@@ -28,8 +30,13 @@ class CustomResetPasswordService {
   private baseUrl: string;
 
   constructor() {
-    // URL do backend customizado
+    // URL do backend customizado - usando a variável de ambiente ou fallback
     this.baseUrl = import.meta.env.VITE_CUSTOM_RESET_BACKEND_URL || 'https://backend-git-main-lucianos-projects-3b17d3d8.vercel.app';
+    
+    // Remover barra final se existir
+    this.baseUrl = this.baseUrl.replace(/\/$/, '');
+    
+    console.log(`🔗 Backend URL configurada: ${this.baseUrl}`);
   }
 
   /**
@@ -37,6 +44,9 @@ class CustomResetPasswordService {
    */
   async generateResetLink(email: string): Promise<GenerateResetLinkResponse> {
     try {
+      console.log(`🔄 Gerando link para: ${email}`);
+      console.log(`🌐 URL do backend: ${this.baseUrl}/generate-reset-link`);
+      
       const response = await fetch(`${this.baseUrl}/generate-reset-link`, {
         method: 'POST',
         headers: {
@@ -45,7 +55,10 @@ class CustomResetPasswordService {
         body: JSON.stringify({ email }),
       });
 
+      console.log(`📡 Status da resposta: ${response.status}`);
+      
       const data = await response.json();
+      console.log(`📋 Dados recebidos:`, data);
 
       if (!response.ok) {
         throw new Error(data.error || 'Erro ao gerar link de redefinição');
@@ -53,7 +66,7 @@ class CustomResetPasswordService {
 
       return data as GenerateResetLinkResponse;
     } catch (error) {
-      console.error('Erro ao gerar link de redefinição:', error);
+      console.error('❌ Erro ao gerar link de redefinição:', error);
       throw error;
     }
   }
@@ -63,6 +76,8 @@ class CustomResetPasswordService {
    */
   async validateToken(token: string): Promise<ValidateTokenResponse> {
     try {
+      console.log(`🔍 Validando token: ${token.substring(0, 8)}...`);
+      
       const response = await fetch(`${this.baseUrl}/validate-token/${token}`, {
         method: 'GET',
         headers: {
@@ -78,7 +93,7 @@ class CustomResetPasswordService {
 
       return data as ValidateTokenResponse;
     } catch (error) {
-      console.error('Erro ao validar token:', error);
+      console.error('❌ Erro ao validar token:', error);
       throw error;
     }
   }
@@ -88,6 +103,8 @@ class CustomResetPasswordService {
    */
   async resetPassword(token: string, password: string): Promise<ResetPasswordResponse> {
     try {
+      console.log(`🔄 Redefinindo senha com token: ${token.substring(0, 8)}...`);
+      
       const response = await fetch(`${this.baseUrl}/reset-password`, {
         method: 'POST',
         headers: {
@@ -104,7 +121,7 @@ class CustomResetPasswordService {
 
       return data as ResetPasswordResponse;
     } catch (error) {
-      console.error('Erro ao redefinir senha:', error);
+      console.error('❌ Erro ao redefinir senha:', error);
       throw error;
     }
   }
@@ -114,10 +131,16 @@ class CustomResetPasswordService {
    */
   async healthCheck(): Promise<boolean> {
     try {
+      console.log(`🏥 Verificando saúde do backend: ${this.baseUrl}/health`);
+      
       const response = await fetch(`${this.baseUrl}/health`);
-      return response.ok;
+      const isHealthy = response.ok;
+      
+      console.log(`💚 Backend está ${isHealthy ? 'saudável' : 'com problemas'}`);
+      
+      return isHealthy;
     } catch (error) {
-      console.error('Erro no health check:', error);
+      console.error('❌ Erro no health check:', error);
       return false;
     }
   }
@@ -141,6 +164,13 @@ class CustomResetPasswordService {
     };
 
     return errorMessages[errorCode] || 'Erro desconhecido';
+  }
+
+  /**
+   * Obtém a URL base do backend
+   */
+  getBaseUrl(): string {
+    return this.baseUrl;
   }
 }
 
