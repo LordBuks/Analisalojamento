@@ -387,7 +387,7 @@ const Index = () => {
             occurrences={currentData.filter(occ => occ.NOME === selectedAthleteForOccurrences)}
             onClose={() => setSelectedAthleteForOccurrences(null)}
             month={selectedMonth === 'all' ? 'Geral' : selectedMonth}
-            year={selectedYear}
+            year={selectedYear.toString()}
           />
         )}
 

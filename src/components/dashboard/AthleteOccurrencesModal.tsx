@@ -5,26 +5,18 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { generateAthletePDF } from '../../utils/pdfGenerator';
+import { generateAthletePDF, formatDate } from '@/utils/pdfGenerator';
 
 interface AthleteOccurrencesModalProps {
   athleteName: string;
   occurrences: AthleteOccurrence[];
   onClose: () => void;
   month: string;
-  year: number;
+  year: string;
 }
 
-// Função para formatar data sem usar date-fns
-const formatDate = (date: Date): string => {
-  if (isNaN(date.getTime())) return 'Data Inválida';
-  
-  const day = date.getDate().toString().padStart(2, '0');
-  const month = (date.getMonth() + 1).toString().padStart(2, '0');
-  const year = date.getFullYear();
-  
-  return `${day}/${month}/${year}`;
-};
+
+
 
 export const AthleteOccurrencesModal: React.FC<AthleteOccurrencesModalProps> = ({
   athleteName,
@@ -60,7 +52,7 @@ export const AthleteOccurrencesModal: React.FC<AthleteOccurrencesModalProps> = (
 
   const handleGeneratePDF = () => {
     try {
-      generateAthletePDF(athleteName, category, occurrences, month, year);
+      generateAthletePDF(athleteName, category, occurrences, month, parseInt(year), month === 'Geral');
     } catch (error) {
       console.error('Erro ao gerar PDF:', error);
       alert('Erro ao gerar PDF. Tente novamente.');
