@@ -2,10 +2,45 @@ const express = require('express');
 const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcrypt');
+const admin = require('firebase-admin');
 require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// Configuração do Firebase Admin SDK
+let firebaseInitialized = false;
+try {
+  // Configuração usando variáveis de ambiente
+  if (process.env.FIREBASE_PROJECT_ID && process.env.FIREBASE_PRIVATE_KEY && process.env.FIREBASE_CLIENT_EMAIL) {
+    const serviceAccount = {
+      type: "service_account",
+      project_id: process.env.FIREBASE_PROJECT_ID,
+      private_key_id: process.env.FIREBASE_PRIVATE_KEY_ID,
+      private_key: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+      client_email: process.env.FIREBASE_CLIENT_EMAIL,
+      client_id: process.env.FIREBASE_CLIENT_ID,
+      auth_uri: "https://accounts.google.com/o/oauth2/auth",
+      token_uri: "https://oauth2.googleapis.com/token",
+      auth_provider_x509_cert_url: "https://www.googleapis.com/oauth2/v1/certs",
+      client_x509_cert_url: `https://www.googleapis.com/robot/v1/metadata/x509/${process.env.FIREBASE_CLIENT_EMAIL}`
+    };
+
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount),
+      projectId: process.env.FIREBASE_PROJECT_ID
+    });
+    
+    firebaseInitialized = true;
+    console.log('🔥 Firebase Admin SDK inicializado com sucesso');
+  } else {
+    console.log('⚠️ Firebase Admin SDK não configurado - variáveis de ambiente ausentes');
+    console.log('   Funcionando apenas com backend customizado (sem integração Firebase)');
+  }
+} catch (error) {
+  console.error('❌ Erro ao inicializar Firebase Admin SDK:', error.message);
+  console.log('   Funcionando apenas com backend customizado (sem integração Firebase)');
+}
 
 // Middleware
 app.use(cors({
@@ -78,6 +113,45 @@ const cleanExpiredTokens = () => {
 
 // Limpar tokens expirados a cada 5 minutos
 setInterval(cleanExpiredTokens, 5 * 60 * 1000);
+
+// Função para buscar UID do usuário no Firebase pelo email
+const getUserUidByEmail = async (email) => {
+  if (!firebaseInitialized) {
+    throw new Error('Firebase Admin SDK não está inicializado');
+  }
+  
+  try {
+    const userRecord = await admin.auth().getUserByEmail(email);
+    return userRecord.uid;
+  } catch (error) {
+    if (error.code === 'auth/user-not-found') {
+      throw new Error(`Usuário com email ${email} não encontrado no Firebase`);
+    }
+    throw error;
+  }
+};
+
+// Função para atualizar senha no Firebase
+const updateFirebasePassword = async (email, newPassword) => {
+  if (!firebaseInitialized) {
+    console.log('⚠️ Firebase não configurado - senha não será atualizada no Firebase');
+    return false;
+  }
+  
+  try {
+    const uid = await getUserUidByEmail(email);
+    
+    await admin.auth().updateUser(uid, {
+      password: newPassword
+    });
+    
+    console.log(`🔥 Senha atualizada no Firebase para: ${email} (UID: ${uid})`);
+    return true;
+  } catch (error) {
+    console.error(`❌ Erro ao atualizar senha no Firebase para ${email}:`, error.message);
+    throw error;
+  }
+};
 
 // Endpoint principal - gerar link de redefinição (compatível com a interface atual)
 app.post('/generate-reset-link', rateLimit, async (req, res) => {
@@ -262,18 +336,39 @@ app.post('/reset-password', async (req, res) => {
     // Hash da senha (para demonstração - em produção salvar no banco)
     const hashedPassword = await bcrypt.hash(password, 12);
     
+    // Tentar atualizar senha no Firebase
+    let firebaseUpdated = false;
+    let firebaseError = null;
+    
+    try {
+      firebaseUpdated = await updateFirebasePassword(tokenData.email, password);
+    } catch (error) {
+      firebaseError = error.message;
+      console.error(`⚠️ Falha ao atualizar no Firebase: ${error.message}`);
+    }
+    
     // Marcar token como usado
     tokenData.used = true;
     tokenData.usedAt = Date.now();
+    tokenData.firebaseUpdated = firebaseUpdated;
+    tokenData.firebaseError = firebaseError;
     resetTokens.set(token, tokenData);
     
     console.log(`✅ Senha redefinida com sucesso para: ${tokenData.email}`);
     console.log(`🔒 Hash da senha: ${hashedPassword.substring(0, 20)}...`);
     
+    if (firebaseUpdated) {
+      console.log(`🔥 Senha também atualizada no Firebase Authentication`);
+    } else {
+      console.log(`⚠️ Senha NÃO foi atualizada no Firebase: ${firebaseError || 'Firebase não configurado'}`);
+    }
+    
     res.json({
       success: true,
       email: tokenData.email,
-      message: 'Senha redefinida com sucesso'
+      message: 'Senha redefinida com sucesso',
+      firebaseUpdated: firebaseUpdated,
+      firebaseError: firebaseError
     });
     
   } catch (error) {
@@ -293,7 +388,9 @@ app.get('/health', (req, res) => {
     timestamp: new Date().toISOString(),
     service: 'Custom Password Reset Backend',
     activeTokens: resetTokens.size,
-    validUsers: validUsers.size
+    validUsers: validUsers.size,
+    firebaseInitialized: firebaseInitialized,
+    firebaseProjectId: process.env.FIREBASE_PROJECT_ID || 'não configurado'
   });
 });
 
@@ -315,12 +412,15 @@ app.get('/debug/tokens', (req, res) => {
       createdAt: new Date(data.createdAt).toISOString(),
       expiresAt: new Date(data.expiresAt).toISOString(),
       used: data.used,
-      usedAt: data.usedAt ? new Date(data.usedAt).toISOString() : null
+      usedAt: data.usedAt ? new Date(data.usedAt).toISOString() : null,
+      firebaseUpdated: data.firebaseUpdated || false,
+      firebaseError: data.firebaseError || null
     });
   }
   res.json({ 
     tokens: tokenList,
-    total: tokenList.length 
+    total: tokenList.length,
+    firebaseInitialized: firebaseInitialized
   });
 });
 
@@ -329,10 +429,14 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Backend customizado rodando na porta ${PORT}`);
   console.log(`🔗 Health: http://localhost:${PORT}/health`);
   console.log(`👥 Usuários válidos: ${Array.from(validUsers).join(', ')}`);
+  console.log(`🔥 Firebase Admin SDK: ${firebaseInitialized ? 'ATIVO' : 'INATIVO'}`);
+  if (firebaseInitialized) {
+    console.log(`📋 Projeto Firebase: ${process.env.FIREBASE_PROJECT_ID}`);
+  }
   console.log(`📝 Endpoints disponíveis:`);
   console.log(`   POST /generate-reset-link - Gerar link de redefinição`);
   console.log(`   GET  /validate-token/:token - Validar token`);
-  console.log(`   POST /reset-password - Redefinir senha`);
+  console.log(`   POST /reset-password - Redefinir senha (+ Firebase)`);
   console.log(`   GET  /health - Status do servidor`);
   console.log(`   GET  /users - Listar usuários válidos`);
 });
