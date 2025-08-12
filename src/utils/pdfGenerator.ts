@@ -8,7 +8,7 @@ export interface GroupedOccurrences {
 }
 
 // Função para formatar data sem usar date-fns
-const formatDate = (date: Date): string => {
+export const formatDate = (date: Date): string => {
   if (isNaN(date.getTime())) return 'Data Inválida';
   
   const day = date.getDate().toString().padStart(2, '0');
