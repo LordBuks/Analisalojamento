@@ -97,7 +97,7 @@ export const generateAthletePDF = async (athleteName: string, category: string, 
         const logoHeight = 10;
         const logoWidth = (25.92 / 18) * logoHeight;
         const logoX = (pageWidth - logoWidth) / 2;
-        const logoY = footerY - 10 - (logoHeight / 2); // Centralizado com a linha vermelha passando pelo meio
+    const logoY = footerY - 10 - logoHeight; // Posicionado acima da linha vermelha
         doc.addImage(img, "PNG", logoX, logoY, logoWidth, logoHeight);
       } catch (error) {
         console.warn("Erro ao adicionar logo no footer", error);
@@ -125,7 +125,8 @@ export const generateAthletePDF = async (athleteName: string, category: string, 
   yPosition += 8;
   doc.setFontSize(12);
   doc.setTextColor(secondaryColor[0], secondaryColor[1], secondaryColor[2]);
-  doc.text(`${month} de ${year}`, margin, yPosition);
+  const headerDate = month === 'Geral' ? `Geral de ${year}` : `${month} de ${year}`;
+  doc.text(headerDate, margin, yPosition);
   yPosition += 15;
   
   // Linha separadora
@@ -497,7 +498,7 @@ X88Ol9m9TMC/wt9Nm+kkz1IF9N7r5GjleoYnpp26lCvwsMeo+WunJHqDS6W5PufTC31Iq9MINGqX
         const logoHeight = 10;
         const logoWidth = (25.92 / 18) * logoHeight;
         const logoX = (pageWidth - logoWidth) / 2;
-        const logoY = footerY - 10 - (logoHeight / 2); // Centralizado com a linha vermelha passando pelo meio
+    const logoY = footerY - 10 - logoHeight; // Posicionado acima da linha vermelha
         doc.addImage(img, "PNG", logoX, logoY, logoWidth, logoHeight);
       } catch (error) {
         console.warn("Erro ao adicionar logo no footer", error);
