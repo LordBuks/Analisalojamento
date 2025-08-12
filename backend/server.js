@@ -96,14 +96,15 @@ app.use(express.json());
 const resetTokens = new Map();
 
 // Lista de usuários válidos (emails fictícios para autenticação)
-const validUsers = new Set([
-  'pedagogia@inter.com',
-  'admin@inter.com', 
-  'teste@inter.com',
-  'atleta1@inter.com',
-  'atleta2@inter.com',
-  'coordenacao@inter.com'
-]);
+// Lista de usuários válidos (emails fictícios para autenticação)
+// const validUsers = new Set([
+//   'pedagogia@inter.com',
+//   'admin@inter.com', 
+//   'teste@inter.com',
+//   'atleta1@inter.com',
+//   'atleta2@inter.com',
+//   'coordenacao@inter.com'
+// ]);
 
 // Rate limiting simples
 const rateLimitMap = new Map();
@@ -223,13 +224,13 @@ app.post('/generate-reset-link', rateLimit, async (req, res) => {
     
     console.log(`🔄 Gerando link customizado para: ${email}`);
     
-    // Verificar se usuário existe na lista de usuários válidos
-    if (!validUsers.has(email)) {
-      return res.status(404).json({ 
-        error: 'Usuário não encontrado',
-        code: 'USER_NOT_FOUND' 
-      });
-    }
+// Verificar se usuário existe na lista de usuários válidos
+    // if (!validUsers.has(email)) {
+    //   return res.status(404).json({ 
+    //     error: 'Usuário não encontrado',
+    //     code: 'USER_NOT_FOUND' 
+    //   });
+    // }
     
     // Invalidar tokens anteriores para este email
     for (const [token, data] of resetTokens.entries()) {
