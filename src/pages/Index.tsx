@@ -387,7 +387,7 @@ const Index = () => {
             occurrences={currentData.filter(occ => occ.NOME === selectedAthleteForOccurrences)}
             onClose={() => setSelectedAthleteForOccurrences(null)}
             month={selectedMonth === 'all' ? 'Geral' : selectedMonth}
-            year={selectedYear.toString()}
+            year={selectedMonth === 'all' ? '2025' : selectedYear.toString()}
           />
         )}
 
@@ -404,16 +404,18 @@ const Index = () => {
               return school === selectedSchool;
             })}
             onClose={() => setSelectedSchool(null)}
+            month={selectedMonth === 'all' ? 'Geral' : selectedMonth}
+            year={selectedMonth === 'all' ? '2025' : selectedYear}
           />
         )}
 
         {selectedCategory && (
           <CategoryAthleteModal
             categoryName={selectedCategory}
-            occurrences={currentData.filter(occ => 
-              occ.TIPO === selectedCategory
-            )}
+            occurrences={currentData.filter(occ => occ.TIPO === selectedCategory)}
             onClose={() => setSelectedCategory(null)}
+            month={selectedMonth === 'all' ? 'Geral' : selectedMonth}
+            year={selectedMonth === 'all' ? '2025' : selectedYear}
           />
         )}
       </div>

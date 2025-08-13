@@ -80,7 +80,7 @@
     "Valor": 100.0
   },
   {
-    "NOME": "Enzo Baggio",
+    "NOME": "Enzo Bagggio",
     "Cat": "Sub-15",
     "DATA": "15/07/25",
     "TIPO": "Comportamento",
@@ -204,7 +204,7 @@
     "Cat": "Sub-20",
     "DATA": "04/07/25",
     "TIPO": "Alimentação Irregular",
-    "OCORRÊNCIA": "Saiu comendo do  refeitório na ceia as 22:30hs.",
+    "OCORRÊNCIA": "Saiu do comendo do  refeitório na ceia as 22:30hs.",
     "Valor": 50.0
   },
   {

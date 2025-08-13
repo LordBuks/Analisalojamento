@@ -121,7 +121,8 @@ export const generateAthletePDF = async (athleteName: string, category: string, 
   yPosition += 8;
   doc.setFontSize(12);
   doc.setTextColor(secondaryColor[0], secondaryColor[1], secondaryColor[2]);
-  doc.text(`${month} de ${year}`, margin, yPosition);
+  const periodText = (month === 'all' || month === 'Geral') ? `Geral de 2025` : `${month} de ${year}`;
+  doc.text(periodText, margin, yPosition);
   yPosition += 15;
   
   // Linha separadora

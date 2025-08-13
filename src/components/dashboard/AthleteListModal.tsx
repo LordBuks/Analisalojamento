@@ -10,6 +10,8 @@ interface AthleteListModalProps {
   athleteName: string;
   occurrences: AthleteOccurrence[];
   onClose: () => void;
+  month: string;
+  year: number;
 }
 
 interface AthleteAbsence {
@@ -20,7 +22,7 @@ interface AthleteAbsence {
   lastAbsenceDate: number;
 }
 
-export function AthleteListModal({ athleteName, occurrences, onClose }: AthleteListModalProps) {
+export function AthleteListModal({ athleteName, occurrences, onClose, month, year }: AthleteListModalProps) {
   const [selectedAthleteOccurrences, setSelectedAthleteOccurrences] = useState<AthleteOccurrence[] | null>(null);
   const [selectedAthleteName, setSelectedAthleteName] = useState<string | null>(null);
 
@@ -197,6 +199,8 @@ export function AthleteListModal({ athleteName, occurrences, onClose }: AthleteL
           athleteName={selectedAthleteName}
           occurrences={selectedAthleteOccurrences}
           onClose={handleCloseAthleteOccurrencesModal}
+          month={month}
+          year={year.toString()}
         />
       )}
     </>

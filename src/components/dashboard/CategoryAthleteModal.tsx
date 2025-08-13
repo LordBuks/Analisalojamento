@@ -12,6 +12,8 @@ interface CategoryAthleteModalProps {
   categoryName: string;
   occurrences: AthleteOccurrence[];
   onClose: () => void;
+  month: string;
+  year: number;
 }
 
 interface AthleteStats {
@@ -23,7 +25,7 @@ interface AthleteStats {
   fotoUrl?: string;
 }
 
-export function CategoryAthleteModal({ categoryName, occurrences, onClose }: CategoryAthleteModalProps) {
+export function CategoryAthleteModal({ categoryName, occurrences, onClose, month, year }: CategoryAthleteModalProps) {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedAthleteOccurrences, setSelectedAthleteOccurrences] = useState<AthleteOccurrence[] | null>(null);
   const [selectedAthleteName, setSelectedAthleteName] = useState<string | null>(null);
@@ -217,6 +219,8 @@ export function CategoryAthleteModal({ categoryName, occurrences, onClose }: Cat
           athleteName={selectedAthleteName}
           occurrences={selectedAthleteOccurrences}
           onClose={handleCloseAthleteOccurrencesModal}
+          month={month}
+          year={year.toString()}
         />
       )}
     </>
