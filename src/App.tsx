@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './hooks/useAuth';
 import LoginPage from './pages/Login';
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRouteWithConsent from './components/ProtectedRouteWithConsent';
 import Navigation from './components/Navigation';
 import Index from './pages/Index';
 import Analytics from './pages/Analytics';
@@ -34,20 +34,20 @@ function App() {
           <Route 
             path="/dashboard" 
             element={
-              <ProtectedRoute>
+              <ProtectedRouteWithConsent>
                 <Navigation currentPage={currentPage} onPageChange={setCurrentPage} />
                 {currentPage === 'dashboard' && <Index />}
                 {currentPage === 'analytics' && <Analytics />}
-              </ProtectedRoute>
+              </ProtectedRouteWithConsent>
             } 
           />
           <Route 
             path="/analytics" 
             element={
-              <ProtectedRoute>
+              <ProtectedRouteWithConsent>
                 <Navigation currentPage={currentPage} onPageChange={setCurrentPage} />
                 <Analytics />
-              </ProtectedRoute>
+              </ProtectedRouteWithConsent>
             } 
           />
           <Route 
@@ -57,9 +57,9 @@ function App() {
           <Route 
             path="/admin/reset-password" 
             element={
-              <ProtectedRoute>
+              <ProtectedRouteWithConsent>
                 <AdminResetPassword />
-              </ProtectedRoute>
+              </ProtectedRouteWithConsent>
             } 
           />
           <Route 
