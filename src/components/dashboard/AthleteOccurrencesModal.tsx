@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { generateAthletePDF, formatDate } from '@/utils/pdfGenerator';
+import { generateAthletePDF, generateAthletePDFWithoutValues, formatDate } from '@/utils/pdfGenerator';
 
 interface AthleteOccurrencesModalProps {
   athleteName: string;
@@ -59,6 +59,15 @@ export const AthleteOccurrencesModal: React.FC<AthleteOccurrencesModalProps> = (
     }
   };
 
+  const handleGeneratePDFWithoutValues = () => {
+    try {
+      generateAthletePDFWithoutValues(athleteName, category, occurrences, month, parseInt(year));
+    } catch (error) {
+      console.error('Erro ao gerar PDF sem valores:', error);
+      alert('Erro ao gerar PDF sem valores. Tente novamente.');
+    }
+  };
+
   return (
     <Dialog open={true} onOpenChange={onClose}>
       <DialogContent className="max-w-3xl max-h-[90vh] overflow-hidden flex flex-col">
@@ -80,7 +89,15 @@ export const AthleteOccurrencesModal: React.FC<AthleteOccurrencesModalProps> = (
               size="sm"
             >
               <FileText className="h-4 w-4 mr-2" />
-              Salvar PDF
+              PDF Caixinha
+            </Button>
+            <Button
+              onClick={handleGeneratePDFWithoutValues}
+              className="bg-green-600 hover:bg-green-700 text-white"
+              size="sm"
+            >
+              <FileText className="h-4 w-4 mr-2" />
+              PDF Análise
             </Button>
             <button onClick={onClose} className="flex items-center justify-center w-8 h-8 rounded-full bg-red-600 text-white hover:bg-red-700 transition-colors">
               <X size={20} />

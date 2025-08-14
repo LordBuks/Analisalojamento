@@ -11,7 +11,7 @@ import DataLoader from '../components/DataLoader'; // Importar o DataLoader
 import { useAuth } from '../hooks/useAuth'; // Importar o hook de autenticação
 import { getAllOccurrences, getMonthData, getAvailableMonths } from '../data/dataLoader';
 import { AthleteOccurrence } from '../data/athleteData';
-import { generateAthletePDF, generateGeneralPDF } from '../utils/pdfGenerator';
+import { generateAthletePDF, generateGeneralPDF, generateGeneralPDFWithoutValues } from '../utils/pdfGenerator';
 import { Button } from "@/components/ui/button";
 
 const Index = () => {
@@ -176,6 +176,31 @@ const Index = () => {
     }
   };
 
+  // Função para gerar PDF geral sem valores
+  const handleGenerateGeneralPDFWithoutValues = async () => {
+    try {
+      // Preparar dados dos atletas para o PDF
+      const allAthletesData = athleteStats.map(athlete => ({
+        name: athlete.name,
+        category: athlete.category,
+        occurrences: athlete.occurrences
+      }));
+
+      const monthName = selectedMonth === 'all' ? 'Geral' : selectedMonth;
+      
+      await generateGeneralPDFWithoutValues(
+        monthName,
+        totalAthletes,
+        totalOccurrences,
+        totalValue,
+        allAthletesData
+      );
+    } catch (error) {
+      console.error('Erro ao gerar PDF sem valores:', error);
+      alert('Erro ao gerar PDF sem valores. Verifique o console para mais detalhes.');
+    }
+  };
+
   const handleMonthChange = (month: string, year: number) => {
     setSelectedMonth(month);
     setSelectedYear(year);
@@ -243,13 +268,18 @@ const Index = () => {
           />
         </div>
 
-        {/* Botão Gerar PDF Geral */}
-        <div className="mb-8">
+        {/* Botões Gerar PDF Geral */}
+        <div className="mb-8 flex gap-4">
           <Button 
             onClick={handleGenerateGeneralPDF}
             className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
           >
-            Gerar PDF Geral
+            PDF Caixinha Geral          </Button>
+          <Button 
+            onClick={handleGenerateGeneralPDFWithoutValues}
+            className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+          >
+            PDF Análise Geral
           </Button>
         </div>
 

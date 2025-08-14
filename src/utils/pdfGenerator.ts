@@ -412,3 +412,352 @@ export const generateGeneralPDF = async (month: string, totalAthletes: number, t
   const fileName = `Relatorio_Geral_${month.replace(/\s+/g, "_")}_${formatDateTime(new Date()).replace(/[\/\s:]/g, "_")}.pdf`;
   doc.save(fileName);
 };
+
+
+// ========== NOVAS FUNÇÕES PARA PDF SEM VALORES MONETÁRIOS ==========
+
+export const generateAthletePDFWithoutValues = async (athleteName: string, category: string, occurrences: AthleteOccurrence[], month: string, year: number) => {
+  const doc = new jsPDF();
+  
+  const primaryColor = [220, 38, 38]; // red-600
+  const secondaryColor = [75, 85, 99]; // gray-600
+  const lightGray = [229, 231, 235]; // gray-200
+
+  let yPosition = 20;
+  const pageWidth = doc.internal.pageSize.width;
+  const pageHeight = doc.internal.pageSize.height;
+  const margin = 20;
+  const contentWidth = pageWidth - (margin * 2);
+  const footerHeight = 30;
+  const maxContentHeight = pageHeight - footerHeight - 20;
+
+  // Função para adicionar footer personalizado (idêntica à original)
+  const addCustomFooter = (pageNumber: number, totalPages: number) => {
+    const footerY = pageHeight - 25;
+
+    doc.setDrawColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+    doc.setLineWidth(0.5);
+    const lineY = footerY - 5 - (10 / 2);
+    doc.line(margin, lineY, pageWidth - margin, lineY);
+
+    doc.setFontSize(6);
+    doc.setTextColor(secondaryColor[0], secondaryColor[1], secondaryColor[2]);
+    
+    const footerText1 = 'Sistema de Gestão de Atletas Alojados';
+    const footerText2 = 'Departamento de Serviço Social';
+    
+    const text1Width = doc.getTextWidth(footerText1);
+    const text2Width = doc.getTextWidth(footerText2);
+    
+    try {
+      const logoHeight = 10;
+      const logoWidth = (25.92 / 18) * logoHeight;
+      const logoX = (pageWidth - logoWidth) / 2;
+      const logoY = lineY - (logoHeight / 2);
+      doc.addImage(LOGO_BASE64, "PNG", logoX, logoY, logoWidth, logoHeight);
+    } catch (error) {
+      console.warn("Erro ao adicionar logo no footer", error);
+    }
+    
+    doc.text(footerText1, (pageWidth - text1Width) / 2, footerY + 2);
+    doc.text(footerText2, (pageWidth - text2Width) / 2, footerY + 6);
+  };
+  
+  // Função para adicionar nova página se necessário
+  const checkPageBreak = (requiredSpace: number) => {
+    if (yPosition + requiredSpace > maxContentHeight) {
+      addCustomFooter(doc.getNumberOfPages(), 0);
+      doc.addPage();
+      yPosition = 20;
+    }
+  };
+  
+  // Cabeçalho do relatório (modificado para indicar análise comportamental)
+  doc.setFont(undefined, 'bold');
+  doc.setFontSize(18);
+  doc.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+  doc.text("Relatório - Análise Comportamental do Atleta", margin, yPosition);
+  yPosition += 8;
+  doc.setFontSize(12);
+  doc.setTextColor(secondaryColor[0], secondaryColor[1], secondaryColor[2]);
+  const periodText = (month === 'all' || month === 'Geral') ? `Geral de 2025` : `${month} de ${year}`;
+  doc.text(periodText, margin, yPosition);
+  yPosition += 15;
+  
+  // Linha separadora
+  doc.setDrawColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+  doc.setLineWidth(0.5);
+  doc.line(margin, yPosition, pageWidth - margin, yPosition);
+  yPosition += 15;
+  
+  // Informações do atleta (SEM VALORES MONETÁRIOS)
+  doc.setFontSize(14);
+  doc.setTextColor(secondaryColor[0], secondaryColor[1], secondaryColor[2]);
+  doc.text(`Nome: ${athleteName}`, margin, yPosition);
+  yPosition += 8;
+  doc.text(`Categoria: ${category}`, margin, yPosition);
+  yPosition += 8;
+  doc.text(`Total de Ocorrências: ${occurrences.length}`, margin, yPosition);
+  yPosition += 15; // Removemos a linha do valor total
+  
+  // Ordenar ocorrências por data (mais recente primeiro) e depois por tipo
+  const sortedOccurrences = [...occurrences].sort((a, b) => {
+    const dateA = new Date(a.DATA);
+    const dateB = new Date(b.DATA);
+    return dateB.getTime() - dateA.getTime();
+  });
+  
+  // Agrupar ocorrências por tipo
+  const groupedOccurrences: GroupedOccurrences = sortedOccurrences.reduce((acc, occ) => {
+    const type = occ.TIPO || 'Outras';
+    if (!acc[type]) {
+      acc[type] = [];
+    }
+    acc[type].push(occ);
+    return acc;
+  }, {} as GroupedOccurrences);
+  
+  // Renderizar cada grupo de ocorrências (SEM VALORES)
+  Object.entries(groupedOccurrences).forEach(([type, typeOccurrences]) => {
+    checkPageBreak(30);
+    
+    // Título do tipo de ocorrência
+    doc.setFontSize(12);
+    doc.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+    doc.text(`${type} (${typeOccurrences.length})`, margin, yPosition);
+    yPosition += 10;
+    
+    // Linha separadora para o tipo
+    doc.setDrawColor(lightGray[0], lightGray[1], lightGray[2]);
+    doc.setLineWidth(0.3);
+    doc.line(margin, yPosition, pageWidth - margin, yPosition);
+    yPosition += 8;
+    
+    // Listar ocorrências do tipo (SEM VALORES)
+    typeOccurrences.forEach((occurrence, index) => {
+      // Calcular espaço necessário para esta ocorrência (sem valor)
+      const requiredSpace = calculateOccurrenceSpaceWithoutValues(doc, occurrence, contentWidth, margin);
+      checkPageBreak(requiredSpace);
+      
+      // Data apenas (SEM VALOR)
+      const dateObject = new Date(occurrence.DATA);
+      const formattedDate = formatDate(dateObject);
+      
+      doc.setFontSize(10);
+      doc.setTextColor(secondaryColor[0], secondaryColor[1], secondaryColor[2]);
+      doc.text(`${index + 1}. Data: ${formattedDate}`, margin + 5, yPosition);
+      yPosition += 6;
+      
+      // Descrição da ocorrência
+      doc.setFontSize(9);
+      doc.setTextColor(0, 0, 0);
+      
+      // Quebrar texto longo em múltiplas linhas
+      const description = occurrence.OCORRÊNCIA;
+      const maxLineWidth = contentWidth - 10;
+      const lines = doc.splitTextToSize(description, maxLineWidth);
+      
+      lines.forEach((line: string) => {
+        checkPageBreak(5);
+        doc.text(line, margin + 5, yPosition);
+        yPosition += 4;
+      });
+      
+      yPosition += 3; // Espaço entre ocorrências
+    });
+    
+    yPosition += 8; // Espaço entre tipos
+  });
+  
+  // Adicionar footer personalizado em todas as páginas
+  const totalPages = doc.getNumberOfPages();
+  for (let i = 1; i <= totalPages; i++) {
+    doc.setPage(i);
+    addCustomFooter(i, totalPages);
+  }
+  
+  // Salvar o PDF com nome diferenciado
+  const fileName = `Relatorio_Analise_Comportamental_${athleteName.replace(/\s+/g, '_')}_${formatDateTime(new Date()).replace(/[\/\s:]/g, '_')}.pdf`;
+  doc.save(fileName);
+};
+
+// Função auxiliar para calcular espaço necessário SEM valores
+const calculateOccurrenceSpaceWithoutValues = (doc: any, occurrence: AthleteOccurrence, contentWidth: number, margin: number): number => {
+  const maxLineWidth = contentWidth - 10;
+  const description = occurrence.OCORRÊNCIA;
+  const lines = doc.splitTextToSize(description, maxLineWidth);
+  
+  // Espaço para data (6) + espaço para descrição (4 * número de linhas) + espaço entre ocorrências (3)
+  return 6 + (4 * lines.length) + 3;
+};
+
+export const generateGeneralPDFWithoutValues = async (month: string, totalAthletes: number, totalOccurrences: number, totalValue: number, allAthletesData: { name: string; category: string; occurrences: AthleteOccurrence[]; }[]) => {
+  const doc = new jsPDF();
+
+  const primaryColor = [220, 38, 38]; // red-600
+  const secondaryColor = [75, 85, 99]; // gray-600
+  const lightGray = [229, 231, 235]; // gray-200
+
+  let yPosition = 20;
+  const pageWidth = doc.internal.pageSize.width;
+  const pageHeight = doc.internal.pageSize.height;
+  const margin = 20;
+  const contentWidth = pageWidth - (margin * 2);
+  const footerHeight = 30;
+  const maxContentHeight = pageHeight - footerHeight - 20;
+
+  // Função para adicionar footer personalizado (idêntica à original)
+  const addCustomFooter = (pageNumber: number, totalPages: number) => {
+    const footerY = pageHeight - 25;
+
+    doc.setDrawColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+    doc.setLineWidth(0.5);
+    const lineY = footerY - 5 - (10 / 2);
+    doc.line(margin, lineY, pageWidth - margin, lineY);
+
+    doc.setFontSize(6);
+    doc.setTextColor(secondaryColor[0], secondaryColor[1], secondaryColor[2]);
+
+    const footerText1 = "Sistema de Gestão de Atletas Alojados";
+    const footerText2 = "Departamento de Serviço Social";
+
+    const text1Width = doc.getTextWidth(footerText1);
+    const text2Width = doc.getTextWidth(footerText2);
+
+    try {
+      const logoHeight = 10;
+      const logoWidth = (25.92 / 18) * logoHeight;
+      const logoX = (pageWidth - logoWidth) / 2;
+      const logoY = lineY - (logoHeight / 2);
+      doc.addImage(LOGO_BASE64, "PNG", logoX, logoY, logoWidth, logoHeight);
+    } catch (error) {
+      console.warn("Erro ao adicionar logo no footer", error);
+    }
+
+    doc.text(footerText1, (pageWidth - text1Width) / 2, footerY + 2);
+    doc.text(footerText2, (pageWidth - text2Width) / 2, footerY + 6);
+  };
+
+  // Função para adicionar nova página se necessário
+  const checkPageBreak = (requiredSpace: number) => {
+    if (yPosition + requiredSpace > maxContentHeight) {
+      addCustomFooter(doc.getNumberOfPages(), 0);
+      doc.addPage();
+      yPosition = 20;
+    }
+  };
+
+  // Cabeçalho do relatório geral (modificado para análise comportamental)
+  doc.setFont(undefined, 'bold');
+  doc.setFontSize(20);
+  doc.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+  doc.text(`Relatório - Análise Comportamental ${month} - 2025`, margin, yPosition);
+  yPosition += 15;
+
+  doc.setDrawColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+  doc.setLineWidth(0.5);
+  doc.line(margin, yPosition, pageWidth - margin, yPosition);
+  yPosition += 15;
+
+  // Informações do painel principal (SEM VALORES MONETÁRIOS)
+  doc.setFontSize(14);
+  doc.setTextColor(secondaryColor[0], secondaryColor[1], secondaryColor[2]);
+  doc.text(`Total de Atletas: ${totalAthletes}`, margin, yPosition);
+  yPosition += 8;
+  doc.text(`Total de Ocorrências: ${totalOccurrences}`, margin, yPosition);
+  yPosition += 15; // Removemos a linha do valor total
+
+  // Adicionar linha separadora antes de listar os atletas
+  doc.setDrawColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+  doc.setLineWidth(0.5);
+  doc.line(margin, yPosition, pageWidth - margin, yPosition);
+  yPosition += 15;
+
+  // Listar ocorrências de cada atleta (ordenado alfabeticamente) SEM VALORES
+  const sortedAthletesData = [...allAthletesData].sort((a, b) => a.name.localeCompare(b.name));
+
+  for (const athleteData of sortedAthletesData) {
+    checkPageBreak(40);
+
+    doc.setFontSize(16);
+    doc.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+    doc.text(`Atleta: ${athleteData.name} (${athleteData.category})`, margin, yPosition);
+    yPosition += 10;
+
+    doc.setFontSize(12);
+    doc.setTextColor(secondaryColor[0], secondaryColor[1], secondaryColor[2]);
+    doc.text(`Ocorrências do Atleta: ${athleteData.occurrences.length}`, margin, yPosition);
+    yPosition += 15; // Removemos a linha do valor total do atleta
+
+    // Ordenar e agrupar ocorrências por tipo
+    const sortedOccurrences = [...athleteData.occurrences].sort((a, b) => {
+      const dateA = new Date(a.DATA);
+      const dateB = new Date(b.DATA);
+      return dateB.getTime() - dateA.getTime();
+    });
+
+    const groupedOccurrences: GroupedOccurrences = sortedOccurrences.reduce((acc, occ) => {
+      const type = occ.TIPO || "Outras";
+      if (!acc[type]) {
+        acc[type] = [];
+      }
+      acc[type].push(occ);
+      return acc;
+    }, {} as GroupedOccurrences);
+
+    Object.entries(groupedOccurrences).forEach(([type, typeOccurrences]) => {
+      checkPageBreak(30);
+
+      doc.setFontSize(12);
+      doc.setTextColor(primaryColor[0], primaryColor[1], primaryColor[2]);
+      doc.text(`${type} (${typeOccurrences.length})`, margin + 5, yPosition);
+      yPosition += 10;
+
+      doc.setDrawColor(lightGray[0], lightGray[1], lightGray[2]);
+      doc.setLineWidth(0.3);
+      doc.line(margin + 5, yPosition, pageWidth - margin - 5, yPosition);
+      yPosition += 8;
+
+      typeOccurrences.forEach((occurrence, index) => {
+        const requiredSpace = calculateOccurrenceSpaceWithoutValues(doc, occurrence, contentWidth, margin);
+        checkPageBreak(requiredSpace);
+
+        const dateObject = new Date(occurrence.DATA);
+        const formattedDate = formatDate(dateObject);
+
+        doc.setFontSize(10);
+        doc.setTextColor(secondaryColor[0], secondaryColor[1], secondaryColor[2]);
+        doc.text(`${index + 1}. Data: ${formattedDate}`, margin + 10, yPosition);
+        yPosition += 6; // Removemos a linha do valor
+
+        doc.setFontSize(9);
+        doc.setTextColor(0, 0, 0);
+
+        const description = occurrence.OCORRÊNCIA;
+        const maxLineWidth = contentWidth - 20;
+        const lines = doc.splitTextToSize(description, maxLineWidth);
+
+        lines.forEach((line: string) => {
+          checkPageBreak(5);
+          doc.text(line, margin + 10, yPosition);
+          yPosition += 4;
+        });
+
+        yPosition += 3;
+      });
+      yPosition += 8;
+    });
+    yPosition += 15;
+  }
+
+  // Adicionar footer personalizado em todas as páginas
+  const totalPages = doc.getNumberOfPages();
+  for (let i = 1; i <= totalPages; i++) {
+    doc.setPage(i);
+    addCustomFooter(i, totalPages);
+  }
+
+  const fileName = `Relatorio_Analise_Comportamental_Geral_${month.replace(/\s+/g, "_")}_${formatDateTime(new Date()).replace(/[\/\s:]/g, "_")}.pdf`;
+  doc.save(fileName);
+};
+
