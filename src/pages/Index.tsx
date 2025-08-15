@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Users, AlertTriangle, DollarSign, TrendingUp } from 'lucide-react';
 import { StatCard } from '../components/dashboard/StatCard';
+import { PrivateStatCard } from '../components/dashboard/PrivateStatCard';
 import { OccurrenceChart } from '../components/dashboard/OccurrenceChart';
 import { AthleteListModal } from '../components/dashboard/AthleteListModal';
 import { CategoryAthleteModal } from '../components/dashboard/CategoryAthleteModal';
@@ -254,13 +255,13 @@ const Index = () => {
             icon={AlertTriangle}
             color="red"
           />
-          <StatCard
+          <PrivateStatCard
             title={<span className="text-bold text-red-600">Valor Total</span>}
             value={`R$ ${totalValue.toLocaleString()}`}
             icon={DollarSign}
             color="green"
           />
-          <StatCard
+          <PrivateStatCard
             title={<span className="text-bold text-red-600">Média por Atleta</span>}
             value={`R$ ${averagePerAthlete}`}
             icon={TrendingUp}
