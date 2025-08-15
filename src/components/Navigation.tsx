@@ -1,6 +1,7 @@
 import React from 'react';
 import { BarChart3, TrendingUp, LogOut } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
+import PrivacyPolicyLink from './PrivacyPolicyLink';
 
 interface NavigationProps {
   currentPage: 'dashboard' | 'analytics';
@@ -49,6 +50,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onPageChange }) =>
           </div>
 
           <div className="flex items-center space-x-4">
+            <PrivacyPolicyLink />
             <span className="text-sm text-gray-600">
               {user?.email}
             </span>
