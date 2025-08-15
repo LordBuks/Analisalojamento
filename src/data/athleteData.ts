@@ -7,6 +7,8 @@ export interface AthleteOccurrence {
   OCORRÊNCIA: string;
   VALOR: number;
   fotoUrl?: string;
+  month?: string; // Mês da ocorrência
+  year?: number; // Ano da ocorrência
   isAbatedOrRemoved?: boolean; // Indica se a ocorrência foi desconsiderada
   actionBy?: string; // Email ou ID do usuário que realizou a ação
   actionAt?: number; // Data e hora da ação (timestamp)

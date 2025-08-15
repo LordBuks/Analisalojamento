@@ -131,8 +131,8 @@ export const generateAthletePDF = async (athleteName: string, category: string, 
   doc.line(margin, yPosition, pageWidth - margin, yPosition);
   yPosition += 15;
   
-  // Informações do atleta (apenas ocorrências ativas)
-  const activeOccurrences = occurrences.filter(occ => !occ.isAbatedOrRemoved);
+  // Informações do atleta (todas as ocorrências, incluindo as desconsideradas)
+  // A marcação visual e o cálculo de totais ativos serão feitos abaixo
   
   doc.setFontSize(14);
   doc.setTextColor(secondaryColor[0], secondaryColor[1], secondaryColor[2]);
@@ -140,11 +140,14 @@ export const generateAthletePDF = async (athleteName: string, category: string, 
   yPosition += 8;
   doc.text(`Categoria: ${category}`, margin, yPosition);
   yPosition += 8;
+  
+  // Calcular e exibir o total de ocorrências ativas
+  const activeOccurrences = occurrences.filter(occ => !occ.isAbatedOrRemoved);
   doc.text(`Total de Ocorrências Ativas: ${activeOccurrences.length}`, margin, yPosition);
   yPosition += 8;
   
   const totalValue = activeOccurrences.reduce((sum, occ) => sum + Number(occ.VALOR), 0);
-  doc.text(`Valor Total: R$ ${totalValue.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`, margin, yPosition);
+  doc.text(`Valor Total Ativo: R$ ${totalValue.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`, margin, yPosition);
   yPosition += 8;
   
   // Nota explicativa sobre ocorrências desconsideradas
@@ -152,7 +155,7 @@ export const generateAthletePDF = async (athleteName: string, category: string, 
     doc.setFontSize(10);
     doc.setFont(undefined, 'italic');
     doc.setTextColor(100, 100, 100);
-    doc.text('* Ocorrências desconsideradas aparecem tachadas e não são incluídas nos totais', margin, yPosition);
+    doc.text('* Ocorrências desconsideradas aparecem tachadas e não são incluídas nos totais ativos', margin, yPosition);
     yPosition += 8;
   }
   
@@ -165,7 +168,7 @@ export const generateAthletePDF = async (athleteName: string, category: string, 
     return dateB.getTime() - dateA.getTime();
   });
   
-  // Agrupar ocorrências por tipo
+  // Agrupar ocorrências por tipo, incluindo as desconsideradas
   const groupedOccurrences: GroupedOccurrences = sortedOccurrences.reduce((acc, occ) => {
     const type = occ.TIPO || 'Outras';
     if (!acc[type]) {
@@ -221,7 +224,7 @@ export const generateAthletePDF = async (athleteName: string, category: string, 
         doc.line(margin + 5, yPosition - 1, margin + 5 + dateWidth, yPosition - 1);
       }
       
-      const valueText = `Valor: R$ ${occurrence.VALOR.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+      const valueText = `Valor: R$ ${occurrence.VALOR.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}`;
       const valueWidth = doc.getTextWidth(valueText);
       doc.text(valueText, pageWidth - margin - valueWidth, yPosition);
       
@@ -283,7 +286,7 @@ export const generateAthletePDF = async (athleteName: string, category: string, 
   }
   
   // Salvar o PDF
-  const fileName = `Relatorio_${athleteName.replace(/\s+/g, '_')}_${formatDateTime(new Date()).replace(/[\/\s:]/g, '_')}.pdf`;
+  const fileName = `Relatorio_${athleteName.replace(/\s+/g, '_')}_Relatorio_Analise_${formatDateTime(new Date()).replace(/[\/\s:]/g, '_')}.pdf`;
   doc.save(fileName);
 };
 

@@ -160,22 +160,58 @@ const Index = () => {
   // Função para atualizar o status de abono/remoção de uma ocorrência
   const handleUpdateAthleteOccurrence = async (occurrenceId: string, isAbatedOrRemoved: boolean) => {
     try {
+      console.log('=== DEBUG: handleUpdateAthleteOccurrence ===');
+      console.log('occurrenceId recebido:', occurrenceId);
+      console.log('isAbatedOrRemoved:', isAbatedOrRemoved);
+      console.log('user:', user);
+      
+      // Validar se o ID da ocorrência é válido
+      if (!occurrenceId || occurrenceId.trim() === '') {
+        console.error('ID da ocorrência é inválido:', occurrenceId);
+        throw new Error('ID da ocorrência é inválido');
+      }
+
+      // Validar se o usuário está autenticado
+      if (!user?.email) {
+        console.error('Usuário não autenticado:', user);
+        throw new Error('Usuário não autenticado');
+      }
+
+      console.log(`Atualizando ocorrência ${occurrenceId} para ${isAbatedOrRemoved ? 'desconsiderada' : 'ativa'}`);
+      
+      // Atualizar no Firebase
       await firestoreService.updateOccurrenceAbatementStatus(
         occurrenceId, 
         isAbatedOrRemoved, 
-        user?.email || 'unknown'
+        user.email,
+        'monthlyData'
       );
       
-      // Recarregar os dados após a atualização
-      if (selectedMonth === 'all') {
-        const allData = await getAllOccurrences();
-        setCurrentData(allData);
-      } else {
-        const monthData = await getMonthData(selectedMonth, selectedYear);
-        setCurrentData(monthData);
-      }
+      console.log('Atualização no Firebase bem-sucedida');
+      
+      // Atualizar os dados localmente para refletir a mudança imediatamente
+      const updatedData = currentData.map(occurrence => {
+        if (occurrence.id === occurrenceId) {
+          return {
+            ...occurrence,
+            isAbatedOrRemoved: isAbatedOrRemoved,
+            actionBy: user.email,
+            actionAt: Date.now()
+          };
+        }
+        return occurrence;
+      });
+      
+      setCurrentData(updatedData);
+      console.log('Interface atualizada com sucesso!');
+      
+      // Mostrar mensagem de sucesso
+      alert('Ocorrência atualizada com sucesso no Firebase!');
+      
     } catch (error) {
       console.error('Erro ao atualizar ocorrência:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Erro desconhecido';
+      alert(`Erro ao atualizar ocorrência: ${errorMessage}`);
       throw error;
     }
   };

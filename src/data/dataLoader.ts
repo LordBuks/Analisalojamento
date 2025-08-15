@@ -1,5 +1,6 @@
 import { AthleteOccurrence } from './athleteData';
 import { normalizeData } from '../utils/dataTransformer';
+import { firestoreService } from '../services/firestoreService';
 
 export interface MonthlyData {
   month: string;
@@ -7,9 +8,39 @@ export interface MonthlyData {
   data: AthleteOccurrence[];
 }
 
-// Função para carregar dados de múltiplos arquivos JSON da pasta public
+// Função para carregar dados do Firebase primeiro, depois JSON local como fallback
 export const loadMonthlyData = async (): Promise<MonthlyData[]> => {
   const monthlyDataList: MonthlyData[] = [];
+  
+  try {
+    // Tentar carregar dados do Firebase primeiro
+    console.log('Tentando carregar dados do Firebase...');
+    const firebaseData = await firestoreService.getAllOccurrences('monthlyData');
+    
+    if (firebaseData && firebaseData.length > 0) {
+      console.log(`Carregados ${firebaseData.length} registros do Firebase`);
+      
+      // Agrupar dados por mês e ano
+      const groupedData = firebaseData.reduce((acc, occurrence) => {
+        const month = occurrence.month || 'Geral';
+        const year = occurrence.year || 2025;
+        const key = `${month}-${year}`;
+        
+        if (!acc[key]) {
+          acc[key] = { month, year, data: [] };
+        }
+        acc[key].data.push(occurrence);
+        return acc;
+      }, {} as { [key: string]: MonthlyData });
+      
+      return Object.values(groupedData);
+    }
+  } catch (error) {
+    console.log('Erro ao carregar dados do Firebase, tentando JSON local:', error);
+  }
+
+  // Fallback para arquivos JSON locais APENAS se Firebase estiver vazio
+  console.log('Firebase vazio ou inacessível, carregando dados dos arquivos JSON locais...');
   
   const monthlyFiles = [
     { file: 'dezembro-2025.json', month: 'Dezembro', year: 2025 },
@@ -32,6 +63,7 @@ export const loadMonthlyData = async (): Promise<MonthlyData[]> => {
       if (response.ok) {
         const rawData = await response.json();
         const monthData: AthleteOccurrence[] = normalizeData(rawData);
+        
         if (Array.isArray(monthData) && monthData.length > 0) {
           monthlyDataList.push({
             month,
@@ -50,6 +82,21 @@ export const loadMonthlyData = async (): Promise<MonthlyData[]> => {
 
 // Função para consolidar todos os dados em um array único
 export const getAllOccurrences = async (): Promise<AthleteOccurrence[]> => {
+  try {
+    // Tentar carregar diretamente do Firebase primeiro
+    console.log('Carregando todas as ocorrências do Firebase...');
+    const firebaseData = await firestoreService.getAllOccurrences('monthlyData');
+    
+    if (firebaseData && firebaseData.length > 0) {
+      console.log(`Retornando ${firebaseData.length} ocorrências do Firebase`);
+      return firebaseData;
+    }
+  } catch (error) {
+    console.log('Erro ao carregar do Firebase, usando fallback:', error);
+  }
+
+  // Fallback para dados locais
+  console.log('Usando fallback para dados locais...');
   const monthlyDataList = await loadMonthlyData();
   const allOccurrences: AthleteOccurrence[] = [];
   
@@ -62,6 +109,19 @@ export const getAllOccurrences = async (): Promise<AthleteOccurrence[]> => {
 
 // Função para obter dados de um mês específico
 export const getMonthData = async (month: string, year: number): Promise<AthleteOccurrence[]> => {
+  try {
+    // Tentar carregar do Firebase primeiro
+    const firebaseData = await firestoreService.getOccurrencesByMonth(month, year, 'monthlyData');
+    
+    if (firebaseData && firebaseData.length > 0) {
+      console.log(`Retornando ${firebaseData.length} ocorrências de ${month}/${year} do Firebase`);
+      return firebaseData;
+    }
+  } catch (error) {
+    console.log(`Erro ao carregar ${month}/${year} do Firebase, usando fallback:`, error);
+  }
+
+  // Fallback para dados locais
   const monthlyDataList = await loadMonthlyData();
   const monthData = monthlyDataList.find(data => data.month === month && data.year === year);
   return monthData ? monthData.data : [];

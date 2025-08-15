@@ -57,6 +57,11 @@ export const AthleteOccurrencesModal: React.FC<AthleteOccurrencesModalProps> = (
 
   // Função para alternar o status de abono/remoção
   const handleAbateOrRemoveToggle = async (occurrenceId: string, currentStatus: boolean) => {
+    console.log('=== DEBUG: handleAbateOrRemoveToggle ===');
+    console.log('occurrenceId:', occurrenceId);
+    console.log('currentStatus:', currentStatus);
+    console.log('onUpdateOccurrence:', onUpdateOccurrence);
+    
     if (onUpdateOccurrence) {
       try {
         await onUpdateOccurrence(occurrenceId, !currentStatus);
@@ -166,6 +171,10 @@ export const AthleteOccurrencesModal: React.FC<AthleteOccurrencesModalProps> = (
         ) : (
           <div className="flex-1 overflow-y-auto space-y-4 pr-2">
             {occurrences.map((occurrence, index) => {
+              console.log(`=== DEBUG: Ocorrência ${index} ===`);
+              console.log('occurrence.id:', occurrence.id);
+              console.log('occurrence:', occurrence);
+              
               const dateObject = new Date(occurrence.DATA);
               const formattedDate = formatDate(dateObject);
               const isAbated = occurrence.isAbatedOrRemoved || false;

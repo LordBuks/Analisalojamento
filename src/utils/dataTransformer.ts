@@ -8,11 +8,30 @@ const excelSerialDateToJSDate = (serial: number): number => {
   return jsDate.getTime();
 };
 
+// Função para gerar ID único baseado nos dados da ocorrência
+const generateOccurrenceId = (item: any, index: number): string => {
+  const nome = (item.NOME || item.nome || '').replace(/\s+/g, '_');
+  const data = item.DATA || Date.now();
+  const tipo = (item.TIPO || '').replace(/\s+/g, '_');
+  const valor = item.VALOR || item.Valor || 0;
+  
+  // Criar um hash simples baseado nos dados
+  const dataStr = `${nome}_${data}_${tipo}_${valor}_${index}`;
+  let hash = 0;
+  for (let i = 0; i < dataStr.length; i++) {
+    const char = dataStr.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash; // Convert to 32bit integer
+  }
+  
+  return `occ_${Math.abs(hash)}_${Date.now()}_${index}`;
+};
+
 // Função para normalizar os dados para o formato esperado
 export const normalizeData = (data: any[]): AthleteOccurrence[] => {
   if (!data || data.length === 0) return [];
   
-  return data.map(item => {
+  return data.map((item, index) => {
     let normalizedDate: number;
     
     // Verifica se DATA é uma string no formato DD/MM/YY
@@ -30,12 +49,18 @@ export const normalizeData = (data: any[]): AthleteOccurrence[] => {
     }
 
     return {
+      id: item.id || generateOccurrenceId(item, index), // Gerar ID se não existir
       NOME: item.NOME || item.nome,
       CAT: item.CAT || item.Cat,
       DATA: normalizedDate,
       TIPO: item.TIPO,
       OCORRÊNCIA: item.OCORRÊNCIA,
-      VALOR: item.VALOR || item.Valor
+      VALOR: item.VALOR || item.Valor,
+      month: item.month,
+      year: item.year,
+      isAbatedOrRemoved: item.isAbatedOrRemoved || false,
+      actionBy: item.actionBy,
+      actionAt: item.actionAt
     };
   });
 };
