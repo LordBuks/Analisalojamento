@@ -112,7 +112,9 @@ const ConsentModal: React.FC<ConsentModalProps> = ({
                   <li>Elaboração de relatórios individuais de desenvolvimento.</li>
                   <li>Comunicação com responsáveis legais quando necessário.</li>
                   <li>Cumprimento de obrigações legais e regulamentares.</li>
+                  <hr   />
                 </ul>
+                
               </section>
 
               <section>
@@ -125,6 +127,7 @@ const ConsentModal: React.FC<ConsentModalProps> = ({
                   <li>Proteção da vida ou da incolumidade física do titular (Art. 7º, III da LGPD).</li>
                   <li>Exercício regular de direitos em processo judicial, administrativo ou arbitral (Art. 7º, VI da LGPD).</li>
                   <li>Proteção do crédito, conforme disposto em legislação específica (Art. 7º, X da LGPD).</li>
+                  <hr />
                 </ul>
               </section>
 
@@ -138,6 +141,7 @@ const ConsentModal: React.FC<ConsentModalProps> = ({
                   <li><strong>Dados acadêmicos:</strong> categoria, desempenho, frequência.</li>
                   <li><strong>Dados comportamentais:</strong> ocorrências disciplinares, observações pedagógicas.</li>
                   <li><strong>Dados biométricos:</strong> fotografias para identificação (quando aplicável).</li>
+                  <hr />
                 </ul>
               </section>
 
@@ -153,6 +157,7 @@ const ConsentModal: React.FC<ConsentModalProps> = ({
                   <li>Não acessar dados de atletas sem justificativa profissional.</li>
                   <li>Reportar imediatamente qualquer incidente de segurança ou vazamento de dados.</li>
                   <li>Seguir todas as políticas internas de segurança da informação.</li>
+                  <hr />
                 </ul>
               </section>
 
@@ -168,6 +173,7 @@ const ConsentModal: React.FC<ConsentModalProps> = ({
                   <li>Impressões desnecessárias devem ser evitadas, priorizando o meio digital.</li>
                   <li>Documentos físicos devem ser descartados de forma segura quando não mais necessários.</li>
                   <li>O acesso a relatórios impressos deve ser limitado apenas aos profissionais diretamente envolvidos.</li>
+                  <hr />
                 </ul>
               </section>
 
@@ -184,6 +190,7 @@ const ConsentModal: React.FC<ConsentModalProps> = ({
                   <li>Portabilidade dos dados a outro fornecedor.</li>
                   <li>Eliminação dos dados tratados com consentimento.</li>
                   <li>Revogação do consentimento.</li>
+                  <hr />
                 </ul>
               </section>
 
@@ -197,6 +204,7 @@ const ConsentModal: React.FC<ConsentModalProps> = ({
                   <li>Responsabilização civil e criminal conforme legislação aplicável.</li>
                   <li>Multas e sanções previstas na LGPD.</li>
                   <li>Indenização por danos morais e materiais causados aos titulares.</li>
+                  <hr />
                 </ul>
               </section>
 
@@ -205,11 +213,19 @@ const ConsentModal: React.FC<ConsentModalProps> = ({
                 <p className="mb-3">
                   Para esclarecimentos sobre o sistema
                 </p>
-                <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li><strong>Departamento de Serviço Social:</strong> Tiane Orleis Bitencourt Fone: (51) 99312-0679</li>
-                  <li><strong>Email:</strong> tbitencourt@internacional.com.br</li>
-                  <li><strong>Departamento de Serviço Social:</strong> Fabiana Batista da Silva Fone: (51) 99861-0523</li>
-                  <li><strong>Email:</strong> fbsilva@internacional.com.br</li>
+                <ul className="list-disc list-inside space-y-2 ml-4" >
+                  <li><strong>Departamento de Serviço Social:</strong> Tiane Orleis Bitencourt</li>                  
+                  <li><strong>📞:</strong> (51) 99312-0679</li>  
+                  <li><strong> 📩: </strong> tbitencourt@internacional.com.br</li>
+                  <p></p>                               
+                  <li><strong>Departamento de Serviço Social:</strong> Fabiana Batista da Silva</li> 
+                  <li><strong>📞:</strong> (51) 99861-0523</li>
+                  <li><strong>📩:</strong> fbsilva@internacional.com.br</li>
+                  <p></p>                   
+                  <li><strong>Alojamento Cat de Base:</strong> Luciano Rodrigues</li>
+                  <li><strong>📞:</strong> (51) 98333-8916</li>
+                  <li><strong>📩l:</strong> lrodrigues@internacional.com.br</li>
+                  <p></p> 
                 </ul>
               </section>
             </div>

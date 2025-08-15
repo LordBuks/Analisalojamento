@@ -206,7 +206,7 @@ const Index = () => {
       console.log('Interface atualizada com sucesso!');
       
       // Mostrar mensagem de sucesso
-      alert('Ocorrência atualizada com sucesso no Firebase!');
+      alert('Ocorrência atualizada com sucesso!');
       
     } catch (error) {
       console.error('Erro ao atualizar ocorrência:', error);
