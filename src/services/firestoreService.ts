@@ -142,10 +142,7 @@ export const firestoreService = {
       console.error('Erro ao verificar dados existentes:', error);
       return false;
     }
-  }
-};
-
-
+  },
 
   // Atualizar o status de abono/remoção de uma ocorrência
   async updateOccurrenceAbatementStatus(occurrenceId: string, isAbatedOrRemoved: boolean, actionByEmail: string, collectionName: string = 'occurrences'): Promise<void> {
@@ -161,6 +158,5 @@ export const firestoreService = {
       console.error('Erro ao atualizar status de abono/remoção da ocorrência:', error);
       throw error;
     }
-  },
-
-
+  }
+};
