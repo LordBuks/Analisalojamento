@@ -224,7 +224,7 @@ const ConsentModal: React.FC<ConsentModalProps> = ({
                   <p></p>                   
                   <li><strong>Alojamento Cat de Base:</strong> Luciano Rodrigues</li>
                   <li><strong>📞:</strong> (51) 98333-8916</li>
-                  <li><strong>📩l:</strong> lrodrigues@internacional.com.br</li>
+                  <li><strong>📩:</strong> lrodrigues@internacional.com.br</li>
                   <p></p> 
                 </ul>
               </section>
