@@ -1,4 +1,4 @@
-import { getFirestore, collection, addDoc, getDocs, query, where, orderBy, Timestamp } from 'firebase/firestore';
+import { getFirestore, collection, addDoc, getDocs, query, where, orderBy, Timestamp, updateDoc, doc } from 'firebase/firestore';
 import app from '../firebaseConfig';
 
 const db = getFirestore(app);
@@ -144,4 +144,23 @@ export const firestoreService = {
     }
   }
 };
+
+
+
+  // Atualizar o status de abono/remoção de uma ocorrência
+  async updateOccurrenceAbatementStatus(occurrenceId: string, isAbatedOrRemoved: boolean, actionByEmail: string, collectionName: string = 'occurrences'): Promise<void> {
+    try {
+      const occurrenceRef = doc(db, collectionName, occurrenceId);
+      await updateDoc(occurrenceRef, {
+        isAbatedOrRemoved: isAbatedOrRemoved,
+        actionBy: actionByEmail,
+        actionAt: Timestamp.now(),
+        updatedAt: Timestamp.now()
+      });
+    } catch (error) {
+      console.error('Erro ao atualizar status de abono/remoção da ocorrência:', error);
+      throw error;
+    }
+  },
+
 

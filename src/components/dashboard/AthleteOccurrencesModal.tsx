@@ -1,5 +1,5 @@
-import React from 'react';
-import { X, User, AlertCircle, DollarSign, FileText } from 'lucide-react';
+import React, { useState } from 'react';
+import { X, User, AlertCircle, DollarSign, FileText, Trash2, CheckCircle } from 'lucide-react';
 import { AthleteOccurrence } from '../../data/athleteData';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -13,6 +13,7 @@ interface AthleteOccurrencesModalProps {
   onClose: () => void;
   month: string;
   year: string;
+  onUpdateOccurrence?: (occurrenceId: string, isAbatedOrRemoved: boolean) => Promise<void>;
 }
 
 
@@ -24,6 +25,7 @@ export const AthleteOccurrencesModal: React.FC<AthleteOccurrencesModalProps> = (
   onClose,
   month,
   year,
+  onUpdateOccurrence,
 }) => {
   const initials = athleteName.split(' ').map(n => n[0]).join('').slice(0, 2);
   const firstOccurrence = occurrences[0];
@@ -48,7 +50,22 @@ export const AthleteOccurrencesModal: React.FC<AthleteOccurrencesModalProps> = (
   }, {} as { [key: string]: number });
   
   const category = firstOccurrence?.CAT || 'N/A';
-  const totalValue = occurrences.reduce((sum, occ) => sum + Number(occ.VALOR), 0);
+  
+  // Filtrar ocorrências ativas (não desconsideradas) para cálculo dos totais
+  const activeOccurrences = occurrences.filter(occ => !occ.isAbatedOrRemoved);
+  const totalValue = activeOccurrences.reduce((sum, occ) => sum + Number(occ.VALOR), 0);
+
+  // Função para alternar o status de abono/remoção
+  const handleAbateOrRemoveToggle = async (occurrenceId: string, currentStatus: boolean) => {
+    if (onUpdateOccurrence) {
+      try {
+        await onUpdateOccurrence(occurrenceId, !currentStatus);
+      } catch (error) {
+        console.error('Erro ao atualizar status da ocorrência:', error);
+        alert('Erro ao atualizar o status da ocorrência. Tente novamente.');
+      }
+    }
+  };
 
   const handleGeneratePDF = () => {
     try {
@@ -131,7 +148,7 @@ export const AthleteOccurrencesModal: React.FC<AthleteOccurrencesModalProps> = (
                 <div className="flex items-center space-x-2">
                   <AlertCircle className="h-5 w-5 text-red-600" />
                   <span className="font-semibold text-gray-700">
-                    {occurrences.length} ocorrência{occurrences.length !== 1 ? 's' : ''}
+                    {activeOccurrences.length} ocorrência{activeOccurrences.length !== 1 ? 's' : ''}
                   </span>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -151,14 +168,55 @@ export const AthleteOccurrencesModal: React.FC<AthleteOccurrencesModalProps> = (
             {occurrences.map((occurrence, index) => {
               const dateObject = new Date(occurrence.DATA);
               const formattedDate = formatDate(dateObject);
+              const isAbated = occurrence.isAbatedOrRemoved || false;
 
               return (
-                <div key={index} className="border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors">
+                <div 
+                  key={occurrence.id || index} 
+                  className={`border border-gray-200 rounded-lg p-4 hover:border-red-200 transition-colors ${
+                    isAbated ? 'bg-gray-50 opacity-75' : ''
+                  }`}
+                >
                   <div className="flex justify-between items-start mb-2">
                     <p className="text-sm text-gray-500 font-medium">Data: {formattedDate}</p>
-                    <span className="text-sm font-bold text-red-600">R$ {occurrence.VALOR.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+                    
+                    {/* Botão de Abono/Remoção */}
+                    {onUpdateOccurrence && (
+                      <button
+                        onClick={() => handleAbateOrRemoveToggle(occurrence.id || '', isAbated)}
+                        className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center space-x-1 transition-colors ${
+                          isAbated 
+                            ? 'bg-green-500 text-white hover:bg-green-600' 
+                            : 'bg-yellow-500 text-white hover:bg-yellow-600'
+                        }`}
+                        title={isAbated ? "Clique para reconsiderar esta ocorrência" : "Clique para desconsiderar esta ocorrência"}
+                      >
+                        {isAbated ? (
+                          <>
+                            <CheckCircle className="h-3 w-3" />
+                            <span>Reconsiderar</span>
+                          </>
+                        ) : (
+                          <>
+                            <Trash2 className="h-3 w-3" />
+                            <span>Desconsiderar</span>
+                          </>
+                        )}
+                      </button>
+                    )}
+                    
+                    <span className={`text-sm font-bold ${isAbated ? 'text-gray-400 line-through' : 'text-red-600'}`}>
+                      R$ {occurrence.VALOR.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    </span>
                   </div>
-                  <p className="font-medium text-gray-900 leading-relaxed">{occurrence.OCORRÊNCIA}</p>
+                  <p className={`font-medium leading-relaxed ${isAbated ? 'text-gray-400 line-through' : 'text-gray-900'}`}>
+                    {occurrence.OCORRÊNCIA}
+                  </p>
+                  {isAbated && occurrence.actionBy && (
+                    <p className="text-xs text-gray-500 mt-2 italic">
+                      Desconsiderada por {occurrence.actionBy}
+                    </p>
+                  )}
                 </div>
               );
             })}

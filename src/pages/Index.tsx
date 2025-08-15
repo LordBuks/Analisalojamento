@@ -14,6 +14,7 @@ import { getAllOccurrences, getMonthData, getAvailableMonths } from '../data/dat
 import { AthleteOccurrence } from '../data/athleteData';
 import { generateAthletePDF, generateGeneralPDF, generateGeneralPDFWithoutValues } from '../utils/pdfGenerator';
 import { Button } from "@/components/ui/button";
+import { firestoreService } from '../services/firestoreService';
 
 const Index = () => {
   const { user } = useAuth(); // Obter informações do usuário autenticado
@@ -69,11 +70,14 @@ const Index = () => {
     }
   }, [selectedMonth, selectedYear, availableMonths]);
 
-  // Processar dados dos atletas
+  // Processar dados dos atletas (apenas ocorrências ativas)
   const athleteStats = useMemo(() => {
     const stats = new Map();
     
-    currentData.forEach(occ => {
+    // Filtrar apenas ocorrências ativas (não desconsideradas)
+    const activeOccurrences = currentData.filter(occ => !occ.isAbatedOrRemoved);
+    
+    activeOccurrences.forEach(occ => {
       const key = occ.NOME;
       if (!stats.has(key)) {
         stats.set(key, {
@@ -94,29 +98,30 @@ const Index = () => {
     return Array.from(stats.values()).sort((a, b) => b.occurrenceCount - a.occurrenceCount);
   }, [currentData]);
 
-  // Estatísticas gerais
+  // Estatísticas gerais (apenas ocorrências ativas)
+  const activeCurrentData = useMemo(() => currentData.filter(occ => !occ.isAbatedOrRemoved), [currentData]);
   const totalAthletes = athleteStats.length;
-  const totalOccurrences = currentData.length;
+  const totalOccurrences = activeCurrentData.length;
   const totalValue = useMemo(() => {
-    return currentData.reduce((sum, occ) => sum + (Number(occ.VALOR) || 0), 0);
-  }, [currentData]);
+    return activeCurrentData.reduce((sum, occ) => sum + (Number(occ.VALOR) || 0), 0);
+  }, [activeCurrentData]);
   const averagePerAthlete = totalAthletes > 0 ? (totalValue / totalAthletes).toFixed(2) : "0";
 
-  // Dados para gráfico de pizza (tipos de ocorrência)
+  // Dados para gráfico de pizza (tipos de ocorrência) - apenas ativas
   const occurrenceTypes = useMemo(() => {
     const types = new Map();
-    currentData.forEach(occ => {
+    activeCurrentData.forEach(occ => {
       const category = occ.TIPO;
       types.set(category, (types.get(category) || 0) + 1);
     });
     
     return Array.from(types.entries()).map(([name, value]) => ({ name, value }));
-  }, [currentData]);
+  }, [activeCurrentData]);
 
-  // Dados para gráfico de barras (faltas escolares)
+  // Dados para gráfico de barras (faltas escolares) - apenas ativas
   const schoolAbsences = useMemo(() => {
     const schools = new Map();
-    currentData
+    activeCurrentData
       .filter(occ => occ.TIPO === "Falta Escolar")
       .forEach(occ => {
         let school = "Alojamento";
@@ -129,7 +134,7 @@ const Index = () => {
       });
     
     return Array.from(schools.entries()).map(([name, value]) => ({ name, value }));
-  }, [currentData]);
+  }, [activeCurrentData]);
 
   // Filtros
   const filteredAthletes = useMemo(() => {
@@ -150,6 +155,29 @@ const Index = () => {
 
   const handlePieClick = (categoryName: string) => {
     setSelectedCategory(categoryName);
+  };
+
+  // Função para atualizar o status de abono/remoção de uma ocorrência
+  const handleUpdateAthleteOccurrence = async (occurrenceId: string, isAbatedOrRemoved: boolean) => {
+    try {
+      await firestoreService.updateOccurrenceAbatementStatus(
+        occurrenceId, 
+        isAbatedOrRemoved, 
+        user?.email || 'unknown'
+      );
+      
+      // Recarregar os dados após a atualização
+      if (selectedMonth === 'all') {
+        const allData = await getAllOccurrences();
+        setCurrentData(allData);
+      } else {
+        const monthData = await getMonthData(selectedMonth, selectedYear);
+        setCurrentData(monthData);
+      }
+    } catch (error) {
+      console.error('Erro ao atualizar ocorrência:', error);
+      throw error;
+    }
   };
 
   // Função para gerar PDF geral
@@ -419,6 +447,7 @@ const Index = () => {
             onClose={() => setSelectedAthleteForOccurrences(null)}
             month={selectedMonth === 'all' ? 'Geral' : selectedMonth}
             year={selectedMonth === 'all' ? '2025' : selectedYear.toString()}
+            onUpdateOccurrence={handleUpdateAthleteOccurrence}
           />
         )}
 

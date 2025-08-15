@@ -131,19 +131,32 @@ export const generateAthletePDF = async (athleteName: string, category: string, 
   doc.line(margin, yPosition, pageWidth - margin, yPosition);
   yPosition += 15;
   
-  // Informações do atleta
+  // Informações do atleta (apenas ocorrências ativas)
+  const activeOccurrences = occurrences.filter(occ => !occ.isAbatedOrRemoved);
+  
   doc.setFontSize(14);
   doc.setTextColor(secondaryColor[0], secondaryColor[1], secondaryColor[2]);
   doc.text(`Nome: ${athleteName}`, margin, yPosition);
   yPosition += 8;
   doc.text(`Categoria: ${category}`, margin, yPosition);
   yPosition += 8;
-  doc.text(`Total de Ocorrências: ${occurrences.length}`, margin, yPosition);
+  doc.text(`Total de Ocorrências Ativas: ${activeOccurrences.length}`, margin, yPosition);
   yPosition += 8;
   
-  const totalValue = occurrences.reduce((sum, occ) => sum + Number(occ.VALOR), 0);
+  const totalValue = activeOccurrences.reduce((sum, occ) => sum + Number(occ.VALOR), 0);
   doc.text(`Valor Total: R$ ${totalValue.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`, margin, yPosition);
-  yPosition += 15;
+  yPosition += 8;
+  
+  // Nota explicativa sobre ocorrências desconsideradas
+  if (occurrences.length > activeOccurrences.length) {
+    doc.setFontSize(10);
+    doc.setFont(undefined, 'italic');
+    doc.setTextColor(100, 100, 100);
+    doc.text('* Ocorrências desconsideradas aparecem tachadas e não são incluídas nos totais', margin, yPosition);
+    yPosition += 8;
+  }
+  
+  yPosition += 7;
   
   // Ordenar ocorrências por data (mais recente primeiro) e depois por tipo
   const sortedOccurrences = [...occurrences].sort((a, b) => {
@@ -184,22 +197,48 @@ export const generateAthletePDF = async (athleteName: string, category: string, 
       const requiredSpace = calculateOccurrenceSpace(doc, occurrence, contentWidth, margin);
       checkPageBreak(requiredSpace);
       
+      const isAbated = occurrence.isAbatedOrRemoved || false;
+      
       // Data e valor
       const dateObject = new Date(occurrence.DATA);
       const formattedDate = formatDate(dateObject);
       
       doc.setFontSize(10);
-      doc.setTextColor(secondaryColor[0], secondaryColor[1], secondaryColor[2]);
-      doc.text(`${index + 1}. Data: ${formattedDate}`, margin + 5, yPosition);
+      
+      // Configurar cor baseado no status
+      if (isAbated) {
+        doc.setTextColor(150, 150, 150); // Cinza para ocorrências desconsideradas
+      } else {
+        doc.setTextColor(secondaryColor[0], secondaryColor[1], secondaryColor[2]);
+      }
+      
+      const dateText = `${index + 1}. Data: ${formattedDate}`;
+      doc.text(dateText, margin + 5, yPosition);
+      
+      // Desenhar linha tachada se for desconsiderada
+      if (isAbated) {
+        const dateWidth = doc.getTextWidth(dateText);
+        doc.line(margin + 5, yPosition - 1, margin + 5 + dateWidth, yPosition - 1);
+      }
       
       const valueText = `Valor: R$ ${occurrence.VALOR.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
       const valueWidth = doc.getTextWidth(valueText);
       doc.text(valueText, pageWidth - margin - valueWidth, yPosition);
+      
+      // Desenhar linha tachada no valor se for desconsiderada
+      if (isAbated) {
+        doc.line(pageWidth - margin - valueWidth, yPosition - 1, pageWidth - margin, yPosition - 1);
+      }
+      
       yPosition += 6;
       
       // Descrição da ocorrência
       doc.setFontSize(9);
-      doc.setTextColor(0, 0, 0);
+      if (isAbated) {
+        doc.setTextColor(150, 150, 150); // Cinza para ocorrências desconsideradas
+      } else {
+        doc.setTextColor(0, 0, 0);
+      }
       
       // Quebrar texto longo em múltiplas linhas
       const description = occurrence.OCORRÊNCIA;
@@ -209,10 +248,28 @@ export const generateAthletePDF = async (athleteName: string, category: string, 
       lines.forEach((line: string) => {
         checkPageBreak(5);
         doc.text(line, margin + 5, yPosition);
+        
+        // Desenhar linha tachada se for desconsiderada
+        if (isAbated) {
+          const lineWidth = doc.getTextWidth(line);
+          doc.line(margin + 5, yPosition - 1, margin + 5 + lineWidth, yPosition - 1);
+        }
+        
         yPosition += 4;
       });
       
+      // Adicionar informação sobre quem desconsiderou
+      if (isAbated && occurrence.actionBy) {
+        doc.setFontSize(8);
+        doc.setTextColor(120, 120, 120);
+        doc.text(`(Desconsiderada por: ${occurrence.actionBy})`, margin + 5, yPosition);
+        yPosition += 4;
+      }
+      
       yPosition += 3; // Espaço entre ocorrências
+      
+      // Resetar cor para preto
+      doc.setTextColor(0, 0, 0);
     });
     
     yPosition += 8; // Espaço entre tipos
